@@ -22,4 +22,9 @@
     <style name="Theme.Agendaly.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Agendaly.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.Agendaly.Dialog" parent="Theme.Agendaly">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>

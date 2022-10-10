@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/material_dynamic_neutral20">
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="140dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="629dp"
+        android:layout_marginEnd="232dp"
+        android:onClick="openApp"
+        android:text="@string/cancele"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:backgroundTint="@color/yellow" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="140dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="628dp"
+        android:layout_marginEnd="39dp"
+        android:backgroundTint="@color/yellow"
+        android:text="@string/save"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Nueva Tarea"
+        app:titleTextColor="@color/black" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName2"
+        android:layout_width="319dp"
+        android:layout_height="239dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="100dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/description"
+        android:inputType="textPersonName|textImeMultiLine"
+        android:text="@string/description"
+        android:textColor="@color/black"
+        app:layout_constraintCircleRadius="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName3"
+        android:layout_width="319dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/title"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName5"
+        android:layout_width="127dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="41dp"
+        android:background="@color/yellow"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/date"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName6"
+        android:layout_width="127dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/yellow"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/HOUR"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="127dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="41dp"
+        android:background="@color/white"
+        android:textSize="16sp"
+        android:theme="@style/Theme.Agendaly"
+        app:layout_constraintStart_toEndOf="@id/editTextTextPersonName5"
+        app:layout_constraintTop_toBottomOf="@id/editTextTextPersonName2" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="127dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/white"
+        android:inputType="time"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/editTextTextPersonName6"
+        app:layout_constraintTop_toBottomOf="@id/textView4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Agendaly</string>
-    <string name="texto_ayuda">
+    <string name="help">Help</string>
+    <string name="help_text">
         Welcome to Agendaly!\n
         This app will help you to organize your daily tasks in a really simple way.
     </string>

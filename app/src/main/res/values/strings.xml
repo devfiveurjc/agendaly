@@ -1,28 +1,17 @@
 <resources>
     <string name="app_name">Agendaly</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="AGENDALY">AGENDALY</string>
-    <string name="texto_ayuda">¡BIENBENIDO A AGENDALY!\n\n
-        Esta aplicación te ayudará a gestionar tus tareas diaras de manera fácil e intuitiva. Podrás añadir nuevas notas a tu tablero
-        para nunca olvidar algo importante en tu día a día.\n
-        Adelante.
+    <string name="texto_ayuda">
+        Welcome to Agendaly!\n
+        This app will help you to organize your daily tasks in a really simple way.
     </string>
-    <string name="mis_tareas">Mis tareas</string>
-    <string name="anadir">Añadir tarea</string>
-    <string name="other">OTRA OPCION</string>
-    <string name="cancele">CANCELAR</string>
-    <string name="save">GUARDAR</string>
-    <string name="newN">NUEVA NOTA</string>
-    <string name="title">TÍTULO</string>
-    <string name="description">Escriba una descripción</string>
-    <string name="date">FECHA</string>
-    <string name="HOUR">HORA</string>
+    <string name="tasks">My tasks</string>
+    <string name="add_task">Add task</string>
+    <string name="other_option">Other option</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="new_task">New Task</string>
+    <string name="title">Title</string>
+    <string name="description">Write a description</string>
+    <string name="date">Date</string>
+    <string name="hour">Hour</string>
 </resources>

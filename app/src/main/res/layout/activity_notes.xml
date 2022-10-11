@@ -14,7 +14,7 @@
         android:layout_marginTop="629dp"
         android:layout_marginEnd="232dp"
         android:onClick="openApp"
-        android:text="@string/cancele"
+        android:text="@string/cancel"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:backgroundTint="@color/yellow" />
+        tools:backgroundTint="#D11F1F" />
 
     <Button
         android:id="@+id/button5"
@@ -30,7 +30,7 @@
         android:layout_height="66dp"
         android:layout_marginTop="628dp"
         android:layout_marginEnd="39dp"
-        android:backgroundTint="@color/yellow"
+        android:backgroundTint="#D11F1F"
         android:text="@string/save"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -45,12 +45,12 @@
         android:id="@+id/toolbar"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:background="@color/yellow"
+        android:background="#D11F1F"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Nueva Tarea"
+        app:title="@string/new_task"
         app:titleTextColor="@color/black" />
 
     <EditText
@@ -91,7 +91,7 @@
         android:layout_height="55dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="41dp"
-        android:background="@color/yellow"
+        android:background="#D11F1F"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/date"
@@ -106,12 +106,12 @@
         android:layout_height="55dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="40dp"
-        android:background="@color/yellow"
+        android:background="#B12F2F"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/HOUR"
+        android:text="@string/hour"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />

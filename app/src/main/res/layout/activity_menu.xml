@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/material_dynamic_neutral20"
-    tools:context=".SecondFragment">
+    tools:context=".MenuActivity">
 
     <Button
         android:id="@+id/button_second"
@@ -32,7 +32,7 @@
         android:layout_marginTop="39dp"
         android:layout_marginEnd="38dp"
         android:backgroundTint="#D11F1F"
-        android:onClick="nuevaNota"
+        android:onClick="switchNewTask"
         android:text="@string/add_task"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -40,7 +40,8 @@
         app:cornerRadius="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_second" />
+        app:layout_constraintTop_toBottomOf="@+id/button_second"
+        tools:ignore="OnClick" />
 
     <Button
         android:id="@+id/button4"

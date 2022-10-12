@@ -15,7 +15,10 @@
     <string name="description">Write a description</string>
     <string name="date">Date:</string>
     <string name="hour">Hour:</string>
-    <string name="my_tasks">My Taks</string>
     <string name="exit">Exit</string>
     <string name="menu">MAIN MENU</string>
+    <string name="today">Today\'s tasks</string>
+    <string name="back">Back</string>
+    <string name="calendar">Calendar</string>
+    <string name="tomorrow">Tasks due tomorrow</string>
 </resources>

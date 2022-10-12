@@ -14,7 +14,7 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-public class NewNoteActivity extends AppCompatActivity {
+public class NewTaskActivity extends AppCompatActivity {
 
     private int[] date = new int[3];
     private int [] hour = new int [2];
@@ -38,7 +38,7 @@ public class NewNoteActivity extends AppCompatActivity {
 
     public void openDate(View v) {
         DatePickerDialog dialog = new DatePickerDialog(
-                NewNoteActivity.this,
+                NewTaskActivity.this,
                 android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                 new DatePickerDialog.OnDateSetListener() {
                     @Override

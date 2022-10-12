@@ -11,9 +11,11 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="new_task">New Task</string>
-    <string name="title">Title</string>
+    <string name="title">Write the task title</string>
     <string name="description">Write a description</string>
-    <string name="date">Date</string>
-    <string name="hour">Hour</string>
+    <string name="date">Date:</string>
+    <string name="hour">Hour:</string>
     <string name="my_tasks">My Taks</string>
+    <string name="exit">Exit</string>
+    <string name="menu">MAIN MENU</string>
 </resources>

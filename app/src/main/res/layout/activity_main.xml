@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/material_dynamic_neutral20"
+    android:background="@color/personalizado"
     tools:context=".MainActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -12,24 +13,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="339dp"
-        android:layout_marginTop="695dp"
+        android:layout_marginTop="656dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="19dp"
         android:clickable="false"
         android:contentDescription="@string/app_name"
         android:onClick="showHelp"
         app:backgroundTint="#D11F1F"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/ic_dialog_info" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button"
         android:layout_width="191dp"
         android:layout_height="200dp"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="252dp"
-        android:layout_marginEnd="128dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="264dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginBottom="267dp"
         android:backgroundTint="#D11F1F"
         android:onClick="switchMenuActivity"
         android:text="@string/app_name"
@@ -37,8 +43,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:cornerRadius="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

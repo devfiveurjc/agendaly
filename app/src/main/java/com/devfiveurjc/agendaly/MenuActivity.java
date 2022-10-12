@@ -19,4 +19,9 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(switchActivityIntent);
     }
 
+    public void switchMyTasks (View view) {
+        Intent switchActivityIntent = new Intent(this, NotesActivity.class);
+        startActivity(switchActivityIntent);
+    }
+
 }

@@ -15,4 +15,5 @@
     <string name="description">Write a description</string>
     <string name="date">Date</string>
     <string name="hour">Hour</string>
+    <string name="my_tasks">My Taks</string>
 </resources>

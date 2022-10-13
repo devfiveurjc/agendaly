@@ -21,6 +21,9 @@
     <string name="back">Back</string>
     <string name="calendar">Calendar</string>
     <string name="tomorrow">Tasks due tomorrow</string>
-    ç<string name="all">Show all</string>
+    <string name="all">Show all</string>
     <string name="week">Tasks this week</string>
+    <string name="noTitle_text">
+        Please, indicate the title of your task.
+    </string>
 </resources>

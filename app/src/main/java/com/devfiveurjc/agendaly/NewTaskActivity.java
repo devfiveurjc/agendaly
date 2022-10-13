@@ -11,8 +11,10 @@ import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.android.material.textview.MaterialTextView;
 
@@ -22,6 +24,7 @@ public class NewTaskActivity extends AppCompatActivity {
 
     private int[] date = new int[3];
     private int [] hour = new int [2];
+    private EditText title, description;
     private TextView displayDate, displayHour;
     MaterialTextView textView1,textView2;
 
@@ -34,6 +37,19 @@ public class NewTaskActivity extends AppCompatActivity {
         textView2= (MaterialTextView) findViewById(R.id.textView5);
         textView1.setText("");
         textView2.setText("");
+        displayHour = findViewById(R.id.textView5);
+        displayDate = findViewById(R.id.textView4);
+
+        Calendar calendar = Calendar.getInstance();  //current date and time
+        hour[0] = calendar.get(Calendar.HOUR_OF_DAY);
+        hour[1] = calendar.get(Calendar.MINUTE);
+        calendar.add(Calendar.HOUR_OF_DAY, 1);
+        date[2] = calendar.get(Calendar.YEAR);
+        date[1] = calendar.get(Calendar.MONTH);
+        date[0] = calendar.get(Calendar.DAY_OF_MONTH);
+
+        syncDisplayDate();
+        syncDisplayHour(displayHour, hour);
 
     }
 
@@ -42,9 +58,17 @@ public class NewTaskActivity extends AppCompatActivity {
         startActivity(switchActivityIntent);
     }
 
-    /*private void syncDisplayDate() {
-        displayDate.setText(StringChange.dateString(date));
-    }*/
+    private void syncDisplayDate() {
+        displayDate.setText(date[0]+"/"+(date[1]+1)+"/"+date[2]);
+    }
+
+    private void syncDisplayHour(TextView display, int[] hour) {
+        if(hour[1]<10){
+            display.setText(hour[0]+":0"+hour[1]);
+        }else {
+            display.setText(hour[0] + ":" + hour[1]);
+        }
+    }
 
     public void openDate(View view) {
         final Calendar c= Calendar.getInstance();
@@ -59,7 +83,8 @@ public class NewTaskActivity extends AppCompatActivity {
                         date[0]=dayOfMonth;
                         date[1]=month;
                         date[2]=year;
-                        textView1.setText(date[0]+"/"+(date[1]+1)+"/"+date[2]);
+                        syncDisplayDate();
+                        //textView1.setText(date[0]+"/"+(date[1]+1)+"/"+date[2]);
                     }
                 },
                 date[2], date[1], date[0]);
@@ -77,15 +102,30 @@ public class NewTaskActivity extends AppCompatActivity {
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 hour[0]=hourOfDay;
                 hour[1]=minute;
-                if(hour[1]<10){
+                syncDisplayHour(displayHour, hour);
+                /*if(hour[1]<10){
                     textView2.setText(hour[0]+":0"+hour[1]);
                 }else {
                     textView2.setText(hour[0] + ":" + hour[1]);
-                }
+                }*/
 
             }
         }, hour[0], hour[1], true);
         tmd.show();
+    }
+
+    public void saveTask (View view) {
+        if(!title.getText().toString().equals("")) {
+            Calendar dateTask = Calendar.getInstance();
+            dateTask.set(date[2], date[1], date[0]);
+            Calendar hourTask = Calendar.getInstance();
+            hourTask.set(Calendar.HOUR_OF_DAY, hour[0]);
+            hourTask.set(Calendar.MINUTE, hour[1]);
+            //SE CREARÍA UNA TAREA NUEVA CON LO ESPECIFICADO Y SE GUARDARÍA EN LA BASE DE DATOS
+        }
+        else {
+            Toast.makeText(this,R.string.noTitle_text, Toast.LENGTH_LONG).show();
+        }
     }
 /*
     public void openDate(View view) {

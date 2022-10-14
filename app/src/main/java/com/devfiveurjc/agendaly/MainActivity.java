@@ -9,12 +9,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     public void switchMenuActivity(View view) {

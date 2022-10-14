@@ -1,7 +1,5 @@
 package com.devfiveurjc.agendaly;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -16,9 +14,15 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.textview.MaterialTextView;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
+
+
 
 public class NewTaskActivity extends AppCompatActivity {
 
@@ -27,6 +31,7 @@ public class NewTaskActivity extends AppCompatActivity {
     private EditText title, description;
     private TextView displayDate, displayHour;
     MaterialTextView textView1,textView2;
+    private ArrayList<Task> tasks = new ArrayList();
 
 
     @Override
@@ -84,7 +89,6 @@ public class NewTaskActivity extends AppCompatActivity {
                         date[1]=month;
                         date[2]=year;
                         syncDisplayDate();
-                        //textView1.setText(date[0]+"/"+(date[1]+1)+"/"+date[2]);
                     }
                 },
                 date[2], date[1], date[0]);
@@ -103,64 +107,39 @@ public class NewTaskActivity extends AppCompatActivity {
                 hour[0]=hourOfDay;
                 hour[1]=minute;
                 syncDisplayHour(displayHour, hour);
-                /*if(hour[1]<10){
-                    textView2.setText(hour[0]+":0"+hour[1]);
-                }else {
-                    textView2.setText(hour[0] + ":" + hour[1]);
-                }*/
-
             }
         }, hour[0], hour[1], true);
         tmd.show();
     }
 
-    public void saveTask (View view) {
+    public ArrayList getTasks() {
+        return tasks;
+    }
+
+    public void saveTask (View view) throws IOException {
         if(!title.getText().toString().equals("")) {
             Calendar dateTask = Calendar.getInstance();
             dateTask.set(date[2], date[1], date[0]);
             Calendar hourTask = Calendar.getInstance();
             hourTask.set(Calendar.HOUR_OF_DAY, hour[0]);
             hourTask.set(Calendar.MINUTE, hour[1]);
-            //SE CREARÍA UNA TAREA NUEVA CON LO ESPECIFICADO Y SE GUARDARÍA EN LA BASE DE DATOS
+            title = findViewById(R.id.editTextTextPersonName3);
+            description = findViewById(R.id.editTextTextPersonName2);
+            Task task = new Task(title.getText().toString(), description.getText().toString(), dateTask, hourTask);
+            tasks.add(task);
+            //save(tasks);
         }
         else {
             Toast.makeText(this,R.string.noTitle_text, Toast.LENGTH_LONG).show();
         }
-    }
-/*
-    public void openDate(View view) {
-        DatePickerDialog dialog = new DatePickerDialog(
-                NewTaskActivity.this,
-                android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        date[0] = dayOfMonth;
-                        date[1] = month;
-                        date[2] = year;
-                        //syncDisplayDate();
-                    }
-                },
-                date[2], date[1], date[0]);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
-        MaterialTextView textView = findViewById(R.id.textView4);
-    }
-    */
-    /*
-    public void openHour(View view) {
-        ContextThemeWrapper newContext = new ContextThemeWrapper(this, R.style.Theme_Agendaly_Dialog);
-        TimePickerDialog tmd = new TimePickerDialog(newContext, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                hour[0] = hourOfDay;
-                hour[1] = minute;
-                //syncDisplayHour(displayHour, hour);
-            }
-        }, hour[0], hour[1], true);
-        tmd.show();
+        switchMenuActivity(view);
     }
 
-     */
+    /*public void save (ArrayList tasks) throws IOException {
+        FileOutputStream fileStream = new FileOutputStream("..\\Informacion.txt");
+        ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
+        objectStream.writeObject(tasks);
+        objectStream.close();
+    }*/
 
 }

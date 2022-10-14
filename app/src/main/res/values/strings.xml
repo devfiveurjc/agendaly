@@ -26,4 +26,5 @@
     <string name="noTitle_text">
         Please, indicate the title of your task.
     </string>
+    <string name="delete">DELETE</string>
 </resources>

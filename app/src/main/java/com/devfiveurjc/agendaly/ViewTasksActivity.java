@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.CheckedTextView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,7 +20,7 @@ public class ViewTasksActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_task_test);
+        setContentView(R.layout.activity_view_tasks);
         view();
     }
 
@@ -36,7 +37,7 @@ public class ViewTasksActivity extends AppCompatActivity {
     }
 
     public void view (){
-        LinearLayout layout = findViewById(R.id.scroll_linear);
+        LinearLayout layout = findViewById(com.google.android.material.R.id.scrollView);
         layout.removeAllViewsInLayout();
         ContextThemeWrapper newContext;
         if(tasks.size() == 0) {
@@ -70,9 +71,12 @@ public class ViewTasksActivity extends AppCompatActivity {
         }
     }
 
+    public void toggle(View view){
+        CheckedTextView checkedTextView=findViewById(view.getId());
+        checkedTextView.toggle();
+    }
 
-
-    /*public void switchMenuActivity(View view) {
+    public void switchMenuActivity(View view) {
         Intent switchActivityIntent = new Intent(this, MenuActivity.class);
         startActivity(switchActivityIntent);
     }
@@ -81,9 +85,5 @@ public class ViewTasksActivity extends AppCompatActivity {
         Intent switchActivityIntent = new Intent(this, CalendarActivity.class);
         startActivity(switchActivityIntent);
     }
-    public void toggle(View view){
-        CheckedTextView checkedTextView=findViewById(view.getId());
-        checkedTextView.toggle();
-    }*/
-}
 
+}

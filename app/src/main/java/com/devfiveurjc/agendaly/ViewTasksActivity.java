@@ -1,5 +1,7 @@
 package com.devfiveurjc.agendaly;
 
+import static java.lang.String.valueOf;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
@@ -17,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ViewTasksActivity extends AppCompatActivity {
+    private TextView displayDate, displayHour;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,22 +28,20 @@ public class ViewTasksActivity extends AppCompatActivity {
         view();
     }
 
-    private NewTaskActivity object;
-    private ArrayList<Task> tasks = object.getTasks();
-    private TextView displayDate, displayHour;
-
-    private void syncDisplayHour(TextView display, int[] hour) {
-        if(hour[1]<10){
-            display.setText(hour[0]+":0"+hour[1]);
-        }else {
-            display.setText(hour[0] + ":" + hour[1]);
-        }
-    }
-
     public void view (){
-        LinearLayout layout = findViewById(com.google.android.material.R.id.scrollView);
-        layout.removeAllViewsInLayout();
+        LinearLayout layout = findViewById(R.id.linear2);
         ContextThemeWrapper newContext;
+
+        /////PRUEBA PARA MOSTRAR/////
+        ArrayList<String> tasks = new ArrayList();
+        String t1 = "Prueba";
+        String t2 = "Hola";
+        String t3 = "Adios";
+        tasks.add(t1);  //COMENTANDO ESTOS ADD VEO QUE FUNCIONA LA PRIMERA PARTE  DEL IF
+        tasks.add(t2);
+        tasks.add(t3);
+        //HABRIA QUE CAMBIAR ESTE ARRAYLIST POR EL GENERADO EN NEWTASKACTIVITY
+
         if(tasks.size() == 0) {
             newContext = new ContextThemeWrapper(this, R.style.Theme_Agendaly_PlainText);
             AppCompatTextView noTaskText = new AppCompatTextView(newContext);
@@ -48,42 +50,23 @@ public class ViewTasksActivity extends AppCompatActivity {
         }
         else {
             newContext = new ContextThemeWrapper(this, R.style.Theme_Agendaly_PlainText);
-            for (int i=0; i<tasks.size(); i++) {
-                Task task = tasks.get(i);
-                displayHour = findViewById(R.id.textView5);
-                int[] hourTask = {task.getHour().get(Calendar.HOUR_OF_DAY), task.getHour().get(Calendar.MINUTE)};
-                String text = task.getTitle() ;//+ "   " + syncDisplayHour(displayHour, hourTask);
+            for (String t: tasks) { //TASK T: TASKS
+                String text = t; //T.GETTITLE()
                 AppCompatButton button = new AppCompatButton(newContext);
                 button.setText(text);
                 button.setGravity(Gravity.START);
                 button.setGravity(Gravity.CENTER_VERTICAL);
-                button.setOnClickListener(new View.OnClickListener() {        //PARA HACER CLICK Y EDITAR O BORRAR
+                /*button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent switchActivityIntent = new Intent(ViewTasksActivity.this, ActionTasksActivity.class);
-                        //intent.putExtra("task", task);
-                        //intent.putExtra("index_calendar", index);  //PARA BORRAR
-                        startActivity(switchActivityIntent);
+                        Intent intent = new Intent(ViewTasksActivity.this, ActionTasksActivity.class);
+                        intent.putExtra("tarea", tarea);
+                        intent.putExtra("index_calendario", index);
+                        startActivity(intent);
                     }
-                });
+                });*/
                 layout.addView(button);
             }
         }
     }
-
-    public void toggle(View view){
-        CheckedTextView checkedTextView=findViewById(view.getId());
-        checkedTextView.toggle();
-    }
-
-    public void switchMenuActivity(View view) {
-        Intent switchActivityIntent = new Intent(this, MenuActivity.class);
-        startActivity(switchActivityIntent);
-    }
-
-    public void switchCalendarActivity(View view) {
-        Intent switchActivityIntent = new Intent(this, CalendarActivity.class);
-        startActivity(switchActivityIntent);
-    }
-
 }

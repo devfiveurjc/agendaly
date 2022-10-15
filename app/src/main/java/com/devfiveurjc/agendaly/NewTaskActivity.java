@@ -54,7 +54,7 @@ public class NewTaskActivity extends AppCompatActivity {
         date[0] = calendar.get(Calendar.DAY_OF_MONTH);
 
         syncDisplayDate();
-        syncDisplayHour(displayHour, hour);
+        syncDisplayHour();
 
     }
 
@@ -67,11 +67,11 @@ public class NewTaskActivity extends AppCompatActivity {
         displayDate.setText(date[0]+"/"+(date[1]+1)+"/"+date[2]);
     }
 
-    private void syncDisplayHour(TextView display, int[] hour) {
+    private void syncDisplayHour() {
         if(hour[1]<10){
-            display.setText(hour[0]+":0"+hour[1]);
+            displayHour.setText(hour[0]+":0"+hour[1]);
         }else {
-            display.setText(hour[0] + ":" + hour[1]);
+            displayHour.setText(hour[0] + ":" + hour[1]);
         }
     }
 
@@ -106,7 +106,7 @@ public class NewTaskActivity extends AppCompatActivity {
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 hour[0]=hourOfDay;
                 hour[1]=minute;
-                syncDisplayHour(displayHour, hour);
+                syncDisplayHour();
             }
         }, hour[0], hour[1], true);
         tmd.show();

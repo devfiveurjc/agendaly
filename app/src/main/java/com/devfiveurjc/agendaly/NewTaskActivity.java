@@ -26,13 +26,18 @@ import java.util.Calendar;
 
 public class NewTaskActivity extends AppCompatActivity {
 
+
     private int[] date = new int[3];
     private int [] hour = new int [2];
     private EditText title, description;
     private TextView displayDate, displayHour;
     MaterialTextView textView1,textView2;
-    private ArrayList<Task> tasks = new ArrayList();
+    private ArrayList<Task> tasks= new ArrayList<>();
 
+
+    public NewTaskActivity(){
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +66,7 @@ public class NewTaskActivity extends AppCompatActivity {
     public void switchMenuActivity(View view) {
         Intent switchActivityIntent = new Intent(this, MenuActivity.class);
         startActivity(switchActivityIntent);
+
     }
 
     private void syncDisplayDate() {
@@ -112,21 +118,20 @@ public class NewTaskActivity extends AppCompatActivity {
         tmd.show();
     }
 
-    public ArrayList getTasks() {
-        return tasks;
-    }
+
 
     public void saveTask (View view) throws IOException {
+        title = findViewById(R.id.editTextTextPersonName3);
+        description = findViewById(R.id.editTextTextPersonName2);
         if(!title.getText().toString().equals("")) {
             Calendar dateTask = Calendar.getInstance();
             dateTask.set(date[2], date[1], date[0]);
             Calendar hourTask = Calendar.getInstance();
             hourTask.set(Calendar.HOUR_OF_DAY, hour[0]);
             hourTask.set(Calendar.MINUTE, hour[1]);
-            title = findViewById(R.id.editTextTextPersonName3);
-            description = findViewById(R.id.editTextTextPersonName2);
             Task task = new Task(title.getText().toString(), description.getText().toString(), dateTask, hourTask);
-            tasks.add(task);
+            TaskData.getTasks().add(task);
+            MenuActivity menu= new MenuActivity();
             //save(tasks);
         }
         else {
@@ -141,5 +146,7 @@ public class NewTaskActivity extends AppCompatActivity {
         objectStream.writeObject(tasks);
         objectStream.close();
     }*/
+
+
 
 }

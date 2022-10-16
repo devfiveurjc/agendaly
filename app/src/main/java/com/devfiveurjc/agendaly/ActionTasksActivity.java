@@ -10,8 +10,7 @@ import java.util.Calendar;
 
 public class ActionTasksActivity extends AppCompatActivity {
 
-    private NewTaskActivity object;
-    private ArrayList<Task> tasks = object.getTasks();
+    private ArrayList<Task> tasks = new ArrayList<>();
     private Task task;
     private int task_index;
     private int[] date = new int[3];
@@ -21,7 +20,7 @@ public class ActionTasksActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_action_task);
+        setContentView(R.layout.activity_action_tasks);
 
         titleT = findViewById(R.id.textViewA);
         descriptionT = findViewById(R.id.textViewA2);

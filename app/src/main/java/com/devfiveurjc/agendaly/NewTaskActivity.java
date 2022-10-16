@@ -53,6 +53,9 @@ public class NewTaskActivity extends AppCompatActivity {
         date[1] = calendar.get(Calendar.MONTH);
         date[0] = calendar.get(Calendar.DAY_OF_MONTH);
 
+        title = findViewById(R.id.editTextTextPersonName3);
+        description = findViewById(R.id.editTextTextPersonName2);
+
         syncDisplayDate();
         syncDisplayHour(displayHour, hour);
 
@@ -112,7 +115,7 @@ public class NewTaskActivity extends AppCompatActivity {
         tmd.show();
     }
 
-    public ArrayList getTasks() {
+    public ArrayList<Task> getTasks() {
         return tasks;
     }
 
@@ -123,23 +126,14 @@ public class NewTaskActivity extends AppCompatActivity {
             Calendar hourTask = Calendar.getInstance();
             hourTask.set(Calendar.HOUR_OF_DAY, hour[0]);
             hourTask.set(Calendar.MINUTE, hour[1]);
-            title = findViewById(R.id.editTextTextPersonName3);
-            description = findViewById(R.id.editTextTextPersonName2);
+
             Task task = new Task(title.getText().toString(), description.getText().toString(), dateTask, hourTask);
             tasks.add(task);
-            //save(tasks);
         }
         else {
             Toast.makeText(this,R.string.noTitle_text, Toast.LENGTH_LONG).show();
         }
         switchMenuActivity(view);
     }
-
-    /*public void save (ArrayList tasks) throws IOException {
-        FileOutputStream fileStream = new FileOutputStream("..\\Informacion.txt");
-        ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
-        objectStream.writeObject(tasks);
-        objectStream.close();
-    }*/
 
 }

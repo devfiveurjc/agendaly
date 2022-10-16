@@ -26,13 +26,18 @@ import java.util.Calendar;
 
 public class NewTaskActivity extends AppCompatActivity {
 
+
     private int[] date = new int[3];
     private int [] hour = new int [2];
     private EditText title, description;
     private TextView displayDate, displayHour;
     MaterialTextView textView1,textView2;
-    private ArrayList<Task> tasks = new ArrayList();
+    private ArrayList<Task> tasks= new ArrayList<>();
 
+
+    public NewTaskActivity(){
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,24 +62,25 @@ public class NewTaskActivity extends AppCompatActivity {
         description = findViewById(R.id.editTextTextPersonName2);
 
         syncDisplayDate();
-        syncDisplayHour(displayHour, hour);
+        syncDisplayHour();
 
     }
 
-    public void switchMenuActivity(View view) {
+    public void switchMenuActivity() {
         Intent switchActivityIntent = new Intent(this, MenuActivity.class);
         startActivity(switchActivityIntent);
+
     }
 
     private void syncDisplayDate() {
         displayDate.setText(date[0]+"/"+(date[1]+1)+"/"+date[2]);
     }
 
-    private void syncDisplayHour(TextView display, int[] hour) {
+    private void syncDisplayHour() {
         if(hour[1]<10){
-            display.setText(hour[0]+":0"+hour[1]);
+            displayHour.setText(hour[0]+":0"+hour[1]);
         }else {
-            display.setText(hour[0] + ":" + hour[1]);
+            displayHour.setText(hour[0] + ":" + hour[1]);
         }
     }
 
@@ -109,17 +115,16 @@ public class NewTaskActivity extends AppCompatActivity {
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 hour[0]=hourOfDay;
                 hour[1]=minute;
-                syncDisplayHour(displayHour, hour);
+                syncDisplayHour();
             }
         }, hour[0], hour[1], true);
         tmd.show();
     }
 
-    public ArrayList<Task> getTasks() {
-        return tasks;
-    }
-
     public void saveTask (View view) throws IOException {
+        final Calendar c = Calendar.getInstance();
+        title = findViewById(R.id.editTextTextPersonName3);
+        description = findViewById(R.id.editTextTextPersonName2);
         if(!title.getText().toString().equals("")) {
             Calendar dateTask = Calendar.getInstance();
             dateTask.set(date[2], date[1], date[0]);
@@ -127,13 +132,32 @@ public class NewTaskActivity extends AppCompatActivity {
             hourTask.set(Calendar.HOUR_OF_DAY, hour[0]);
             hourTask.set(Calendar.MINUTE, hour[1]);
 
-            Task task = new Task(title.getText().toString(), description.getText().toString(), dateTask, hourTask);
-            tasks.add(task);
-        }
+            Task task = new Task(title.getText().toString(), description.getText().toString(),
+                    dateTask,hourTask);
+            TaskData.getTasks().add(task);
+
+                if(date[0]==c.get(Calendar.DAY_OF_MONTH)) {
+                    TaskData.getTasksToday().add(task);
+                }else if(date[0]==(c.get(Calendar.DAY_OF_MONTH)+1)){
+                    TaskData.getTasksTmrw().add(task);
+                }else{
+                    TaskData.getTasksWeek().add(task);
+
+                }
+            switchMenuActivity();
+
+            }
         else {
             Toast.makeText(this,R.string.noTitle_text, Toast.LENGTH_LONG).show();
         }
-        switchMenuActivity(view);
     }
+
+    /*public void save (ArrayList tasks) throws IOException {
+        FileOutputStream fileStream = new FileOutputStream("..\\Informacion.txt");
+        ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
+        objectStream.writeObject(tasks);
+        objectStream.close();
+    }*/
+
 
 }

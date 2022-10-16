@@ -133,17 +133,16 @@ public class NewTaskActivity extends AppCompatActivity {
             Task task = new Task(title.getText().toString(), description.getText().toString(),
                     dateTask,hourTask);
             TaskData.getTasks().add(task);
-            switchMenuActivity();
 
                 if(date[0]==c.get(Calendar.DAY_OF_MONTH)) {
                     TaskData.getTasksToday().add(task);
-                }else if(date[0]==c.get(Calendar.DAY_OF_MONTH)+1){
+                }else if(date[0]==(c.get(Calendar.DAY_OF_MONTH)+1)){
                     TaskData.getTasksTmrw().add(task);
                 }else{
                     TaskData.getTasksWeek().add(task);
 
                 }
-
+            switchMenuActivity();
 
             }
 

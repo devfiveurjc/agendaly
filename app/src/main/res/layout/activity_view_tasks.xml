@@ -96,40 +96,14 @@
                     android:id="@+id/show1"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
                     android:backgroundTint="#D11F1F"
                     android:onClick="switchMenuActivity"
                     android:text="@string/all"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
-
-                <Button
-                    android:id="@+id/delete1"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#D11F1F"
-                    android:onClick="delete"
-                    android:text="@string/deleteT"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/mod1"
-                    app:layout_constraintStart_toEndOf="@+id/show1" />
-
-                <Button
-                    android:id="@+id/mod1"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="25dp"
-                    android:backgroundTint="#D11F1F"
-                    android:onClick="switchMenuActivity"
-                    android:text="@string/change"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -195,40 +169,14 @@
                     android:id="@+id/show2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
                     android:backgroundTint="#D11F1F"
                     android:onClick="switchMenuActivity"
                     android:text="@string/all"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
-
-                <Button
-                    android:id="@+id/delete2"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#D11F1F"
-                    android:onClick="delete"
-                    android:text="@string/deleteT"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/mod2"
-                    app:layout_constraintStart_toEndOf="@+id/show2" />
-
-                <Button
-                    android:id="@+id/mod2"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="25dp"
-                    android:backgroundTint="#D11F1F"
-                    android:onClick="switchMenuActivity"
-                    android:text="@string/change"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -294,53 +242,58 @@
                     android:id="@+id/show3"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
+                    android:layout_marginBottom="15dp"
                     android:backgroundTint="#D11F1F"
                     android:onClick="switchMenuActivity"
                     android:text="@string/all"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
-
-                <Button
-                    android:id="@+id/delete3"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#D11F1F"
-                    android:onClick="delete"
-                    android:text="@string/deleteT"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/mod3"
-                    app:layout_constraintStart_toEndOf="@+id/show3" />
-
-                <Button
-                    android:id="@+id/mod3"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="25dp"
-                    android:backgroundTint="#D11F1F"
-                    android:onClick="switchMenuActivity"
-                    android:text="@string/change"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="183dp">
+                android:layout_height="257dp">
+
+                <Button
+                    android:id="@+id/mod"
+                    android:layout_width="140dp"
+                    android:layout_height="66dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginEnd="40dp"
+                    android:backgroundTint="#D11F1F"
+                    android:onClick="switchMenuActivity"
+                    android:text="@string/change"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:cornerRadius="40dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/delete"
+                    android:layout_width="140dp"
+                    android:layout_height="66dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="60dp"
+                    android:backgroundTint="#D11F1F"
+                    android:onClick="delete"
+                    android:text="@string/deleteT"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:cornerRadius="40dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:id="@+id/button9"
                     android:layout_width="140dp"
                     android:layout_height="66dp"
                     android:layout_marginEnd="40dp"
-                    android:layout_marginBottom="40dp"
+                    android:layout_marginBottom="30dp"
                     android:backgroundTint="#D11F1F"
                     android:onClick="switchCalendarActivity"
                     android:text="@string/calendar"
@@ -355,7 +308,7 @@
                     android:layout_width="140dp"
                     android:layout_height="66dp"
                     android:layout_marginStart="40dp"
-                    android:layout_marginBottom="40dp"
+                    android:layout_marginBottom="30dp"
                     android:backgroundTint="#D11F1F"
                     android:onClick="switchMenuActivity"
                     android:text="@string/back"

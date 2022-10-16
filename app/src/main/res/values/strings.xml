@@ -28,4 +28,7 @@
         Please, indicate the title of your task.
     </string>
     <string name="delete">DELETE</string>
+    <string name="deleteT">Delete selected</string>
+    <string name="change">Modify selected</string>
+    <string name="defaultTask">Empty Space</string>
 </resources>

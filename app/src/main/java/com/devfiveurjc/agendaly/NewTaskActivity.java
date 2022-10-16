@@ -63,7 +63,7 @@ public class NewTaskActivity extends AppCompatActivity {
 
     }
 
-    public void switchMenuActivity(View view) {
+    public void switchMenuActivity() {
         Intent switchActivityIntent = new Intent(this, MenuActivity.class);
         startActivity(switchActivityIntent);
 
@@ -121,6 +121,7 @@ public class NewTaskActivity extends AppCompatActivity {
 
 
     public void saveTask (View view) throws IOException {
+        final Calendar c = Calendar.getInstance();
         title = findViewById(R.id.editTextTextPersonName3);
         description = findViewById(R.id.editTextTextPersonName2);
         if(!title.getText().toString().equals("")) {
@@ -129,15 +130,26 @@ public class NewTaskActivity extends AppCompatActivity {
             Calendar hourTask = Calendar.getInstance();
             hourTask.set(Calendar.HOUR_OF_DAY, hour[0]);
             hourTask.set(Calendar.MINUTE, hour[1]);
-            Task task = new Task(title.getText().toString(), description.getText().toString(), dateTask, hourTask);
+            Task task = new Task(title.getText().toString(), description.getText().toString(),
+                    dateTask,hourTask);
             TaskData.getTasks().add(task);
-            MenuActivity menu= new MenuActivity();
-            //save(tasks);
-        }
+            switchMenuActivity();
+
+                if(date[0]==c.get(Calendar.DAY_OF_MONTH)) {
+                    TaskData.getTasksToday().add(task);
+                }else if(date[0]==c.get(Calendar.DAY_OF_MONTH)+1){
+                    TaskData.getTasksTmrw().add(task);
+                }else{
+                    TaskData.getTasksWeek().add(task);
+
+                }
+
+
+            }
+
         else {
             Toast.makeText(this,R.string.noTitle_text, Toast.LENGTH_LONG).show();
         }
-        switchMenuActivity(view);
     }
 
     /*public void save (ArrayList tasks) throws IOException {

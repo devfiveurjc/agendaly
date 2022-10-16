@@ -58,6 +58,9 @@ public class NewTaskActivity extends AppCompatActivity {
         date[1] = calendar.get(Calendar.MONTH);
         date[0] = calendar.get(Calendar.DAY_OF_MONTH);
 
+        title = findViewById(R.id.editTextTextPersonName3);
+        description = findViewById(R.id.editTextTextPersonName2);
+
         syncDisplayDate();
         syncDisplayHour();
 
@@ -118,8 +121,6 @@ public class NewTaskActivity extends AppCompatActivity {
         tmd.show();
     }
 
-
-
     public void saveTask (View view) throws IOException {
         final Calendar c = Calendar.getInstance();
         title = findViewById(R.id.editTextTextPersonName3);
@@ -130,6 +131,7 @@ public class NewTaskActivity extends AppCompatActivity {
             Calendar hourTask = Calendar.getInstance();
             hourTask.set(Calendar.HOUR_OF_DAY, hour[0]);
             hourTask.set(Calendar.MINUTE, hour[1]);
+
             Task task = new Task(title.getText().toString(), description.getText().toString(),
                     dateTask,hourTask);
             TaskData.getTasks().add(task);
@@ -145,7 +147,6 @@ public class NewTaskActivity extends AppCompatActivity {
             switchMenuActivity();
 
             }
-
         else {
             Toast.makeText(this,R.string.noTitle_text, Toast.LENGTH_LONG).show();
         }
@@ -157,7 +158,6 @@ public class NewTaskActivity extends AppCompatActivity {
         objectStream.writeObject(tasks);
         objectStream.close();
     }*/
-
 
 
 }

@@ -1,5 +1,7 @@
 package com.devfiveurjc.agendaly;
 
+import static java.lang.String.valueOf;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,12 +15,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ViewTasksActivity extends AppCompatActivity {
+
     private ArrayList<CheckedTextView> textListToday = new ArrayList();
     private ArrayList<CheckedTextView> textListTmrw = new ArrayList();
     private ArrayList<CheckedTextView> textListWeek = new ArrayList();
     private ArrayList<Task> tasks=new ArrayList<>();
     private TextView displayDate, displayHour;
     private boolean checkedStates[] = new boolean[9];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +31,6 @@ public class ViewTasksActivity extends AppCompatActivity {
         init();
         view();
     }
-
-
 
 
     private void syncDisplayHour(TextView display, int[] hour) {
@@ -92,6 +94,7 @@ public class ViewTasksActivity extends AppCompatActivity {
                    weekCount+=1;
 
                 }
+
             }
         }
 

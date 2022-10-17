@@ -1,7 +1,6 @@
 package com.devfiveurjc.agendaly;
 
 import java.util.Calendar;
-import java.util.List;
 
 public class Task {
     private String title;
@@ -19,8 +18,6 @@ public class Task {
         this.id = id;
     }
 
-
-
     public boolean isChecked() {
         return checked;
     }
@@ -28,8 +25,6 @@ public class Task {
     public void setChecked(boolean checked) {
         this.checked = checked;
     }
-
-
 
     public Task(String title, String description, Calendar date, Calendar hour) {
         this.title = title;

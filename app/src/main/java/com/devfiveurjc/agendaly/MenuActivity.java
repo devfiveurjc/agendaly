@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class MenuActivity extends AppCompatActivity {
 
-    private ArrayList<Task> tasks= new ArrayList();
+    private ArrayList<Task> tasks = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,26 +20,23 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
     }
 
-
     public void switchNewTask(View view) {
         Intent switchActivityIntent = new Intent(this, NewTaskActivity.class);
         startActivity(switchActivityIntent);
     }
 
-    public void switchMyTasks (View view) {
-
-           if (TaskData.getTasks().size()>0) {
-               Intent switchActivityIntent = new Intent(this, ViewTasksActivity.class);
-               startActivity(switchActivityIntent);
-           }else {
-               Toast.makeText(this, "No tasks to show", Toast.LENGTH_LONG).show();
-           }
+    public void switchMyTasks(View view) {
+        if (TaskData.getTasks().size() > 0) {
+            Intent switchActivityIntent = new Intent(this, ViewTasksActivity.class);
+            startActivity(switchActivityIntent);
+        } else {
+            Toast.makeText(this, "No tasks to show", Toast.LENGTH_LONG).show();
+        }
     }
 
     @SuppressLint("")
-    public void exit(View view){
+    public void exit(View view) {
         finishAffinity();
-
     }
 
 }

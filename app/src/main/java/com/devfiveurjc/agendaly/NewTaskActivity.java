@@ -22,29 +22,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-
-
 public class NewTaskActivity extends AppCompatActivity {
 
-
     private int[] date = new int[3];
-    private int [] hour = new int [2];
+    private int[] hour = new int[2];
     private EditText title, description;
     private TextView displayDate, displayHour;
-    MaterialTextView textView1,textView2;
-    private ArrayList<Task> tasks= new ArrayList<>();
-
-
-    public NewTaskActivity(){
-
-    }
+    MaterialTextView textView1, textView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
         textView1 = (MaterialTextView) findViewById(R.id.textView4);
-        textView2= (MaterialTextView) findViewById(R.id.textView5);
+        textView2 = (MaterialTextView) findViewById(R.id.textView5);
         textView1.setText("");
         textView2.setText("");
         displayHour = findViewById(R.id.textView5);
@@ -73,30 +64,30 @@ public class NewTaskActivity extends AppCompatActivity {
     }
 
     private void syncDisplayDate() {
-        displayDate.setText(date[0]+"/"+(date[1]+1)+"/"+date[2]);
+        displayDate.setText(date[0] + "/" + (date[1] + 1) + "/" + date[2]);
     }
 
     private void syncDisplayHour() {
-        if(hour[1]<10){
-            displayHour.setText(hour[0]+":0"+hour[1]);
-        }else {
+        if (hour[1] < 10) {
+            displayHour.setText(hour[0] + ":0" + hour[1]);
+        } else {
             displayHour.setText(hour[0] + ":" + hour[1]);
         }
     }
 
     public void openDate(View view) {
-        final Calendar c= Calendar.getInstance();
-        date[0]=c.get(Calendar.DAY_OF_MONTH);
-        date[1]=c.get(Calendar.MONTH);
-        date[2]=c.get(Calendar.YEAR);
+        final Calendar c = Calendar.getInstance();
+        date[0] = c.get(Calendar.DAY_OF_MONTH);
+        date[1] = c.get(Calendar.MONTH);
+        date[2] = c.get(Calendar.YEAR);
         DatePickerDialog dialog = new DatePickerDialog(NewTaskActivity.this,
                 android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        date[0]=dayOfMonth;
-                        date[1]=month;
-                        date[2]=year;
+                        date[0] = dayOfMonth;
+                        date[1] = month;
+                        date[2] = year;
                         syncDisplayDate();
                     }
                 },
@@ -106,26 +97,26 @@ public class NewTaskActivity extends AppCompatActivity {
     }
 
     public void openHour(View view) {
-        final Calendar c= Calendar.getInstance();
-        hour[0]=c.get(Calendar.HOUR_OF_DAY);
-        hour[1]=c.get(Calendar.MINUTE);
+        final Calendar c = Calendar.getInstance();
+        hour[0] = c.get(Calendar.HOUR_OF_DAY);
+        hour[1] = c.get(Calendar.MINUTE);
         ContextThemeWrapper newContext = new ContextThemeWrapper(this, R.style.Theme_Agendaly_Dialog);
         TimePickerDialog tmd = new TimePickerDialog(newContext, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                hour[0]=hourOfDay;
-                hour[1]=minute;
+                hour[0] = hourOfDay;
+                hour[1] = minute;
                 syncDisplayHour();
             }
         }, hour[0], hour[1], true);
         tmd.show();
     }
 
-    public void saveTask (View view) throws IOException {
+    public void saveTask(View view) throws IOException {
         final Calendar c = Calendar.getInstance();
         title = findViewById(R.id.editTextTextPersonName3);
         description = findViewById(R.id.editTextTextPersonName2);
-        if(!title.getText().toString().equals("")) {
+        if (!title.getText().toString().equals("")) {
             Calendar dateTask = Calendar.getInstance();
             dateTask.set(date[2], date[1], date[0]);
             Calendar hourTask = Calendar.getInstance();
@@ -133,31 +124,22 @@ public class NewTaskActivity extends AppCompatActivity {
             hourTask.set(Calendar.MINUTE, hour[1]);
 
             Task task = new Task(title.getText().toString(), description.getText().toString(),
-                    dateTask,hourTask);
+                    dateTask, hourTask);
             TaskData.getTasks().add(task);
 
-                if(date[0]==c.get(Calendar.DAY_OF_MONTH)) {
-                    TaskData.getTasksToday().add(task);
-                }else if(date[0]==(c.get(Calendar.DAY_OF_MONTH)+1)){
-                    TaskData.getTasksTmrw().add(task);
-                }else{
-                    TaskData.getTasksWeek().add(task);
-
-                }
-            switchMenuActivity();
+            if (date[0] == c.get(Calendar.DAY_OF_MONTH)) {
+                TaskData.getTasksToday().add(task);
+            } else if (date[0] == (c.get(Calendar.DAY_OF_MONTH) + 1)) {
+                TaskData.getTasksTmrw().add(task);
+            } else {
+                TaskData.getTasksWeek().add(task);
 
             }
-        else {
-            Toast.makeText(this,R.string.noTitle_text, Toast.LENGTH_LONG).show();
+            switchMenuActivity();
+
+        } else {
+            Toast.makeText(this, R.string.noTitle_text, Toast.LENGTH_LONG).show();
         }
     }
-
-    /*public void save (ArrayList tasks) throws IOException {
-        FileOutputStream fileStream = new FileOutputStream("..\\Informacion.txt");
-        ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
-        objectStream.writeObject(tasks);
-        objectStream.close();
-    }*/
-
 
 }

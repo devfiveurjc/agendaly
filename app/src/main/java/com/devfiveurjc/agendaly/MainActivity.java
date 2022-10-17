@@ -9,11 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override

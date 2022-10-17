@@ -1,7 +1,5 @@
 package com.devfiveurjc.agendaly;
 
-import static java.lang.String.valueOf;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,10 +17,9 @@ public class ViewTasksActivity extends AppCompatActivity {
     private ArrayList<CheckedTextView> textListToday = new ArrayList();
     private ArrayList<CheckedTextView> textListTmrw = new ArrayList();
     private ArrayList<CheckedTextView> textListWeek = new ArrayList();
-    private ArrayList<Task> tasks=new ArrayList<>();
+    private ArrayList<Task> tasks = new ArrayList<>();
     private TextView displayDate, displayHour;
     private boolean checkedStates[] = new boolean[9];
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +29,6 @@ public class ViewTasksActivity extends AppCompatActivity {
         view();
     }
 
-
     private void syncDisplayHour(TextView display, int[] hour) {
         if (hour[1] < 10) {
             display.setText(hour[0] + ":0" + hour[1]);
@@ -40,7 +36,8 @@ public class ViewTasksActivity extends AppCompatActivity {
             display.setText(hour[0] + ":" + hour[1]);
         }
     }
-    public void init(){
+
+    public void init() {
         textListToday.clear();
         textListTmrw.clear();
         textListWeek.clear();
@@ -53,13 +50,16 @@ public class ViewTasksActivity extends AppCompatActivity {
         textListWeek.add((CheckedTextView) findViewById(R.id.checkedTextView7));
         textListWeek.add((CheckedTextView) findViewById(R.id.checkedTextView8));
         textListWeek.add((CheckedTextView) findViewById(R.id.checkedTextView9));
-        for (int i=0;i<textListToday.size();i++){
+
+        for (int i = 0; i < textListToday.size(); i++) {
             textListToday.get(i).setText("Empty space");
         }
-        for (int i=0;i<textListTmrw.size();i++){
+
+        for (int i = 0; i < textListTmrw.size(); i++) {
             textListTmrw.get(i).setText("Empty space");
         }
-        for (int i=0;i<textListWeek.size();i++){
+
+        for (int i = 0; i < textListWeek.size(); i++) {
             textListWeek.get(i).setText("Empty space");
         }
 
@@ -67,49 +67,48 @@ public class ViewTasksActivity extends AppCompatActivity {
 
     public void view() {
         tasks = TaskData.getTasks();
-        int todayCount=0,tmrwCount=0,weekCount=0;
+        int todayCount = 0, tmrwCount = 0, weekCount = 0;
         int size = tasks.size();
-        int taskDate[]= new int[3];
+        int taskDate[] = new int[3];
 
-            final Calendar c = Calendar.getInstance();
-            for (int i = 0; i < size && i < 9; i++) {
-                Task task = tasks.get(i);
-                taskDate[0] = task.getDate().get(Calendar.DAY_OF_MONTH);
-                taskDate[1] = task.getDate().get(Calendar.MONTH);
-                taskDate[2] = task.getDate().get(Calendar.YEAR);
+        final Calendar c = Calendar.getInstance();
+        for (int i = 0; i < size && i < 9; i++) {
+            Task task = tasks.get(i);
+            taskDate[0] = task.getDate().get(Calendar.DAY_OF_MONTH);
+            taskDate[1] = task.getDate().get(Calendar.MONTH);
+            taskDate[2] = task.getDate().get(Calendar.YEAR);
 
-                if (taskDate[0] == c.get(Calendar.DAY_OF_MONTH) && taskDate[1] == c.get(Calendar.MONTH)
-                     && taskDate[2]==c.get(Calendar.YEAR) && todayCount<3) {
-                    textListToday.get(todayCount).setText(task.getTitle());
-                    todayCount+=1;
+            if (taskDate[0] == c.get(Calendar.DAY_OF_MONTH) && taskDate[1] == c.get(Calendar.MONTH)
+                    && taskDate[2] == c.get(Calendar.YEAR) && todayCount < 3) {
+                textListToday.get(todayCount).setText(task.getTitle());
+                todayCount += 1;
 
-                } else if (taskDate[0] == (c.get(Calendar.DAY_OF_MONTH)+1) && taskDate[1] == c.get(Calendar.MONTH)
-                        && taskDate[2]==c.get(Calendar.YEAR) && tmrwCount<3) {
-                    textListTmrw.get(tmrwCount).setText(task.getTitle());
-                    tmrwCount+=1;
+            } else if (taskDate[0] == (c.get(Calendar.DAY_OF_MONTH) + 1) && taskDate[1] == c.get(Calendar.MONTH)
+                    && taskDate[2] == c.get(Calendar.YEAR) && tmrwCount < 3) {
+                textListTmrw.get(tmrwCount).setText(task.getTitle());
+                tmrwCount += 1;
 
-                }//aqui habria que comparar si la tarea es de esta semana
-                else if (weekCount<3) {
-                    textListWeek.get(weekCount).setText(task.getTitle());
-                   weekCount+=1;
-
-                }
+            } else if (weekCount < 3) {
+                textListWeek.get(weekCount).setText(task.getTitle());
+                weekCount += 1;
 
             }
         }
+    }
 
     public void toggle(View view) {
         CheckedTextView checkedTextView = findViewById(view.getId());
         boolean valid = false;
+
         if (textListToday.contains(checkedTextView) &&
-                (textListToday.indexOf(checkedTextView)+1) <= TaskData.getTasksToday().size()) {
+                (textListToday.indexOf(checkedTextView) + 1) <= TaskData.getTasksToday().size()) {
             valid = true;
 
         } else if (textListTmrw.contains(checkedTextView) &&
-                (textListTmrw.indexOf(checkedTextView)+1) <= TaskData.getTasksTmrw().size()) {
+                (textListTmrw.indexOf(checkedTextView) + 1) <= TaskData.getTasksTmrw().size()) {
             valid = true;
         } else if (textListWeek.contains(checkedTextView) &&
-                (textListWeek.indexOf(checkedTextView)+1) <= TaskData.getTasksWeek().size()) {
+                (textListWeek.indexOf(checkedTextView) + 1) <= TaskData.getTasksWeek().size()) {
             valid = true;
         }
         if (valid == true) {
@@ -125,12 +124,14 @@ public class ViewTasksActivity extends AppCompatActivity {
                 TaskData.getTasksToday().remove(i);
             }
         }
+
         for (int i = 0; i < textListTmrw.size(); i++) {
             if (textListTmrw.get(i).isChecked()) {
                 TaskData.getTasks().remove(TaskData.getTasksTmrw().get(i));
                 TaskData.getTasksTmrw().remove(i);
             }
         }
+
         for (int i = 0; i < textListWeek.size(); i++) {
             if (textListWeek.get(i).isChecked()) {
                 TaskData.getTasks().remove(TaskData.getTasksWeek().get(i));
@@ -139,12 +140,13 @@ public class ViewTasksActivity extends AppCompatActivity {
         }
         switchMyTasksOrMenu(view);
     }
-    public void switchMyTasksOrMenu (View view) {
 
-        if (TaskData.getTasks().size()>0) {
+    public void switchMyTasksOrMenu(View view) {
+
+        if (TaskData.getTasks().size() > 0) {
             Intent switchActivityIntent = new Intent(this, ViewTasksActivity.class);
             startActivity(switchActivityIntent);
-        }else {
+        } else {
             Toast.makeText(this, "There are no longer tasks to show", Toast.LENGTH_LONG).show();
             Intent switchActivityIntent = new Intent(this, MenuActivity.class);
             startActivity(switchActivityIntent);

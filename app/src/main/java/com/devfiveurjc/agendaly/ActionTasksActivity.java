@@ -12,7 +12,6 @@ public class ActionTasksActivity extends AppCompatActivity {
 
     private ArrayList<Task> tasks = new ArrayList<>();
     private Task task;
-    private int task_index;
     private int[] date = new int[3];
     private int[] hour = new int[2];
     private TextView titleT, descriptionT, dateT, hourT;
@@ -27,8 +26,6 @@ public class ActionTasksActivity extends AppCompatActivity {
         dateT = findViewById(R.id.textViewA3);
         hourT = findViewById(R.id.textViewA6);
 
-        //task = (Task) getIntent().getExtras().get("task");
-        //task_index = (int) getIntent().getExtras().get("index_calendar");
         date[0] = task.getDate().get(Calendar.DAY_OF_MONTH);
         date[1] = task.getDate().get(Calendar.MONTH);
         date[2] = task.getDate().get(Calendar.YEAR);
@@ -37,14 +34,14 @@ public class ActionTasksActivity extends AppCompatActivity {
 
         titleT.setText(task.getTitle());
         descriptionT.setText(task.getDescription());
-        dateT.setText(date[0]+"/"+(date[1]+1)+"/"+date[2]);
-        hourT.setText(syncDisplayHour(hourT,hour));
+        dateT.setText(date[0] + "/" + (date[1] + 1) + "/" + date[2]);
+        hourT.setText(syncDisplayHour(hourT, hour));
     }
 
     private String syncDisplayHour(TextView display, int[] hour) {
-        if(hour[1]<10){
-            display.setText(hour[0]+":0"+hour[1]);
-        }else {
+        if (hour[1] < 10) {
+            display.setText(hour[0] + ":0" + hour[1]);
+        } else {
             display.setText(hour[0] + ":" + hour[1]);
         }
         return "";

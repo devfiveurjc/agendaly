@@ -22,4 +22,22 @@
     <style name="Theme.Agendaly.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Agendaly.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.Agendaly.Dialog" parent="Theme.Agendaly">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Theme.Agendaly.PlainText" parent="Theme.Agendaly">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+    <style name="Theme.Agendaly.TaskButton" parent="Theme.Agendaly">
+        <item name="backgroundTint">@color/personalizado</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left</item>
+    </style>
+
 </resources>

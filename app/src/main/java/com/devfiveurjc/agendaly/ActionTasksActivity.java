@@ -47,5 +47,4 @@ public class ActionTasksActivity extends AppCompatActivity {
         return "";
     }
 
-
 }

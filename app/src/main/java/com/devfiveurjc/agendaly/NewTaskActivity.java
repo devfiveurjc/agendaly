@@ -16,11 +16,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.devfiveurjc.agendaly.crud.CRUDTask;
+import com.devfiveurjc.agendaly.model.Task;
 import com.google.android.material.textview.MaterialTextView;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 public class NewTaskActivity extends AppCompatActivity {
 
@@ -60,7 +62,6 @@ public class NewTaskActivity extends AppCompatActivity {
     public void switchMenuActivity() {
         Intent switchActivityIntent = new Intent(this, MenuActivity.class);
         startActivity(switchActivityIntent);
-
     }
 
     private void syncDisplayDate() {
@@ -112,17 +113,26 @@ public class NewTaskActivity extends AppCompatActivity {
         tmd.show();
     }
 
-    public void saveTask(View view) throws IOException {
-        final Calendar c = Calendar.getInstance();
+    public void saveTask(View view) {
         title = findViewById(R.id.editTextTextPersonName3);
         description = findViewById(R.id.editTextTextPersonName2);
         if (!title.getText().toString().equals("")) {
-            Calendar dateTask = Calendar.getInstance();
-            dateTask.set(date[2], date[1], date[0]);
+            Calendar dateTaskCalendar = Calendar.getInstance();
+            dateTaskCalendar.set(date[2], date[1], date[0]);
+            Date dateTask = dateTaskCalendar.getTime();
+            /* old with hour
             Calendar hourTask = Calendar.getInstance();
             hourTask.set(Calendar.HOUR_OF_DAY, hour[0]);
             hourTask.set(Calendar.MINUTE, hour[1]);
-
+            */
+            // realm
+            Task task = new Task();
+            task.setTitle(title.getText().toString());
+            task.setDescription(description.getText().toString());
+            task.setDate(dateTask);
+            CRUDTask.addTask(task);
+            // List<Task> tasks = CRUDTask.getAllTasks();
+            /* old
             Task task = new Task(title.getText().toString(), description.getText().toString(),
                     dateTask, hourTask);
             TaskData.getTasks().add(task);
@@ -133,10 +143,9 @@ public class NewTaskActivity extends AppCompatActivity {
                 TaskData.getTasksTmrw().add(task);
             } else {
                 TaskData.getTasksWeek().add(task);
-
             }
+            */
             switchMenuActivity();
-
         } else {
             Toast.makeText(this, R.string.noTitle_text, Toast.LENGTH_LONG).show();
         }

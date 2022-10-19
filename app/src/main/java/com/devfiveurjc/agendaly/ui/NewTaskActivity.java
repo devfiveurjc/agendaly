@@ -1,4 +1,4 @@
-package com.devfiveurjc.agendaly;
+package com.devfiveurjc.agendaly.ui;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -16,13 +16,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.devfiveurjc.agendaly.R;
 import com.devfiveurjc.agendaly.crud.CRUDTask;
 import com.devfiveurjc.agendaly.model.Task;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 public class NewTaskActivity extends AppCompatActivity {
 

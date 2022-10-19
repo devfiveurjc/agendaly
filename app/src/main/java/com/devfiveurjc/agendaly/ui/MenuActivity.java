@@ -1,4 +1,4 @@
-package com.devfiveurjc.agendaly;
+package com.devfiveurjc.agendaly.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.devfiveurjc.agendaly.R;
 
 import java.util.ArrayList;
 

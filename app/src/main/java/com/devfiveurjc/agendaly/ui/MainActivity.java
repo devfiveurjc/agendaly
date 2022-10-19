@@ -1,4 +1,4 @@
-package com.devfiveurjc.agendaly;
+package com.devfiveurjc.agendaly.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.ContextThemeWrapper;
 import android.view.View;
+
+import com.devfiveurjc.agendaly.R;
 
 public class MainActivity extends AppCompatActivity {
 

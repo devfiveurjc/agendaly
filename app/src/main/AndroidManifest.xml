@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Agendaly"
         tools:targetApi="31">
         <activity
-            android:name=".CalendarActivity"
+            android:name=".ui.CalendarActivity"
             android:exported="false"
             android:theme="@style/Theme.Agendaly.NoActionBar">
             <meta-data
@@ -22,7 +22,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ViewTasksActivity"
+            android:name=".ui.ViewTasksActivity"
             android:exported="false"
             android:theme="@style/Theme.Agendaly.NoActionBar">
             <meta-data
@@ -30,7 +30,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".NewTaskActivity"
+            android:name=".ui.NewTaskActivity"
             android:exported="false"
             android:theme="@style/Theme.Agendaly.NoActionBar">
             <meta-data
@@ -38,7 +38,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MenuActivity"
+            android:name=".ui.MenuActivity"
             android:exported="false"
             android:theme="@style/Theme.Agendaly.NoActionBar">
             <meta-data
@@ -46,7 +46,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Agendaly.NoActionBar">
             <intent-filter>

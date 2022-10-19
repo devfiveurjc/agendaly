@@ -1,4 +1,4 @@
-package com.devfiveurjc.agendaly;
+package com.devfiveurjc.agendaly.ui;
 
 import java.util.Calendar;
 

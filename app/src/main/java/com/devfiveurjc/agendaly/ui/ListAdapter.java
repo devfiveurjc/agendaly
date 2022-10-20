@@ -6,12 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.devfiveurjc.agendaly.R;
+import com.devfiveurjc.agendaly.crud.CRUDTask;
 import com.devfiveurjc.agendaly.model.Task;
 
 import java.util.List;
@@ -53,6 +56,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         CheckBox check;
         TextView title, description, date;
+        CardView cv;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -60,18 +64,20 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             this.title = itemView.findViewById(R.id.titleTextView);
             this.description = itemView.findViewById(R.id.descriptionTextView);
             this.date = itemView.findViewById(R.id.dateTextView);
+            this.cv = itemView.findViewById(R.id.cv);
         }
 
         void bindData(final Task task) {
-            this.check.setChecked(task.isChecked());
+            this.check.setChecked(task.isCheck());
             this.title.setText(task.getTitle());
             this.description.setText(task.getDescription());
+            // TODO: display week day & hour
             this.date.setText("day");
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    listener.onItemClick(task);
-                }
+            this.itemView.setOnClickListener(view -> listener.onItemClick(task));
+            this.check.setOnCheckedChangeListener((compoundButton, b) -> {
+                boolean alternateCheck = !task.isCheck();
+                CRUDTask.updateTaskCheck(task, alternateCheck);
+                this.check.setChecked(alternateCheck);
             });
         }
 

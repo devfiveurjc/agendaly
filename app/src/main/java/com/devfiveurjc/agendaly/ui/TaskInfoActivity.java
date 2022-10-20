@@ -51,7 +51,7 @@ public class TaskInfoActivity extends AppCompatActivity {
         title.setText(task.getTitle());
         description.setText(task.getDescription());
         date.setText(task.getDate().toString());
-        status.setText((task.isChecked()) ? "Completed" : "Uncompleted");
+        status.setText((task.isCheck()) ? "Completed" : "Uncompleted");
     }
 
     public void deleteTask(View view) {

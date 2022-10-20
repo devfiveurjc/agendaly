@@ -13,7 +13,7 @@ public class Task extends RealmObject {
     private String title;
     private String description;
     private Date date;
-    private boolean checked = false;
+    private boolean check = false;
 
     public void setId(int id) {
         this.id = id;
@@ -31,8 +31,8 @@ public class Task extends RealmObject {
         this.date = date;
     }
 
-    public void setChecked(boolean checked) {
-        this.checked = checked;
+    public void setCheck(boolean check) {
+        this.check = check;
     }
 
     public int getId() {
@@ -51,8 +51,8 @@ public class Task extends RealmObject {
         return this.date;
     }
 
-    public boolean isChecked() {
-        return this.checked;
+    public boolean isCheck() {
+        return this.check;
     }
 
 }

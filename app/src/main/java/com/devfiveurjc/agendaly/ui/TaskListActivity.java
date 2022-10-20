@@ -31,15 +31,6 @@ public class TaskListActivity extends AppCompatActivity {
         recyclerView.setAdapter(listAdapter);
     }
 
-    /* in progress later for checkbox
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.item_done)
-            return super.onOptionsItemSelected(item);
-    }
-    */
-
     public void switchActionTasksActivity(int taskId) {
         Intent switchActivityIntent = new Intent(TaskListActivity.this, TaskInfoActivity.class);
         // pass task id to task info activity inside bundle

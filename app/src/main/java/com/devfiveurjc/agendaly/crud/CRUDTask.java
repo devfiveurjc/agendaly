@@ -27,9 +27,10 @@ public class CRUDTask {
         });
     }
 
-    public static void updateTask(int id, final Task task) {
+    public static void updateTaskCheck(final Task task, boolean check) {
         realm.beginTransaction();
-        Task realmTask = getTask(id);
+        task.setCheck(check);
+        Task realmTask = getTask(task.getId());
         setRealmTask(realmTask, task);
         realm.insertOrUpdate(realmTask);
         realm.commitTransaction();
@@ -39,7 +40,7 @@ public class CRUDTask {
         realmTask.setTitle(task.getTitle());
         realmTask.setDescription(task.getDescription());
         realmTask.setDate(task.getDate());
-        realmTask.setChecked(task.isChecked());
+        realmTask.setCheck(task.isCheck());
     }
 
     public static void deleteAllTasks() {

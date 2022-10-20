@@ -8,7 +8,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -24,7 +23,7 @@ import com.google.android.material.textview.MaterialTextView;
 import java.util.Calendar;
 import java.util.Date;
 
-public class NewTaskActivity extends AppCompatActivity {
+public class TaskAddActivity extends AppCompatActivity {
 
     private int[] date = new int[3];
     private int[] hour = new int[2];
@@ -35,7 +34,7 @@ public class NewTaskActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_task);
+        setContentView(R.layout.activity_task_add);
         textView1 = (MaterialTextView) findViewById(R.id.textView4);
         textView2 = (MaterialTextView) findViewById(R.id.textView5);
         textView1.setText("");
@@ -56,7 +55,6 @@ public class NewTaskActivity extends AppCompatActivity {
 
         syncDisplayDate();
         syncDisplayHour();
-
     }
 
     public void switchMenuActivity() {
@@ -81,16 +79,13 @@ public class NewTaskActivity extends AppCompatActivity {
         date[0] = c.get(Calendar.DAY_OF_MONTH);
         date[1] = c.get(Calendar.MONTH);
         date[2] = c.get(Calendar.YEAR);
-        DatePickerDialog dialog = new DatePickerDialog(NewTaskActivity.this,
+        DatePickerDialog dialog = new DatePickerDialog(TaskAddActivity.this,
                 android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        date[0] = dayOfMonth;
-                        date[1] = month;
-                        date[2] = year;
-                        syncDisplayDate();
-                    }
+                (view1, year, month, dayOfMonth) -> {
+                    date[0] = dayOfMonth;
+                    date[1] = month;
+                    date[2] = year;
+                    syncDisplayDate();
                 },
                 date[2], date[1], date[0]);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

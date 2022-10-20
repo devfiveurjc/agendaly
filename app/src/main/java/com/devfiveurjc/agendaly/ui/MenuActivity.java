@@ -1,6 +1,5 @@
 package com.devfiveurjc.agendaly.ui;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,12 +8,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.devfiveurjc.agendaly.R;
-
-import java.util.ArrayList;
+import com.devfiveurjc.agendaly.crud.CRUDTask;
 
 public class MenuActivity extends AppCompatActivity {
-
-    private ArrayList<Task> tasks = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,20 +19,19 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void switchNewTask(View view) {
-        Intent switchActivityIntent = new Intent(this, NewTaskActivity.class);
+        Intent switchActivityIntent = new Intent(this, TaskAddActivity.class);
         startActivity(switchActivityIntent);
     }
 
     public void switchMyTasks(View view) {
-        if (TaskData.getTasks().size() > 0) {
-            Intent switchActivityIntent = new Intent(this, ViewTasksActivity.class);
+        if (CRUDTask.getAllTasks().size() > 0) {
+            Intent switchActivityIntent = new Intent(this, TaskListActivity.class);
             startActivity(switchActivityIntent);
         } else {
             Toast.makeText(this, "No tasks to show", Toast.LENGTH_LONG).show();
         }
     }
 
-    @SuppressLint("")
     public void exit(View view) {
         finishAffinity();
     }

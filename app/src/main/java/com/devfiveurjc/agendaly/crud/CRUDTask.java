@@ -42,6 +42,15 @@ public class CRUDTask {
         realmTask.setChecked(task.isChecked());
     }
 
+    public static void deleteAllTasks() {
+        realm.beginTransaction();
+        List<Task> realmTasks = getAllTasks();
+        for (Task realmTask : realmTasks) {
+            realmTask.deleteFromRealm();
+        }
+        realm.commitTransaction();
+    }
+
     public static void deleteTask(int id) {
         realm.beginTransaction();
         Task realmTask = getTask(id);

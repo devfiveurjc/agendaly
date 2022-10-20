@@ -10,6 +10,7 @@ import android.view.ContextThemeWrapper;
 import android.view.View;
 
 import com.devfiveurjc.agendaly.R;
+import com.devfiveurjc.agendaly.crud.CRUDTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showHelp(View view) {
+        // WARNING delete temp testing
+        CRUDTask.deleteAllTasks();
         ContextThemeWrapper newContext = new ContextThemeWrapper(this, R.style.Theme_Agendaly_Dialog);
         AlertDialog.Builder builderAD = new AlertDialog.Builder(newContext);
         builderAD.setTitle(R.string.help);

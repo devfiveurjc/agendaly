@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -58,7 +57,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         TextView title, description, date;
         CardView cv;
 
-        ViewHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             this.check = itemView.findViewById(R.id.taskCheckBox);
             this.title = itemView.findViewById(R.id.titleTextView);
@@ -67,7 +66,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             this.cv = itemView.findViewById(R.id.cv);
         }
 
-        void bindData(final Task task) {
+        public void bindData(final Task task) {
             this.check.setChecked(task.isCheck());
             this.title.setText(task.getTitle());
             this.description.setText(task.getDescription());

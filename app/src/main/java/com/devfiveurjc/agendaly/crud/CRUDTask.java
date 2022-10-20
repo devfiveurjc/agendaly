@@ -8,7 +8,7 @@ import io.realm.Realm;
 
 public class CRUDTask {
 
-    static Realm realm = Realm.getDefaultInstance();
+    private static final Realm realm = Realm.getDefaultInstance();
 
     private static int calculateIndex() {
         Number currentId = realm.where(Task.class).max("id");
@@ -19,7 +19,7 @@ public class CRUDTask {
         return nextId;
     }
 
-    public static void addTask (final Task task) {
+    public static void addTask(Task task) {
         realm.executeTransaction(realm -> {
             int index = CRUDTask.calculateIndex();
             Task realmTask = realm.createObject(Task.class, index);
@@ -27,12 +27,16 @@ public class CRUDTask {
         });
     }
 
-    public static void updateTaskCheck(final Task task, boolean check) {
+    public static void updateTaskCheck(Task realmTask, boolean check) {
         realm.beginTransaction();
-        task.setCheck(check);
-        Task realmTask = getTask(task.getId());
-        setRealmTask(realmTask, task);
+        realmTask.setCheck(check);
         realm.insertOrUpdate(realmTask);
+        realm.commitTransaction();
+    }
+
+    public static void updateTask(Task realmTask, Task task) {
+        realm.beginTransaction();
+        setRealmTask(realmTask, task);
         realm.commitTransaction();
     }
 

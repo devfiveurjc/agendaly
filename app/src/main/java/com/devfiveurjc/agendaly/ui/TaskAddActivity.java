@@ -121,10 +121,9 @@ public class TaskAddActivity extends AppCompatActivity {
             hourTask.set(Calendar.MINUTE, hour[1]);
             */
             // realm
-            Task task = new Task();
-            task.setTitle(title.getText().toString());
-            task.setDescription(description.getText().toString());
-            task.setDate(dateTask);
+            String titleText = title.getText().toString();
+            String descriptionText = title.getText().toString();
+            Task task = new Task(titleText, descriptionText, dateTask);
             CRUDTask.addTask(task);
             // List<Task> tasks = CRUDTask.getAllTasks();
             /* old

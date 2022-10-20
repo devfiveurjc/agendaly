@@ -15,6 +15,14 @@ public class Task extends RealmObject {
     private Date date;
     private boolean check = false;
 
+    public Task() { }
+
+    public Task(String title, String description, Date date) {
+        this.title = title;
+        this.description = description;
+        this.date = date;
+    }
+
     public void setId(int id) {
         this.id = id;
     }

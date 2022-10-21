@@ -16,7 +16,10 @@ import com.devfiveurjc.agendaly.R;
 import com.devfiveurjc.agendaly.crud.CRUDTask;
 import com.devfiveurjc.agendaly.model.Task;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
@@ -54,7 +57,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         CheckBox check;
-        TextView title, description, date;
+        TextView title, description, day, date;
         CardView cv;
 
         public ViewHolder(View itemView) {
@@ -62,16 +65,22 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             this.check = itemView.findViewById(R.id.taskCheckBox);
             this.title = itemView.findViewById(R.id.titleTextView);
             this.description = itemView.findViewById(R.id.descriptionTextView);
+            this.day = itemView.findViewById(R.id.dayTextView);
             this.date = itemView.findViewById(R.id.dateTextView);
             this.cv = itemView.findViewById(R.id.cv);
         }
 
         public void bindData(final Task task) {
             this.check.setChecked(task.isCheck());
-            this.title.setText(task.getTitle());
-            this.description.setText(task.getDescription());
-            // TODO: display week day & hour
-            this.date.setText("day");
+            String titleText = cutText(task.getTitle());
+            this.title.setText(titleText);
+            String descriptionText = cutText(task.getDescription());
+            this.description.setText(descriptionText);
+            Date date = task.getDate();
+            String dayText = new SimpleDateFormat("EEEE", Locale.US).format(date);
+            this.day.setText(dayText);
+            String dateText = new SimpleDateFormat("dd/MM/yy", Locale.US).format(date);
+            this.date.setText(dateText);
             this.itemView.setOnClickListener(view -> listener.onItemClick(task));
             this.check.setOnCheckedChangeListener((compoundButton, b) -> {
                 boolean alternateCheck = !task.isCheck();
@@ -80,6 +89,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             });
         }
 
+    }
+
+    private String cutText(String text) {
+        if (text.length() > 25) {
+            return text.substring(0, 25).trim() + "...";
+        }
+        return text;
     }
 
 }

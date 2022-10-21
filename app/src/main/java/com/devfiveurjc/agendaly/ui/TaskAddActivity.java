@@ -97,13 +97,10 @@ public class TaskAddActivity extends AppCompatActivity {
         hour[0] = c.get(Calendar.HOUR_OF_DAY);
         hour[1] = c.get(Calendar.MINUTE);
         ContextThemeWrapper newContext = new ContextThemeWrapper(this, R.style.Theme_Agendaly_Dialog);
-        TimePickerDialog tmd = new TimePickerDialog(newContext, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                hour[0] = hourOfDay;
-                hour[1] = minute;
-                syncDisplayHour();
-            }
+        TimePickerDialog tmd = new TimePickerDialog(newContext, (view1, hourOfDay, minute) -> {
+            hour[0] = hourOfDay;
+            hour[1] = minute;
+            syncDisplayHour();
         }, hour[0], hour[1], true);
         tmd.show();
     }
@@ -122,7 +119,7 @@ public class TaskAddActivity extends AppCompatActivity {
             */
             // realm
             String titleText = title.getText().toString();
-            String descriptionText = title.getText().toString();
+            String descriptionText = description.getText().toString();
             Task task = new Task(titleText, descriptionText, dateTask);
             CRUDTask.addTask(task);
             // List<Task> tasks = CRUDTask.getAllTasks();

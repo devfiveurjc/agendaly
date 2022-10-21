@@ -2,91 +2,71 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/taskInfoConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/personalizado"
-    tools:context=".ui.TaskInfoActivity">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar5"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:background="#D11F1F"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/app_name"
-        app:titleTextColor="@color/black" />
+    tools:context=".ui.TaskInfoFragment">
 
     <TextView
         android:id="@+id/taskTitle"
-        android:layout_width="360dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="26dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/example"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar5" />
+        app:layout_constraintTop_toBottomOf="parent" />
 
     <TextView
         android:id="@+id/taskDescription"
-        android:layout_width="364dp"
-        android:layout_height="224dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
         android:text="@string/example"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskTitle" />
 
     <TextView
         android:id="@+id/taskDate"
-        android:layout_width="168dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="121dp"
-        android:layout_marginTop="43dp"
-        android:layout_marginEnd="122dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="188dp"
         android:gravity="center"
         android:text="@string/example"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskDescription"
-        tools:textColor="@color/white" />
+        tools:textColor="@color/black" />
 
     <TextView
         android:id="@+id/taskStatus"
-        android:layout_width="168dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="121dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="122dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
         android:gravity="center"
         android:text="@string/example"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskDate" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button14"
-        android:layout_width="140dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginBottom="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#D11F1F"
         android:onClick="deleteTask"
         android:text="@string/delete"
@@ -96,4 +76,5 @@
         app:cornerRadius="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

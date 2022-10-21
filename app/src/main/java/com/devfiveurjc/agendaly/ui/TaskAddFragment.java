@@ -2,18 +2,18 @@ package com.devfiveurjc.agendaly.ui;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.devfiveurjc.agendaly.R;
 import com.devfiveurjc.agendaly.crud.CRUDTask;
@@ -23,7 +23,7 @@ import com.google.android.material.textview.MaterialTextView;
 import java.util.Calendar;
 import java.util.Date;
 
-public class TaskAddActivity extends AppCompatActivity {
+public class TaskAddFragment extends Fragment {
 
     private int[] date = new int[3];
     private int[] hour = new int[2];
@@ -32,15 +32,14 @@ public class TaskAddActivity extends AppCompatActivity {
     MaterialTextView textView1, textView2;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task_add);
-        textView1 = (MaterialTextView) findViewById(R.id.textView4);
-        textView2 = (MaterialTextView) findViewById(R.id.textView5);
+        textView1 = (MaterialTextView) requireView().findViewById(R.id.textView4);
+        textView2 = (MaterialTextView) requireView().findViewById(R.id.textView5);
         textView1.setText("");
         textView2.setText("");
-        displayHour = findViewById(R.id.textView5);
-        displayDate = findViewById(R.id.textView4);
+        displayHour = requireView().findViewById(R.id.textView5);
+        displayDate = requireView().findViewById(R.id.textView4);
 
         Calendar calendar = Calendar.getInstance();  //current date and time
         hour[0] = calendar.get(Calendar.HOUR_OF_DAY);
@@ -50,16 +49,17 @@ public class TaskAddActivity extends AppCompatActivity {
         date[1] = calendar.get(Calendar.MONTH);
         date[0] = calendar.get(Calendar.DAY_OF_MONTH);
 
-        title = findViewById(R.id.editTextTextPersonName3);
-        description = findViewById(R.id.editTextTextPersonName2);
+        title = requireView().findViewById(R.id.editTextTextPersonName3);
+        description = requireView().findViewById(R.id.editTextTextPersonName2);
 
         syncDisplayDate();
         syncDisplayHour();
     }
 
-    public void switchMenuActivity() {
-        Intent switchActivityIntent = new Intent(this, MenuActivity.class);
-        startActivity(switchActivityIntent);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_task_add, container, false);
     }
 
     private void syncDisplayDate() {
@@ -79,7 +79,7 @@ public class TaskAddActivity extends AppCompatActivity {
         date[0] = c.get(Calendar.DAY_OF_MONTH);
         date[1] = c.get(Calendar.MONTH);
         date[2] = c.get(Calendar.YEAR);
-        DatePickerDialog dialog = new DatePickerDialog(TaskAddActivity.this,
+        DatePickerDialog dialog = new DatePickerDialog(requireContext(),
                 android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                 (view1, year, month, dayOfMonth) -> {
                     date[0] = dayOfMonth;
@@ -96,7 +96,7 @@ public class TaskAddActivity extends AppCompatActivity {
         final Calendar c = Calendar.getInstance();
         hour[0] = c.get(Calendar.HOUR_OF_DAY);
         hour[1] = c.get(Calendar.MINUTE);
-        ContextThemeWrapper newContext = new ContextThemeWrapper(this, R.style.Theme_Agendaly_Dialog);
+        ContextThemeWrapper newContext = new ContextThemeWrapper(requireContext(), R.style.Theme_Agendaly_Dialog);
         TimePickerDialog tmd = new TimePickerDialog(newContext, (view1, hourOfDay, minute) -> {
             hour[0] = hourOfDay;
             hour[1] = minute;
@@ -106,8 +106,8 @@ public class TaskAddActivity extends AppCompatActivity {
     }
 
     public void saveTask(View view) {
-        title = findViewById(R.id.editTextTextPersonName3);
-        description = findViewById(R.id.editTextTextPersonName2);
+        title = requireView().findViewById(R.id.editTextTextPersonName3);
+        description = requireView().findViewById(R.id.editTextTextPersonName2);
         if (!title.getText().toString().equals("")) {
             Calendar dateTaskCalendar = Calendar.getInstance();
             dateTaskCalendar.set(date[2], date[1], date[0]);
@@ -136,9 +136,9 @@ public class TaskAddActivity extends AppCompatActivity {
                 TaskData.getTasksWeek().add(task);
             }
             */
-            switchMenuActivity();
+            // switchMenuActivity();
         } else {
-            Toast.makeText(this, R.string.noTitle_text, Toast.LENGTH_LONG).show();
+            // Toast.makeText(this, R.string.noTitle_text, Toast.LENGTH_LONG).show();
         }
     }
 

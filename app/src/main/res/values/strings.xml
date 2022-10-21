@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Agendaly</string>
+    <string name="task_add_label">Add Task</string>
+    <string name="task_info_label">Info Task</string>
     <string name="example">example</string>
     <string name="help">Help</string>
     <string name="help_text">

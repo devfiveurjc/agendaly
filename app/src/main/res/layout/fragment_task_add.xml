@@ -2,16 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/taskAddConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/personalizado"
-    tools:context=".ui.TaskAddActivity">
+    tools:context=".ui.TaskAddFragment">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button2"
-        android:layout_width="140dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="629dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="switchMenuActivity"
         android:text="@string/cancel"
         android:textColor="@color/black"
@@ -24,9 +23,8 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button5"
-        android:layout_width="140dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="628dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:backgroundTint="#D11F1F"
         android:onClick="saveTask"
         android:text="@string/save"
@@ -39,7 +37,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#D11F1F"
         android:minHeight="?attr/actionBarSize"
@@ -51,10 +49,8 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editTextTextPersonName2"
-        android:layout_width="319dp"
-        android:layout_height="239dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:ems="10"
         android:gravity="start|top"
@@ -67,9 +63,8 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editTextTextPersonName3"
-        android:layout_width="319dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="19dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:ems="10"
         android:hint="@string/title"
@@ -83,9 +78,8 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView4"
-        android:layout_width="140dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="41dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:gravity="center"
         android:onClick="openDate"
@@ -98,9 +92,8 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView5"
-        android:layout_width="140dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:gravity="center"
         android:inputType="time"
@@ -113,9 +106,8 @@
 
     <TextView
         android:id="@+id/button6"
-        android:layout_width="140dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="41dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:backgroundTint="#D11F1F"
         android:text="@string/date"
         android:textColor="@color/white"
@@ -126,9 +118,8 @@
 
     <TextView
         android:id="@+id/button7"
-        android:layout_width="140dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:backgroundTint="#D11F1F"
         android:text="@string/hour"
         android:textColor="@color/white"

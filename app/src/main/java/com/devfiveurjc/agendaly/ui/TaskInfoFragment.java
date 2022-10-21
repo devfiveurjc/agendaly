@@ -1,34 +1,42 @@
 package com.devfiveurjc.agendaly.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.devfiveurjc.agendaly.R;
 import com.devfiveurjc.agendaly.crud.CRUDTask;
 import com.devfiveurjc.agendaly.model.Task;
 
-public class TaskInfoActivity extends AppCompatActivity {
+import java.util.List;
 
-    /* old
-    private int[] date = new int[3];
-    private int[] hour = new int[2];
-    */
+
+public class TaskInfoFragment extends Fragment {
 
     int taskId;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task_info);
-
-        TextView title = findViewById(R.id.taskTitle);
-        TextView description = findViewById(R.id.taskDescription);
-        TextView date = findViewById(R.id.taskDate);
-        TextView status = findViewById(R.id.taskStatus);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState
+    ) {
+        // tasks card list with recycler view
+        View view = inflater.inflate(R.layout.fragment_task_list, container, false);
+        return view;
+        /*
+        TextView title = requireView().findViewById(R.id.taskTitle);
+        TextView description = requireView().findViewById(R.id.taskDescription);
+        TextView date = requireView().findViewById(R.id.taskDate);
+        TextView status = requireView().findViewById(R.id.taskStatus);
+         */
 
         /* commented bc old and gives error
         date[0] = task.getDate().get(Calendar.DAY_OF_MONTH);
@@ -44,24 +52,37 @@ public class TaskInfoActivity extends AppCompatActivity {
         */
 
         // retrieve bundle
+        /*
         Bundle bundle = getIntent().getExtras();
         taskId = bundle.getInt("taskId");
         Task task = CRUDTask.getTask(taskId);
+
         // show task info
         title.setText(task.getTitle());
         description.setText(task.getDescription());
         date.setText(task.getDate().toString());
         status.setText((task.isCheck()) ? "Completed" : "Uncompleted");
+         */
+        // return view;
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     public void deleteTask(View view) {
         CRUDTask.deleteTask(taskId);
-        switchViewTasksActivity(view);
-    }
-
-    public void switchViewTasksActivity(View view) {
-        Intent switchActivityIntent = new Intent(this, TaskListActivity.class);
-        startActivity(switchActivityIntent);
+        // switchViewTasksActivity(view);
     }
 
     /* idk what is this

@@ -29,7 +29,7 @@ public class TaskListFragment extends Fragment {
                              Bundle savedInstanceState
     ) {
         // tasks card list with recycler view
-        binding = FragmentTaskListBinding.inflate(inflater, container, false);
+        this.binding = FragmentTaskListBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         List<Task> tasks = CRUDTask.getAllTasks();
         ListAdapter listAdapter = new ListAdapter(tasks, requireContext(), task -> switchTaskListFragment(task.getId()));
@@ -38,16 +38,6 @@ public class TaskListFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(listAdapter);
         return view;
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        // button to task add fragment
-        binding.addFloatingButton.setOnClickListener(view1 -> {
-            // binding.addFloatingButton.setVisibility(View.GONE);
-            NavHostFragment.findNavController(TaskListFragment.this)
-                    .navigate(R.id.action_TaskListFragment_to_TaskAddFragment);
-        });
     }
 
     public void switchTaskListFragment(int taskId) {
@@ -62,6 +52,17 @@ public class TaskListFragment extends Fragment {
         switchActivityIntent.putExtras(bundle);
         startActivity(switchActivityIntent);
         */
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        // button to task add fragment
+        this.binding.addFloatingButton.setOnClickListener(v -> {
+            // binding.addFloatingButton.setVisibility(View.GONE);
+            NavHostFragment.findNavController(this)
+                    .navigate(R.id.action_TaskListFragment_to_TaskAddFragment);
+        });
     }
 
     @Override

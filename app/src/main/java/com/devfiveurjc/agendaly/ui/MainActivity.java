@@ -21,7 +21,6 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +30,11 @@ public class MainActivity extends AppCompatActivity {
         CRUDTask.addTask(new Task("owo", "owo", new Date()));
         //
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        setSupportActionBar(binding.toolbar);
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        this.setContentView(binding.getRoot());
+        this.setSupportActionBar(binding.toolbar);
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        this.appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
     }
 
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    /*
+    /* old
     public void showHelp(View view) {
         // WARNING delete temp testing
         CRUDTask.deleteAllTasks();

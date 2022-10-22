@@ -6,7 +6,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -17,66 +19,56 @@ import android.widget.TextView;
 
 import com.devfiveurjc.agendaly.R;
 import com.devfiveurjc.agendaly.crud.CRUDTask;
+import com.devfiveurjc.agendaly.databinding.FragmentTaskAddBinding;
 import com.devfiveurjc.agendaly.databinding.FragmentTaskListBinding;
 import com.devfiveurjc.agendaly.model.Task;
-import com.google.android.material.textview.MaterialTextView;
 
 import java.util.Calendar;
 import java.util.Date;
 
 public class TaskAddFragment extends Fragment {
 
-    private int[] date = new int[3];
-    private int[] hour = new int[2];
-    private EditText title, description;
+    private FragmentTaskAddBinding binding;
+    private final int[] date = new int[3];
+    private final int[] hour = new int[2];
+    private EditText titleInputText, descriptionInputText;
     private TextView displayDate, displayHour;
-    MaterialTextView textView1, textView2;
-
-    private FragmentTaskListBinding binding;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        /*
-        textView1 = requireView().findViewById(R.id.textView4);
-        textView2 = requireView().findViewById(R.id.textView5);
-        textView1.setText("");
-        textView2.setText("");
-        displayHour = requireView().findViewById(R.id.textView5);
-        displayDate = requireView().findViewById(R.id.textView4);
-
-        Calendar calendar = Calendar.getInstance();  //current date and time
-        hour[0] = calendar.get(Calendar.HOUR_OF_DAY);
-        hour[1] = calendar.get(Calendar.MINUTE);
-        calendar.add(Calendar.HOUR_OF_DAY, 1);
-        date[2] = calendar.get(Calendar.YEAR);
-        date[1] = calendar.get(Calendar.MONTH);
-        date[0] = calendar.get(Calendar.DAY_OF_MONTH);
-
-        title = requireView().findViewById(R.id.editTextTextPersonName3);
-        description = requireView().findViewById(R.id.editTextTextPersonName2);
-
-        syncDisplayDate();
-        syncDisplayHour();
-
-         */
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_task_add, container, false);
+        this.binding = FragmentTaskAddBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        this.displayHour = view.findViewById(R.id.taskAddHour);
+        this.displayDate = view.findViewById(R.id.taskAddDate);
+        this.titleInputText = view.findViewById(R.id.taskAddEditTitle);
+        this.descriptionInputText = view.findViewById(R.id.taskAddEditDescription);
+        // WARNING testing
+        this.titleInputText.setText("testTitle");
+        this.descriptionInputText.setText("testDescription");
+        //
+        //current date and time
+        Calendar calendar = Calendar.getInstance();
+        this.hour[0] = calendar.get(Calendar.HOUR_OF_DAY);
+        this.hour[1] = calendar.get(Calendar.MINUTE);
+        calendar.add(Calendar.HOUR_OF_DAY, 1);
+        this.date[2] = calendar.get(Calendar.YEAR);
+        this.date[1] = calendar.get(Calendar.MONTH);
+        this.date[0] = calendar.get(Calendar.DAY_OF_MONTH);
+        this.syncDisplayDate();
+        this.syncDisplayHour();
+        return view;
     }
 
     private void syncDisplayDate() {
-        displayDate.setText(date[0] + "/" + (date[1] + 1) + "/" + date[2]);
+        this.displayDate.setText(date[0] + "/" + (date[1] + 1) + "/" + date[2]);
     }
 
     private void syncDisplayHour() {
         if (hour[1] < 10) {
-            displayHour.setText(hour[0] + ":0" + hour[1]);
+            this.displayHour.setText(hour[0] + ":0" + hour[1]);
         } else {
-            displayHour.setText(hour[0] + ":" + hour[1]);
+            this.displayHour.setText(hour[0] + ":" + hour[1]);
         }
     }
 
@@ -112,9 +104,10 @@ public class TaskAddFragment extends Fragment {
     }
 
     public void saveTask(View view) {
-        title = requireView().findViewById(R.id.taskAddEditName);
-        description = requireView().findViewById(R.id.taskAddEditTitle);
-        if (!title.getText().toString().equals("")) {
+        this.titleInputText = view.findViewById(R.id.taskAddEditTitle);
+        this.descriptionInputText = view.findViewById(R.id.taskAddEditDescription);
+        boolean isTitleInputEmpty = this.titleInputText.getText().toString().equals("");
+        if (!isTitleInputEmpty) {
             Calendar dateTaskCalendar = Calendar.getInstance();
             dateTaskCalendar.set(date[2], date[1], date[0]);
             Date dateTask = dateTaskCalendar.getTime();
@@ -124,8 +117,8 @@ public class TaskAddFragment extends Fragment {
             hourTask.set(Calendar.MINUTE, hour[1]);
             */
             // realm
-            String titleText = title.getText().toString();
-            String descriptionText = description.getText().toString();
+            String titleText = this.titleInputText.getText().toString();
+            String descriptionText = this.descriptionInputText.getText().toString();
             Task task = new Task(titleText, descriptionText, dateTask);
             CRUDTask.addTask(task);
             // List<Task> tasks = CRUDTask.getAllTasks();
@@ -146,6 +139,27 @@ public class TaskAddFragment extends Fragment {
         } else {
             // Toast.makeText(this, R.string.noTitle_text, Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        // button saveTask
+        this.binding.taskAddSaveButton.setOnClickListener(v -> {
+            saveTask(view);
+            NavHostFragment.findNavController(this)
+                    .navigate(R.id.action_TaskAddFragment_to_TaskListFragment);
+        });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
 }

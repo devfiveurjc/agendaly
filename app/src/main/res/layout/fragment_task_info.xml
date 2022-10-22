@@ -68,7 +68,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="#D11F1F"
-        android:onClick="deleteTask"
         android:text="@string/delete"
         android:textColor="@color/black"
         android:textSize="16sp"

@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.devfiveurjc.agendaly.R;
 import com.devfiveurjc.agendaly.crud.CRUDTask;
+import com.devfiveurjc.agendaly.databinding.FragmentTaskListBinding;
 import com.devfiveurjc.agendaly.model.Task;
 import com.google.android.material.textview.MaterialTextView;
 
@@ -31,11 +32,14 @@ public class TaskAddFragment extends Fragment {
     private TextView displayDate, displayHour;
     MaterialTextView textView1, textView2;
 
+    private FragmentTaskListBinding binding;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        textView1 = (MaterialTextView) requireView().findViewById(R.id.textView4);
-        textView2 = (MaterialTextView) requireView().findViewById(R.id.textView5);
+        /*
+        textView1 = requireView().findViewById(R.id.textView4);
+        textView2 = requireView().findViewById(R.id.textView5);
         textView1.setText("");
         textView2.setText("");
         displayHour = requireView().findViewById(R.id.textView5);
@@ -54,6 +58,8 @@ public class TaskAddFragment extends Fragment {
 
         syncDisplayDate();
         syncDisplayHour();
+
+         */
     }
 
     @Override
@@ -106,8 +112,8 @@ public class TaskAddFragment extends Fragment {
     }
 
     public void saveTask(View view) {
-        title = requireView().findViewById(R.id.editTextTextPersonName3);
-        description = requireView().findViewById(R.id.editTextTextPersonName2);
+        title = requireView().findViewById(R.id.taskAddEditName);
+        description = requireView().findViewById(R.id.taskAddEditTitle);
         if (!title.getText().toString().equals("")) {
             Calendar dateTaskCalendar = Calendar.getInstance();
             dateTaskCalendar.set(date[2], date[1], date[0]);

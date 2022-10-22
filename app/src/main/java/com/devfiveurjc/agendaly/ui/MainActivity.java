@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         // WARNING db testing purpose stuff
         CRUDTask.deleteAllTasks();
         CRUDTask.addTask(new Task("uwu", "uwu", new Date()));
+        CRUDTask.addTask(new Task("owo", "owo", new Date()));
         //
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());

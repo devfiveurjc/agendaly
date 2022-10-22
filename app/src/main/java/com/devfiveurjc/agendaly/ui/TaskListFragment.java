@@ -43,12 +43,15 @@ public class TaskListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // button to task add fragment
-        binding.addFloatingButton.setOnClickListener(view1 ->
-                NavHostFragment.findNavController(TaskListFragment.this)
-                        .navigate(R.id.action_TaskListFragment_to_TaskAddFragment));
+        binding.addFloatingButton.setOnClickListener(view1 -> {
+            // binding.addFloatingButton.setVisibility(View.GONE);
+            NavHostFragment.findNavController(TaskListFragment.this)
+                    .navigate(R.id.action_TaskListFragment_to_TaskAddFragment);
+        });
     }
 
     public void switchTaskListFragment(int taskId) {
+        // binding.addFloatingButton.setVisibility(View.INVISIBLE);
         NavHostFragment.findNavController(this)
                 .navigate(R.id.action_TaskListFragment_to_TaskInfoFragment);
         // Intent switchActivityIntent = new Intent(this, TaskInfoActivity.class);

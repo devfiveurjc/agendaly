@@ -8,23 +8,11 @@
     tools:context=".ui.TaskAddFragment">
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button2"
+        android:id="@+id/taskAddSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="switchMenuActivity"
-        android:text="@string/cancel"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:backgroundTint="#D11F1F"
-        app:cornerRadius="40dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="356dp"
         android:backgroundTint="#D11F1F"
         android:onClick="saveTask"
         android:text="@string/save"
@@ -32,25 +20,14 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:cornerRadius="40dp"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
+        app:layout_constraintStart_toStartOf="@+id/taskAddEditTitle"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#D11F1F"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/new_task"
-        app:titleTextColor="@color/black" />
-
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/taskAddEditTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
         android:background="@color/white"
         android:ems="10"
         android:gravity="start|top"
@@ -59,12 +36,13 @@
         android:textColor="@color/black"
         app:layout_constraintCircleRadius="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        tools:layout_editor_absoluteY="192dp" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/taskAddEditName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
         android:background="@color/white"
         android:ems="10"
         android:hint="@string/title"
@@ -73,11 +51,11 @@
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintStart_toStartOf="@id/taskAddEditTitle"
+        tools:layout_editor_absoluteY="532dp" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textView4"
+        android:id="@+id/taskAddEditDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -87,11 +65,11 @@
         android:textColor="@color/black"
         android:textSize="24sp"
         android:theme="@style/Theme.Agendaly"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@id/editTextTextPersonName2" />
+        app:layout_constraintEnd_toEndOf="@+id/taskAddEditTitle"
+        app:layout_constraintTop_toBottomOf="@id/taskAddEditTitle" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textView5"
+        android:id="@+id/taskAddEditHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -101,11 +79,11 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@id/textView4" />
+        app:layout_constraintEnd_toEndOf="@id/taskAddEditTitle"
+        app:layout_constraintTop_toBottomOf="@id/taskAddEditDate" />
 
     <TextView
-        android:id="@+id/button6"
+        android:id="@+id/taskAddDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#D11F1F"
@@ -113,11 +91,11 @@
         android:textColor="@color/white"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintStart_toStartOf="@id/taskAddEditTitle"
+        app:layout_constraintTop_toBottomOf="@+id/taskAddEditTitle" />
 
     <TextView
-        android:id="@+id/button7"
+        android:id="@+id/taskAddHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#D11F1F"
@@ -125,7 +103,7 @@
         android:textColor="@color/white"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
+        app:layout_constraintStart_toStartOf="@id/taskAddEditTitle"
+        app:layout_constraintTop_toBottomOf="@+id/taskAddDate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

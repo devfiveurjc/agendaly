@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.devfiveurjc.agendaly.R;
 import com.devfiveurjc.agendaly.crud.CRUDTask;
+import com.devfiveurjc.agendaly.databinding.FragmentTaskListBinding;
 import com.devfiveurjc.agendaly.model.Task;
 
 import java.util.List;
@@ -21,14 +22,17 @@ import java.util.List;
 
 public class TaskListFragment extends Fragment {
 
+    private FragmentTaskListBinding binding;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState
     ) {
         // tasks card list with recycler view
-        View view = inflater.inflate(R.layout.fragment_task_list, container, false);
+        binding = FragmentTaskListBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
         List<Task> tasks = CRUDTask.getAllTasks();
-        ListAdapter listAdapter = new ListAdapter(tasks, requireContext(), task -> switchActionTasksActivity(task.getId()));
+        ListAdapter listAdapter = new ListAdapter(tasks, requireContext(), task -> switchTaskListFragment(task.getId()));
         RecyclerView recyclerView = view.findViewById(R.id.listRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -36,8 +40,16 @@ public class TaskListFragment extends Fragment {
         return view;
     }
 
-    public void switchActionTasksActivity(int taskId) {
-        NavHostFragment.findNavController(TaskListFragment.this)
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        // button to task add fragment
+        binding.addFloatingButton.setOnClickListener(view1 ->
+                NavHostFragment.findNavController(TaskListFragment.this)
+                        .navigate(R.id.action_TaskListFragment_to_TaskAddFragment));
+    }
+
+    public void switchTaskListFragment(int taskId) {
+        NavHostFragment.findNavController(this)
                 .navigate(R.id.action_TaskListFragment_to_TaskInfoFragment);
         // Intent switchActivityIntent = new Intent(this, TaskInfoActivity.class);
         // pass task id to task info activity inside bundle
@@ -47,10 +59,6 @@ public class TaskListFragment extends Fragment {
         switchActivityIntent.putExtras(bundle);
         startActivity(switchActivityIntent);
         */
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override

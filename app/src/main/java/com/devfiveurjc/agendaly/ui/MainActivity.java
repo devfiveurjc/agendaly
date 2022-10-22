@@ -5,17 +5,18 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.devfiveurjc.agendaly.R;
+import com.devfiveurjc.agendaly.crud.CRUDTask;
 import com.devfiveurjc.agendaly.databinding.ActivityMainBinding;
-import com.google.android.material.snackbar.Snackbar;
+import com.devfiveurjc.agendaly.model.Task;
+
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // WARNING db testing purpose stuff
+        CRUDTask.deleteAllTasks();
+        CRUDTask.addTask(new Task("uwu", "uwu", new Date()));
+        //
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -31,13 +36,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        // add button change to task add fragment
-        /*
-        binding.generalFloatingButton.setOnClickListener(view1 ->
-                NavHostFragment.findNavController()
-                        .navigate(R.id.action_TaskListFragment_to_TaskAddFragment));
-         */
-
     }
 
     @Override

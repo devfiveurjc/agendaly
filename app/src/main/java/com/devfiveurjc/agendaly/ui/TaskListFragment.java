@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,7 +33,7 @@ public class TaskListFragment extends Fragment {
         this.binding = FragmentTaskListBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         List<Task> tasks = CRUDTask.getAllTasks();
-        ListAdapter listAdapter = new ListAdapter(tasks, requireContext(), task -> switchTaskListFragment(task.getId()));
+        ListAdapter listAdapter = new ListAdapter(tasks, requireContext(), task -> switchTaskInfoFragment(task.getId()));
         RecyclerView recyclerView = view.findViewById(R.id.listRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -40,18 +41,12 @@ public class TaskListFragment extends Fragment {
         return view;
     }
 
-    public void switchTaskListFragment(int taskId) {
+    public void switchTaskInfoFragment(int taskId) {
         // binding.addFloatingButton.setVisibility(View.INVISIBLE);
-        NavHostFragment.findNavController(this)
-                .navigate(R.id.action_TaskListFragment_to_TaskInfoFragment);
-        // Intent switchActivityIntent = new Intent(this, TaskInfoActivity.class);
-        // pass task id to task info activity inside bundle
-        /*
         Bundle bundle = new Bundle();
         bundle.putInt("taskId", taskId);
-        switchActivityIntent.putExtras(bundle);
-        startActivity(switchActivityIntent);
-        */
+        NavHostFragment.findNavController(this)
+                .navigate(R.id.action_TaskListFragment_to_TaskInfoFragment, bundle);
     }
 
     @Override

@@ -10,6 +10,10 @@
         android:name="com.devfiveurjc.agendaly.ui.TaskListFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_task_list">
+        <argument
+            android:name="taskId"
+            app:argType="integer"
+            android:defaultValue="-1" />
         <action
             android:id="@+id/action_TaskListFragment_to_TaskAddFragment"
             app:destination="@id/TaskAddFragment" />

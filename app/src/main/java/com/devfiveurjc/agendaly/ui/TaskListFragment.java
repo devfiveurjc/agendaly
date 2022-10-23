@@ -18,7 +18,9 @@ import com.devfiveurjc.agendaly.crud.CRUDTask;
 import com.devfiveurjc.agendaly.databinding.FragmentTaskListBinding;
 import com.devfiveurjc.agendaly.model.Task;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class TaskListFragment extends Fragment {
@@ -33,6 +35,7 @@ public class TaskListFragment extends Fragment {
         this.binding = FragmentTaskListBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         List<Task> tasks = CRUDTask.getAllTasks();
+        tasks = (List<Task>) tasks.stream().sorted(Comparator.comparing(Task::getDate).reversed()).collect(Collectors.toList());
         ListAdapter listAdapter = new ListAdapter(tasks, requireContext(), task -> switchTaskInfoFragment(task.getId()));
         RecyclerView recyclerView = view.findViewById(R.id.listRecyclerView);
         recyclerView.setHasFixedSize(true);
@@ -42,7 +45,6 @@ public class TaskListFragment extends Fragment {
     }
 
     public void switchTaskInfoFragment(int taskId) {
-        // binding.addFloatingButton.setVisibility(View.INVISIBLE);
         Bundle bundle = new Bundle();
         bundle.putInt("taskId", taskId);
         NavHostFragment.findNavController(this)

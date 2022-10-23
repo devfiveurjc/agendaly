@@ -63,6 +63,10 @@ public class CRUDTask {
         realm.commitTransaction();
     }
 
+    public static boolean isEmpty() {
+        return realm.isEmpty();
+    }
+
     public static List<Task> getAllTasks() {
         return realm.where(Task.class).findAll();
     }

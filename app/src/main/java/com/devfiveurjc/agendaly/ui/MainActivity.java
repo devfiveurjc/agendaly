@@ -24,11 +24,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // WARNING db testing purpose stuff
-        CRUDTask.deleteAllTasks();
-        CRUDTask.addTask(new Task("uwu", "uwu", new Date()));
-        CRUDTask.addTask(new Task("owo", "owo", new Date()));
-        //
+        // initial default tasks
+        if (CRUDTask.isEmpty()) {
+            CRUDTask.addTask(new Task("uwu", "uwu", new Date()));
+            CRUDTask.addTask(new Task("owo", "owo", new Date()));
+        }
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         this.setContentView(binding.getRoot());

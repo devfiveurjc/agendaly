@@ -144,6 +144,12 @@ public class TaskAddFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        this.binding.editDateButton.setOnClickListener(v -> {
+            openDate(view);
+        });
+        this.binding.editHourButton.setOnClickListener(v -> {
+            openHour(view);
+        });
         // button saveTask
         this.binding.taskAddSaveButton.setOnClickListener(v -> {
             saveTask(view);

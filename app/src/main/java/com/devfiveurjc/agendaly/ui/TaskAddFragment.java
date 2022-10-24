@@ -16,14 +16,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.devfiveurjc.agendaly.R;
 import com.devfiveurjc.agendaly.crud.CRUDTask;
 import com.devfiveurjc.agendaly.databinding.FragmentTaskAddBinding;
-import com.devfiveurjc.agendaly.databinding.FragmentTaskListBinding;
 import com.devfiveurjc.agendaly.model.Task;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -113,8 +112,10 @@ public class TaskAddFragment extends Fragment {
             String descriptionText = this.descriptionInputText.getText().toString();
             Task task = new Task(titleText, descriptionText, dateTask);
             CRUDTask.addTask(task);
+            NavHostFragment.findNavController(this)
+                    .navigate(R.id.action_TaskAddFragment_to_TaskListFragment);
         } else {
-            // Toast.makeText(this, R.string.noTitle_text, Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), R.string.noTitle_text, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -130,8 +131,6 @@ public class TaskAddFragment extends Fragment {
         // button saveTask
         this.binding.taskAddSaveButton.setOnClickListener(v -> {
             this.saveTask(view);
-            NavHostFragment.findNavController(this)
-                    .navigate(R.id.action_TaskAddFragment_to_TaskListFragment);
         });
     }
 

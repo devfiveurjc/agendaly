@@ -35,7 +35,7 @@ public class TaskListFragment extends Fragment {
         this.binding = FragmentTaskListBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         List<Task> tasks = CRUDTask.getAllTasks();
-        tasks = (List<Task>) tasks.stream().sorted(Comparator.comparing(Task::getDate).reversed()).collect(Collectors.toList());
+        tasks = tasks.stream().sorted(Comparator.comparing(Task::getDate)).collect(Collectors.toList());
         ListAdapter listAdapter = new ListAdapter(tasks, requireContext(), task -> switchTaskInfoFragment(task.getId()));
         RecyclerView recyclerView = view.findViewById(R.id.listRecyclerView);
         recyclerView.setHasFixedSize(true);

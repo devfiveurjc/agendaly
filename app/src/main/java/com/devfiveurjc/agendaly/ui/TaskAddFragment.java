@@ -144,15 +144,15 @@ public class TaskAddFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        this.binding.editDateButton.setOnClickListener(v -> {
-            openDate(view);
+        this.binding.taskAddEditDateButton.setOnClickListener(v -> {
+            this.openDate(view);
         });
-        this.binding.editHourButton.setOnClickListener(v -> {
-            openHour(view);
+        this.binding.taskAddEditHourButton.setOnClickListener(v -> {
+            this.openHour(view);
         });
         // button saveTask
         this.binding.taskAddSaveButton.setOnClickListener(v -> {
-            saveTask(view);
+            this.saveTask(view);
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TaskAddFragment_to_TaskListFragment);
         });

@@ -96,7 +96,7 @@
         app:layout_constraintVertical_bias="0.721" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/editDateButton"
+        android:id="@+id/taskAddEditDateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -108,7 +108,7 @@
         app:layout_constraintTop_toBottomOf="@+id/taskAddEditDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/editHourButton"
+        android:id="@+id/taskAddEditHourButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -117,6 +117,6 @@
         android:src="@android:drawable/ic_menu_edit"
         app:backgroundTint="@color/devfive_blue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editDateButton" />
+        app:layout_constraintTop_toBottomOf="@+id/taskAddEditDateButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

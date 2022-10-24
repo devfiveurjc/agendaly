@@ -23,6 +23,7 @@ import com.devfiveurjc.agendaly.databinding.FragmentTaskAddBinding;
 import com.devfiveurjc.agendaly.databinding.FragmentTaskListBinding;
 import com.devfiveurjc.agendaly.model.Task;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -43,10 +44,6 @@ public class TaskAddFragment extends Fragment {
         this.displayDate = view.findViewById(R.id.taskAddDate);
         this.titleInputText = view.findViewById(R.id.taskAddEditTitle);
         this.descriptionInputText = view.findViewById(R.id.taskAddEditDescription);
-        // WARNING testing
-        this.titleInputText.setText("testTitle");
-        this.descriptionInputText.setText("testDescription");
-        //
         //current date and time
         Calendar calendar = Calendar.getInstance();
         this.hour[0] = calendar.get(Calendar.HOUR_OF_DAY);
@@ -109,33 +106,13 @@ public class TaskAddFragment extends Fragment {
         boolean isTitleInputEmpty = this.titleInputText.getText().toString().equals("");
         if (!isTitleInputEmpty) {
             Calendar dateTaskCalendar = Calendar.getInstance();
-            dateTaskCalendar.set(date[2], date[1], date[0]);
+            dateTaskCalendar.set(date[2], date[1], date[0], hour[0], hour[1]);
             Date dateTask = dateTaskCalendar.getTime();
-            /* old with hour
-            Calendar hourTask = Calendar.getInstance();
-            hourTask.set(Calendar.HOUR_OF_DAY, hour[0]);
-            hourTask.set(Calendar.MINUTE, hour[1]);
-            */
             // realm
             String titleText = this.titleInputText.getText().toString();
             String descriptionText = this.descriptionInputText.getText().toString();
             Task task = new Task(titleText, descriptionText, dateTask);
             CRUDTask.addTask(task);
-            // List<Task> tasks = CRUDTask.getAllTasks();
-            /* old
-            Task task = new Task(title.getText().toString(), description.getText().toString(),
-                    dateTask, hourTask);
-            TaskData.getTasks().add(task);
-
-            if (date[0] == c.get(Calendar.DAY_OF_MONTH)) {
-                TaskData.getTasksToday().add(task);
-            } else if (date[0] == (c.get(Calendar.DAY_OF_MONTH) + 1)) {
-                TaskData.getTasksTmrw().add(task);
-            } else {
-                TaskData.getTasksWeek().add(task);
-            }
-            */
-            // switchMenuActivity();
         } else {
             // Toast.makeText(this, R.string.noTitle_text, Toast.LENGTH_LONG).show();
         }

@@ -56,6 +56,7 @@ public class TaskInfoFragment extends Fragment {
         description.setText(task.getDescription());
         date.setText(task.getDate().toString());
         status.setText((task.isCheck()) ? "Completed" : "Uncompleted");
+        switchTaskEditFragment(taskId);
         return view;
     }
 
@@ -73,6 +74,13 @@ public class TaskInfoFragment extends Fragment {
         return "";
     }
     */
+
+    public void switchTaskEditFragment(int taskId) {
+        /*Bundle bundle = new Bundle();
+        bundle.putInt("taskId", taskId);
+        NavHostFragment.findNavController(this)
+                .navigate(); //crear action*/
+    }
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {

@@ -8,19 +8,22 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.devfiveurjc.agendaly.R;
 import com.devfiveurjc.agendaly.crud.CRUDTask;
+import com.devfiveurjc.agendaly.databinding.FragmentTaskEditBinding;
 import com.devfiveurjc.agendaly.databinding.FragmentTaskInfoBinding;
 import com.devfiveurjc.agendaly.model.Task;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Calendar;
 import java.util.Date;
 
 public class TaskEditFragment extends Fragment {
-    private FragmentTaskInfoBinding binding;
+    private FragmentTaskEditBinding binding;
     private final int[] date = new int[3];
     private final int[] hour = new int[2];
     private EditText titleInputText, descriptionInputText;
@@ -30,19 +33,12 @@ public class TaskEditFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState
     ) {
-        this.binding = FragmentTaskInfoBinding.inflate(inflater, container, false);
+        this.binding = FragmentTaskEditBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        TextView title = view.findViewById(R.id.taskEditEditTitle);
-        TextView description = view.findViewById(R.id.taskEditEditDescription);
+        TextInputEditText title = view.findViewById(R.id.taskEditEditTitle);
+        TextInputEditText description = view.findViewById(R.id.taskEditEditDescription);
         TextView dateDisplay = view.findViewById(R.id.taskEditDate);
         TextView hourDisplay = view.findViewById(R.id.taskEditHour);
-
-        assert getArguments() != null;
-        taskId = getArguments().getInt("taskId");
-        Task task = CRUDTask.getTask(taskId);
-
-        title.setText(task.getTitle());
-        description.setText(task.getDescription());
 
 
         Calendar dateTaskCalendar = Calendar.getInstance();
@@ -57,8 +53,20 @@ public class TaskEditFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        // button deleteTask
+        this.binding.taskEditBackButton.setOnClickListener(v -> {
+            NavHostFragment.findNavController(this)
+                    .navigate(R.id.action_TaskEditFragment_to_TaskListFragment);
+        });
+        this.binding.taskEditSaveButton.setOnClickListener(v -> {
+            this.modifyTask(view);
+        });
+    }
     //ver si creamos una task nueva y eliminamos la existente o modificamos la task en la bbdd
-    /*public void saveTask(View view) {
+    public void modifyTask(View view) {
         this.titleInputText = view.findViewById(R.id.taskEditEditTitle);
         this.descriptionInputText = view.findViewById(R.id.taskEditEditDescription);
         boolean isTitleInputEmpty = this.titleInputText.getText().toString().equals("");
@@ -69,12 +77,17 @@ public class TaskEditFragment extends Fragment {
             // realm
             String titleText = this.titleInputText.getText().toString();
             String descriptionText = this.descriptionInputText.getText().toString();
-            Task task = new Task(titleText, descriptionText, dateTask);
-            CRUDTask.addTask(task);
+
+            assert getArguments() != null;
+            taskId = getArguments().getInt("taskId");
+            Task task = CRUDTask.getTask(taskId);
+            Task newTask = new Task(titleText, descriptionText, dateTask);
+            CRUDTask.updateTask(task,newTask);
+            Toast.makeText(getContext(), R.string.succesful_edit, Toast.LENGTH_LONG).show();
             NavHostFragment.findNavController(this)
-                    .navigate(); //crear action
+                    .navigate(R.id.action_TaskEditFragment_to_TaskListFragment);
         } else {
             Toast.makeText(getContext(), R.string.noTitle_text, Toast.LENGTH_LONG).show();
         }
-    }*/
+    }
 }

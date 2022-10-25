@@ -11,6 +11,8 @@
         android:id="@+id/taskEditSaveButton"
         android:layout_width="100dp"
         android:layout_height="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="@color/devfive_blue"
         android:text="@string/save"
         android:textColor="@color/black"
@@ -18,11 +20,22 @@
         android:textStyle="bold"
         app:cornerRadius="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/taskEditBackButton"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/devfive_blue"
+        android:text="@string/back"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/taskEditEditDescription"
@@ -31,7 +44,7 @@
         android:background="@color/white"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="@string/description"
+        android:hint="@string/newDescription"
         android:inputType="textPersonName|textImeMultiLine"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +61,7 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:ems="10"
-        android:hint="@string/title"
+        android:hint="@string/newTitle"
         android:inputType="textPersonName|textImeMultiLine"
         android:textAlignment="textStart"
         android:textColor="@color/black"

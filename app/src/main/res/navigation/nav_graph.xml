@@ -36,6 +36,18 @@
         <action
             android:id="@+id/action_TaskInfoFragment_to_TaskListFragment"
             app:destination="@id/TaskListFragment" />
+        <action
+            android:id="@+id/action_TaskInfoFragment_to_TaskEditFragment"
+            app:destination="@id/taskEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskEditFragment"
+        android:name="com.devfiveurjc.agendaly.ui.TaskEditFragment"
+        android:label="fragment_task_edit"
+        tools:layout="@layout/fragment_task_edit" >
+        <action
+            android:id="@+id/action_TaskEditFragment_to_TaskListFragment"
+            app:destination="@id/TaskListFragment" />
     </fragment>
 
 </navigation>

@@ -1,5 +1,7 @@
 package com.devfiveurjc.agendaly.ui;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -59,6 +61,12 @@ public class TaskListFragment extends Fragment {
             // binding.addFloatingButton.setVisibility(View.GONE);
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TaskListFragment_to_TaskAddFragment);
+        });
+        this.binding.taskListExitButton.setOnClickListener(v -> {
+            Intent intent= new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         });
     }
 

@@ -91,6 +91,17 @@ public class TaskInfoFragment extends Fragment {
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TaskInfoFragment_to_TaskListFragment);
         });
+        this.binding.taskInfoEditButton.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putInt("taskId", taskId);
+            NavHostFragment.findNavController(this)
+                    .navigate(R.id.action_TaskInfoFragment_to_TaskEditFragment,bundle);
+        });
+
+        this.binding.taskInfoBackButton.setOnClickListener(v -> {
+            NavHostFragment.findNavController(this)
+                    .navigate(R.id.action_TaskInfoFragment_to_TaskListFragment);
+        });
     }
 
     @Override

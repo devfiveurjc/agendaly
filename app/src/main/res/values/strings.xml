@@ -16,6 +16,8 @@
     <string name="new_task">New Task</string>
     <string name="title">Write the task title</string>
     <string name="description">Write a description</string>
+    <string name="newTitle">Write the new task title</string>
+    <string name="newDescription">Write a new description</string>
     <string name="date">Date:</string>
     <string name="hour">Hour:</string>
     <string name="exit">Exit</string>
@@ -37,4 +39,5 @@
     <string name="action_settings">Settings</string>
     <string name="list_title">Agendaly</string>
     <string name="edit_task">edit</string>
+    <string name="succesful_edit">You task has been modified</string>
 </resources>

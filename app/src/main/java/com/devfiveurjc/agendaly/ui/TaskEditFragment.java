@@ -1,8 +1,6 @@
 package com.devfiveurjc.agendaly.ui;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +15,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.devfiveurjc.agendaly.R;
 import com.devfiveurjc.agendaly.crud.CRUDTask;
 import com.devfiveurjc.agendaly.databinding.FragmentTaskEditBinding;
-import com.devfiveurjc.agendaly.databinding.FragmentTaskInfoBinding;
 import com.devfiveurjc.agendaly.model.Task;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -67,12 +64,6 @@ public class TaskEditFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // button deleteTask
-        this.binding.taskEditBackButton.setOnClickListener(v -> {
-            NavHostFragment.findNavController(this)
-                    .navigate(R.id.action_TaskEditFragment_to_TaskListFragment);
-        });
-        //button saveTask
         this.binding.taskEditSaveButton.setOnClickListener(v -> {
             //this.showMessage(view); if press OK -> modify
             this.modifyTask(view);
@@ -104,7 +95,6 @@ public class TaskEditFragment extends Fragment {
             // realm
             String titleText = this.titleInputText.getText().toString();
             String descriptionText = this.descriptionInputText.getText().toString();
-
             assert getArguments() != null;
             taskId = getArguments().getInt("taskId");
             Task task = CRUDTask.getTask(taskId);

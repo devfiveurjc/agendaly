@@ -1,12 +1,9 @@
 package com.devfiveurjc.agendaly.ui;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -56,17 +53,9 @@ public class TaskListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // button to task add fragment
         this.binding.addFloatingButton.setOnClickListener(v -> {
-            // binding.addFloatingButton.setVisibility(View.GONE);
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TaskListFragment_to_TaskAddFragment);
-        });
-        this.binding.taskListExitButton.setOnClickListener(v -> {
-            Intent intent= new Intent(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
         });
     }
 

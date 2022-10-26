@@ -33,20 +33,6 @@ public class TaskInfoFragment extends Fragment {
         TextView description = view.findViewById(R.id.taskInfoDescription);
         TextView date = view.findViewById(R.id.taskInfoDate);
         TextView status =  view.findViewById(R.id.taskInfoStatus);
-
-        /* commented bc old and gives error
-        date[0] = task.getDate().get(Calendar.DAY_OF_MONTH);
-        date[1] = task.getDate().get(Calendar.MONTH);
-        date[2] = task.getDate().get(Calendar.YEAR);
-        hour[0] = task.getHour().get(Calendar.HOUR_OF_DAY);
-        hour[1] = task.getHour().get(Calendar.MINUTE);
-
-        titleT.setText(task.getTitle());
-        descriptionT.setText(task.getDescription());
-        dateT.setText(date[0] + "/" + (date[1] + 1) + "/" + date[2]);
-        hourT.setText(syncDisplayHour(hourT, hour));
-        */
-
         // retrieve bundle
         assert getArguments() != null;
         taskId = getArguments().getInt("taskId");
@@ -56,7 +42,6 @@ public class TaskInfoFragment extends Fragment {
         description.setText(task.getDescription());
         date.setText(task.getDate().toString());
         status.setText((task.isCheck()) ? "Completed" : "Uncompleted");
-        switchTaskEditFragment(taskId);
         return view;
     }
 
@@ -75,17 +60,9 @@ public class TaskInfoFragment extends Fragment {
     }
     */
 
-    public void switchTaskEditFragment(int taskId) {
-        /*Bundle bundle = new Bundle();
-        bundle.putInt("taskId", taskId);
-        NavHostFragment.findNavController(this)
-                .navigate(); //crear action*/
-    }
-
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // button deleteTask
         this.binding.taskInfoDeleteButton.setOnClickListener(v -> {
             deleteTask();
             NavHostFragment.findNavController(this)
@@ -96,11 +73,6 @@ public class TaskInfoFragment extends Fragment {
             bundle.putInt("taskId", taskId);
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TaskInfoFragment_to_TaskEditFragment,bundle);
-        });
-
-        this.binding.taskInfoBackButton.setOnClickListener(v -> {
-            NavHostFragment.findNavController(this)
-                    .navigate(R.id.action_TaskInfoFragment_to_TaskListFragment);
         });
     }
 

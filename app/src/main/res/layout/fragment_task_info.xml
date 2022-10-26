@@ -93,19 +93,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/taskInfoBackButton"
-        android:layout_width="96dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="24dp"
-        android:backgroundTint="@color/devfive_blue"
-        android:text="@string/back"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:cornerRadius="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/taskInfoEditButton"
-        app:layout_constraintStart_toEndOf="@+id/taskInfoDeleteButton" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

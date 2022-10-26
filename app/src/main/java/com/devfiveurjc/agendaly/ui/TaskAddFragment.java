@@ -128,7 +128,6 @@ public class TaskAddFragment extends Fragment {
         this.binding.taskAddEditHourButton.setOnClickListener(v -> {
             this.openHour(view);
         });
-        // button saveTask
         this.binding.taskAddSaveButton.setOnClickListener(v -> {
             this.saveTask(view);
         });

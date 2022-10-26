@@ -19,13 +19,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/SettingsFragment"
-        android:name="com.devfiveurjc.agendaly.ui.SettingsFragment"
-        android:label="@string/settings_label"
-        tools:layout="@layout/fragment_settings">
-    </fragment>
-
-    <fragment
         android:id="@+id/TaskAddFragment"
         android:name="com.devfiveurjc.agendaly.ui.TaskAddFragment"
         android:label="@string/task_add_label"

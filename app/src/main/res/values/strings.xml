@@ -2,6 +2,7 @@
     <string name="app_name">Agendaly</string>
     <string name="task_add_label">Add Task</string>
     <string name="task_info_label">Info Task</string>
+    <string name="settings_label">Settings</string>
     <string name="example">example</string>
     <string name="help">Help</string>
     <string name="help_text">
@@ -36,7 +37,19 @@
     <string name="title_activity_view_tasks">ViewTasksActivity</string>
     <string name="action_settings">Settings</string>
     <string name="list_title">Agendaly</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="settings_label">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

@@ -9,5 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FFE500</color>
     <color name="devfive_blue">#708ae8</color>
+    <color name="devfive_blue_actionbar">#4A68D6</color>
     <color name="personalizado">#302E2E</color>
 </resources>

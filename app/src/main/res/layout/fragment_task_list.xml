@@ -26,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="24dp"
         android:contentDescription="genericbutton"
         app:backgroundTint="@color/devfive_blue"
@@ -37,9 +38,9 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/taskListExitButton"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="60dp"
+        android:layout_width="96dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/devfive_blue"
         android:text="@string/exit"

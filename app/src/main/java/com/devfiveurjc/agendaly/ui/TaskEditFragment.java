@@ -1,6 +1,8 @@
 package com.devfiveurjc.agendaly.ui;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import com.devfiveurjc.agendaly.databinding.FragmentTaskInfoBinding;
 import com.devfiveurjc.agendaly.model.Task;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -40,7 +43,14 @@ public class TaskEditFragment extends Fragment {
         TextView dateDisplay = view.findViewById(R.id.taskEditDate);
         TextView hourDisplay = view.findViewById(R.id.taskEditHour);
 
+        Task task = CRUDTask.getTask(taskId);
+        Date dateT = task.getDate();
+        SimpleDateFormat ftDate = new SimpleDateFormat("dd/MM/yyyy");
+        dateDisplay.setText(ftDate.format(dateT));
+        SimpleDateFormat ftHour = new SimpleDateFormat("hh:mm");
+        hourDisplay.setText(ftHour.format(dateT));
 
+        /*
         Calendar dateTaskCalendar = Calendar.getInstance();
         dateTaskCalendar.set(date[2], date[1], date[0]);
         Date dateTask = dateTaskCalendar.getTime();
@@ -50,6 +60,7 @@ public class TaskEditFragment extends Fragment {
         hourTaskCalendar.set(hour[0], hour[1]);
         Date hourTask = hourTaskCalendar.getTime();
         hourDisplay.setText(hourTask.toString()); //ver si pone hora actual o de la task
+         */
         return view;
     }
 
@@ -61,10 +72,26 @@ public class TaskEditFragment extends Fragment {
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TaskEditFragment_to_TaskListFragment);
         });
+        //button saveTask
         this.binding.taskEditSaveButton.setOnClickListener(v -> {
+            //this.showMessage(view); if press OK -> modify
             this.modifyTask(view);
         });
     }
+
+    /*
+    public void showMessage(View view) {
+        ContextThemeWrapper newContext = new ContextThemeWrapper(this, R.style.Theme.Agendaly.Dialog);
+        AlertDialog.Builder builderAD = new AlertDialog.Builder(newContext);
+        builderAD.setTitle(R.string.caution);
+        builderAD.setMessage(R.string.caution_text);
+        builderAD.setPositiveButton("OK", null);
+        builderAD.setNegativeButton("CANCEL", null);
+        builderAD.create().show();
+    }
+     */
+
+
     //ver si creamos una task nueva y eliminamos la existente o modificamos la task en la bbdd
     public void modifyTask(View view) {
         this.titleInputText = view.findViewById(R.id.taskEditEditTitle);

@@ -9,9 +9,9 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/taskEditSaveButton"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="60dp"
+        android:layout_width="96dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/devfive_blue"
         android:text="@string/save"
@@ -24,9 +24,9 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/taskEditBackButton"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="60dp"
+        android:layout_width="96dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/devfive_blue"
         android:text="@string/back"
@@ -117,7 +117,8 @@
         android:clickable="true"
         app:backgroundTint="@color/devfive_blue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskEditEditDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/taskEditEditDescription"
+        android:src="@android:drawable/ic_menu_edit" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/taskEditEditHourButton"
@@ -128,6 +129,7 @@
         android:clickable="true"
         app:backgroundTint="@color/devfive_blue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskEditEditDateButton" />
+        app:layout_constraintTop_toBottomOf="@+id/taskEditEditDateButton"
+        android:src="@android:drawable/ic_menu_edit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

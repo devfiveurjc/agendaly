@@ -8,6 +8,11 @@
         Welcome to Agendaly!\n
         This app will help you to organize your daily tasks in a really simple way.
     </string>
+    <string name="caution">Caution</string>
+    <string name="caution_text">
+        If you press OK you will modify this task with the new data entered.\n
+        If you dont wish to make any changes press CANCEL.
+    </string>
     <string name="tasks">My tasks</string>
     <string name="add_task">Add task</string>
     <string name="other_option">Other option</string>

@@ -9,8 +9,8 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/taskAddSaveButton"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
+        android:layout_width="96dp"
+        android:layout_height="48dp"
         android:backgroundTint="@color/devfive_blue"
         android:text="@string/save"
         android:textColor="@color/black"

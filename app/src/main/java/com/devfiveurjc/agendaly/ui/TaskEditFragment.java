@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
@@ -46,9 +47,11 @@ public class TaskEditFragment extends Fragment {
         this.dateDisplay = view.findViewById(R.id.taskEditDate);
         this.hourDisplay = view.findViewById(R.id.taskEditHour);
 
+
         assert getArguments() != null;
         taskId = getArguments().getInt("taskId");
         Task task = CRUDTask.getTask(taskId);
+        init(task);
 
         title.setText(task.getTitle());
         description.setText(task.getDescription());
@@ -72,8 +75,22 @@ public class TaskEditFragment extends Fragment {
         return view;
     }
 
+    private void init(Task task) {
+        date[0]=task.getDay();
+        date[1]=task.getMonth();
+        date[2]=task.getYear();
+        hour[0]=task.getHour();
+        hour[1]=task.getMinutes();
+    }
+
+
     private void syncDisplayDate() {
-        this.dateDisplay.setText(date[0] + "/" + (date[1] + 1) + "/" + date[2]);
+        if (date[1] < 9) {
+            this.dateDisplay.setText(date[0] + "/0" + (date[1]+1) + "/" + date[2]);
+        } else {
+            this.dateDisplay.setText(date[0] + "/" + (date[1]+1) + "/" + date[2]);
+        }
+
     }
 
     private void syncDisplayHour() {

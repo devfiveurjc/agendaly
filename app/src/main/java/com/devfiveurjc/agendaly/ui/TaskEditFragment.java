@@ -46,6 +46,8 @@ public class TaskEditFragment extends Fragment {
         this.dateDisplay = view.findViewById(R.id.taskEditDate);
         this.hourDisplay = view.findViewById(R.id.taskEditHour);
 
+        assert getArguments() != null;
+        taskId = getArguments().getInt("taskId");
         Task task = CRUDTask.getTask(taskId);
 
         title.setText(task.getTitle());

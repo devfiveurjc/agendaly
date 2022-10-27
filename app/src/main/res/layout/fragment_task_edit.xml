@@ -29,7 +29,7 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/taskEditEditDescription"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:background="@color/white"
         android:ems="10"
         android:gravity="start|top"
@@ -106,7 +106,7 @@
         android:id="@+id/taskEditSaveButton"
         android:layout_width="96dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="156dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/devfive_blue"
         android:text="@string/save"

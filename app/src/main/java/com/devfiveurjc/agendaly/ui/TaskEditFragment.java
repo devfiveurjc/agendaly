@@ -1,6 +1,11 @@
 package com.devfiveurjc.agendaly.ui;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +32,7 @@ public class TaskEditFragment extends Fragment {
     private final int[] date = new int[3];
     private final int[] hour = new int[2];
     private EditText titleInputText, descriptionInputText;
+    private TextView dateDisplay, hourDisplay;
     int taskId;
 
     @Override
@@ -37,10 +43,13 @@ public class TaskEditFragment extends Fragment {
         View view = binding.getRoot();
         TextInputEditText title = view.findViewById(R.id.taskEditEditTitle);
         TextInputEditText description = view.findViewById(R.id.taskEditEditDescription);
-        TextView dateDisplay = view.findViewById(R.id.taskEditDate);
-        TextView hourDisplay = view.findViewById(R.id.taskEditHour);
+        this.dateDisplay = view.findViewById(R.id.taskEditDate);
+        this.hourDisplay = view.findViewById(R.id.taskEditHour);
 
         Task task = CRUDTask.getTask(taskId);
+
+        title.setText(task.getTitle());
+        description.setText(task.getDescription());
         Date dateT = task.getDate();
         SimpleDateFormat ftDate = new SimpleDateFormat("dd/MM/yyyy");
         dateDisplay.setText(ftDate.format(dateT));
@@ -61,12 +70,62 @@ public class TaskEditFragment extends Fragment {
         return view;
     }
 
+    private void syncDisplayDate() {
+        this.dateDisplay.setText(date[0] + "/" + (date[1] + 1) + "/" + date[2]);
+    }
+
+    private void syncDisplayHour() {
+        if (hour[1] < 10) {
+            this.hourDisplay.setText(hour[0] + ":0" + hour[1]);
+        } else {
+            this.hourDisplay.setText(hour[0] + ":" + hour[1]);
+        }
+    }
+
+    public void openDate(View view) {
+        final Calendar c = Calendar.getInstance();
+        date[0] = c.get(Calendar.DAY_OF_MONTH);
+        date[1] = c.get(Calendar.MONTH);
+        date[2] = c.get(Calendar.YEAR);
+        DatePickerDialog dialog = new DatePickerDialog(requireContext(),
+                android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                (view1, year, month, dayOfMonth) -> {
+                    date[0] = dayOfMonth;
+                    date[1] = month;
+                    date[2] = year;
+                    syncDisplayDate();
+                },
+                date[2], date[1], date[0]);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+    }
+
+    public void openHour(View view) {
+        final Calendar c = Calendar.getInstance();
+        hour[0] = c.get(Calendar.HOUR_OF_DAY);
+        hour[1] = c.get(Calendar.MINUTE);
+        ContextThemeWrapper newContext = new ContextThemeWrapper(requireContext(), R.style.Theme_Agendaly_Dialog);
+        TimePickerDialog tmd = new TimePickerDialog(newContext, (view1, hourOfDay, minute) -> {
+            hour[0] = hourOfDay;
+            hour[1] = minute;
+            syncDisplayHour();
+        }, hour[0], hour[1], true);
+        tmd.show();
+    }
+
+
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.binding.taskEditSaveButton.setOnClickListener(v -> {
             //this.showMessage(view); if press OK -> modify
             this.modifyTask(view);
+        });
+        this.binding.taskEditEditDateButton.setOnClickListener(v -> {
+            this.openDate(view);
+        });
+        this.binding.taskEditEditHourButton.setOnClickListener(v -> {
+            this.openHour(view);
         });
     }
 

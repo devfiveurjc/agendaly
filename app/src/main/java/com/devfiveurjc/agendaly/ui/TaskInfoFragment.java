@@ -48,6 +48,7 @@ public class TaskInfoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.binding.taskInfoDeleteButton.setOnClickListener(v -> {
+            // TODO: confirmation popup
             CRUDTask.deleteTask(this.taskId);
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TaskInfoFragment_to_TaskListFragment);

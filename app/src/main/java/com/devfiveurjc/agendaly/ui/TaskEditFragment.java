@@ -121,6 +121,7 @@ public class TaskEditFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.binding.taskEditSaveButton.setOnClickListener(v -> {
+            // TODO: confirmation popup
             //this.showMessage(view); if press OK -> modify
             this.modifyTask(view);
         });
@@ -156,6 +157,7 @@ public class TaskEditFragment extends Fragment {
             String titleText = titleInputText.getText().toString();
             String descriptionText = descriptionInputText.getText().toString();
             Task newTask = new Task(titleText, descriptionText, dateTask);
+            newTask.setCheck(this.task.isCheck());
             CRUDTask.updateTask(this.task, newTask);
             Toast.makeText(this.getContext(), R.string.successful_edit, Toast.LENGTH_LONG).show();
             NavHostFragment.findNavController(this)

@@ -79,7 +79,7 @@
         app:layout_constraintVertical_bias="0.569" />
 
     <TextView
-        android:id="@+id/taskAddHour"
+        android:id="@+id/taskAddTime"
         android:layout_width="150dp"
         android:layout_height="55dp"
         android:backgroundTint="#D11F1F"
@@ -108,7 +108,7 @@
         app:layout_constraintTop_toBottomOf="@+id/taskAddEditDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/taskAddEditHourButton"
+        android:id="@+id/taskAddEditTimeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"

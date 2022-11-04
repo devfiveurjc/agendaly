@@ -38,7 +38,7 @@ public class TaskAddFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         this.binding = FragmentTaskAddBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
+        View view = this.binding.getRoot();
         this.displayHour = view.findViewById(R.id.taskAddHour);
         this.displayDate = view.findViewById(R.id.taskAddDate);
         this.titleInputText = view.findViewById(R.id.taskAddEditTitle);
@@ -57,14 +57,14 @@ public class TaskAddFragment extends Fragment {
     }
 
     private void syncDisplayDate() {
-        this.displayDate.setText(date[0] + "/" + (date[1] + 1) + "/" + date[2]);
+        this.displayDate.setText(this.date[0] + "/" + (this.date[1] + 1) + "/" + this.date[2]);
     }
 
     private void syncDisplayHour() {
-        if (hour[1] < 10) {
-            this.displayHour.setText(hour[0] + ":0" + hour[1]);
+        if (this.hour[1] < 10) {
+            this.displayHour.setText(this.hour[0] + ":0" + this.hour[1]);
         } else {
-            this.displayHour.setText(hour[0] + ":" + hour[1]);
+            this.displayHour.setText(this.hour[0] + ":" + this.hour[1]);
         }
     }
 
@@ -105,7 +105,7 @@ public class TaskAddFragment extends Fragment {
         boolean isTitleInputEmpty = this.titleInputText.getText().toString().equals("");
         if (!isTitleInputEmpty) {
             Calendar dateTaskCalendar = Calendar.getInstance();
-            dateTaskCalendar.set(date[2], date[1], date[0], hour[0], hour[1]);
+            dateTaskCalendar.set(this.date[2], this.date[1], this.date[0], this.hour[0], this.hour[1]);
             Date dateTask = dateTaskCalendar.getTime();
             // realm
             String titleText = this.titleInputText.getText().toString();
@@ -115,7 +115,7 @@ public class TaskAddFragment extends Fragment {
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TaskAddFragment_to_TaskListFragment);
         } else {
-            Toast.makeText(getContext(), R.string.noTitle_text, Toast.LENGTH_LONG).show();
+            Toast.makeText(this.getContext(), R.string.noTitle_text, Toast.LENGTH_LONG).show();
         }
     }
 

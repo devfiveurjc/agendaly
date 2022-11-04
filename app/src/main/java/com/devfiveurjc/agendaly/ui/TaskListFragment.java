@@ -28,17 +28,16 @@ public class TaskListFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState
-    ) {
+                             Bundle savedInstanceState) {
         // tasks card list with recycler view
         this.binding = FragmentTaskListBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
+        View view = this.binding.getRoot();
         List<Task> tasks = CRUDTask.getAllTasks();
         tasks = tasks.stream().sorted(Comparator.comparing(Task::getDate)).collect(Collectors.toList());
         ListAdapter listAdapter = new ListAdapter(tasks, requireContext(), task -> switchTaskInfoFragment(task.getId()));
         RecyclerView recyclerView = view.findViewById(R.id.listRecyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setAdapter(listAdapter);
         return view;
     }

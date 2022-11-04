@@ -29,75 +29,60 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class TaskEditFragment extends Fragment {
+
     private FragmentTaskEditBinding binding;
     private final int[] date = new int[3];
     private final int[] hour = new int[2];
-    private EditText titleInputText, descriptionInputText;
     private TextView dateDisplay, hourDisplay;
-    int taskId;
+    private Task task;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState
-    ) {
+                             Bundle savedInstanceState) {
         this.binding = FragmentTaskEditBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
+        View view = this.binding.getRoot();
         TextInputEditText title = view.findViewById(R.id.taskEditEditTitle);
         TextInputEditText description = view.findViewById(R.id.taskEditEditDescription);
         this.dateDisplay = view.findViewById(R.id.taskEditDate);
         this.hourDisplay = view.findViewById(R.id.taskEditHour);
-
-
+        // realm
         assert getArguments() != null;
-        taskId = getArguments().getInt("taskId");
-        Task task = CRUDTask.getTask(taskId);
-        init(task);
-
-        title.setText(task.getTitle());
-        description.setText(task.getDescription());
-        Date dateT = task.getDate();
+        int taskId = getArguments().getInt("taskId");
+        this.task = CRUDTask.getTask(taskId);
+        this.initDate(this.task);
+        // display
+        title.setText(this.task.getTitle());
+        description.setText(this.task.getDescription());
+        Date dateT = this.task.getDate();
         SimpleDateFormat ftDate = new SimpleDateFormat("dd/MM/yyyy");
-        dateDisplay.setText(ftDate.format(dateT));
+        this.dateDisplay.setText(ftDate.format(dateT));
         SimpleDateFormat ftHour = new SimpleDateFormat("hh:mm");
-        hourDisplay.setText(ftHour.format(dateT));
-
-        /*
-        Calendar dateTaskCalendar = Calendar.getInstance();
-        dateTaskCalendar.set(date[2], date[1], date[0]);
-        Date dateTask = dateTaskCalendar.getTime();
-        dateDisplay.setText(dateTask.toString()); //ver cómo imprime la fecha (debería ser del tipo 25/10/2022)
-
-        Calendar hourTaskCalendar = Calendar.getInstance();
-        hourTaskCalendar.set(hour[0], hour[1]);
-        Date hourTask = hourTaskCalendar.getTime();
-        hourDisplay.setText(hourTask.toString()); //ver si pone hora actual o de la task
-         */
+        this.hourDisplay.setText(ftHour.format(dateT));
         return view;
     }
 
-    private void init(Task task) {
-        date[0]=task.getDay();
-        date[1]=task.getMonth();
-        date[2]=task.getYear();
-        hour[0]=task.getHour();
-        hour[1]=task.getMinutes();
+    private void initDate(Task task) {
+        this.date[0]=task.getDay();
+        this.date[1]=task.getMonth();
+        this.date[2]=task.getYear();
+        this.hour[0]=task.getHour();
+        this.hour[1]=task.getMinutes();
     }
-
 
     private void syncDisplayDate() {
         if (date[1] < 9) {
-            this.dateDisplay.setText(date[0] + "/0" + (date[1]+1) + "/" + date[2]);
+            this.dateDisplay.setText(this.date[0] + "/0" + (this.date[1]+1) + "/" + this.date[2]);
         } else {
-            this.dateDisplay.setText(date[0] + "/" + (date[1]+1) + "/" + date[2]);
+            this.dateDisplay.setText(this.date[0] + "/" + (this.date[1]+1) + "/" + this.date[2]);
         }
 
     }
 
     private void syncDisplayHour() {
         if (hour[1] < 10) {
-            this.hourDisplay.setText(hour[0] + ":0" + hour[1]);
+            this.hourDisplay.setText(this.hour[0] + ":0" + this.hour[1]);
         } else {
-            this.hourDisplay.setText(hour[0] + ":" + hour[1]);
+            this.hourDisplay.setText(this.hour[0] + ":" + this.hour[1]);
         }
     }
 
@@ -132,7 +117,6 @@ public class TaskEditFragment extends Fragment {
         tmd.show();
     }
 
-
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -158,31 +142,27 @@ public class TaskEditFragment extends Fragment {
         builderAD.setNegativeButton("CANCEL", null);
         builderAD.create().show();
     }
-     */
+    */
 
-
-    //ver si creamos una task nueva y eliminamos la existente o modificamos la task en la bbdd
     public void modifyTask(View view) {
-        this.titleInputText = view.findViewById(R.id.taskEditEditTitle);
-        this.descriptionInputText = view.findViewById(R.id.taskEditEditDescription);
-        boolean isTitleInputEmpty = this.titleInputText.getText().toString().equals("");
+        EditText titleInputText = view.findViewById(R.id.taskEditEditTitle);
+        EditText descriptionInputText = view.findViewById(R.id.taskEditEditDescription);
+        boolean isTitleInputEmpty = titleInputText.getText().toString().equals("");
         if (!isTitleInputEmpty) {
             Calendar dateTaskCalendar = Calendar.getInstance();
-            dateTaskCalendar.set(date[2], date[1], date[0], hour[0], hour[1]);
+            dateTaskCalendar.set(this.date[2], this.date[1], this.date[0], this.hour[0], this.hour[1]);
             Date dateTask = dateTaskCalendar.getTime();
             // realm
-            String titleText = this.titleInputText.getText().toString();
-            String descriptionText = this.descriptionInputText.getText().toString();
-            assert getArguments() != null;
-            taskId = getArguments().getInt("taskId");
-            Task task = CRUDTask.getTask(taskId);
+            String titleText = titleInputText.getText().toString();
+            String descriptionText = descriptionInputText.getText().toString();
             Task newTask = new Task(titleText, descriptionText, dateTask);
-            CRUDTask.updateTask(task,newTask);
-            Toast.makeText(getContext(), R.string.succesful_edit, Toast.LENGTH_LONG).show();
+            CRUDTask.updateTask(this.task, newTask);
+            Toast.makeText(this.getContext(), R.string.successful_edit, Toast.LENGTH_LONG).show();
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TaskEditFragment_to_TaskListFragment);
         } else {
-            Toast.makeText(getContext(), R.string.noTitle_text, Toast.LENGTH_LONG).show();
+            Toast.makeText(this.getContext(), R.string.noTitle_text, Toast.LENGTH_LONG).show();
         }
     }
+
 }

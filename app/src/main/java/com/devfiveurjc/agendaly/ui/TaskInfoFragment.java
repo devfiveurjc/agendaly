@@ -20,23 +20,22 @@ import com.devfiveurjc.agendaly.model.Task;
 public class TaskInfoFragment extends Fragment {
 
     private FragmentTaskInfoBinding binding;
-    int taskId;
+    private int taskId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState
-    ) {
+                             Bundle savedInstanceState) {
         // tasks card list with recycler view
         this.binding = FragmentTaskInfoBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
+        View view = this.binding.getRoot();
         TextView title = view.findViewById(R.id.taskInfoTitle);
         TextView description = view.findViewById(R.id.taskInfoDescription);
         TextView date = view.findViewById(R.id.taskInfoDate);
         TextView status =  view.findViewById(R.id.taskInfoStatus);
         // retrieve bundle
-        assert getArguments() != null;
-        taskId = getArguments().getInt("taskId");
-        Task task = CRUDTask.getTask(taskId);
+        assert this.getArguments() != null;
+        this.taskId = this.getArguments().getInt("taskId");
+        Task task = CRUDTask.getTask(this.taskId);
         // show task info
         title.setText(task.getTitle());
         description.setText(task.getDescription());
@@ -45,26 +44,11 @@ public class TaskInfoFragment extends Fragment {
         return view;
     }
 
-    public void deleteTask() {
-        CRUDTask.deleteTask(taskId);
-    }
-
-    /* idk what is this
-    private String syncDisplayHour(TextView display, int[] hour) {
-        if (hour[1] < 10) {
-            display.setText(hour[0] + ":0" + hour[1]);
-        } else {
-            display.setText(hour[0] + ":" + hour[1]);
-        }
-        return "";
-    }
-    */
-
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.binding.taskInfoDeleteButton.setOnClickListener(v -> {
-            deleteTask();
+            CRUDTask.deleteTask(this.taskId);
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TaskInfoFragment_to_TaskListFragment);
         });

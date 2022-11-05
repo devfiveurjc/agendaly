@@ -58,11 +58,11 @@ public class TaskEditFragment extends Fragment {
     }
 
     private void initDate(Task task) {
-        this.date[0]=task.getDay();
-        this.date[1]=task.getMonth();
-        this.date[2]=task.getYear();
-        this.time[0]=task.getHour();
-        this.time[1]=task.getMinutes();
+        this.date[0] = task.getDay();
+        this.date[1] = task.getMonth();
+        this.date[2] = task.getYear();
+        this.time[0] = task.getHour();
+        this.time[1] = task.getMinutes();
     }
 
     @Override

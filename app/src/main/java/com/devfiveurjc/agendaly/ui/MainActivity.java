@@ -19,6 +19,7 @@ import com.devfiveurjc.agendaly.model.Task;
 
 import java.util.Date;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
@@ -31,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
             CRUDTask.addTask(new Task("owo", "owo", new Date()));
         }
         super.onCreate(savedInstanceState);
-        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        ActivityMainBinding binding = ActivityMainBinding.inflate(this.getLayoutInflater());
         this.setContentView(binding.getRoot());
         this.setSupportActionBar(binding.toolbar);
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         this.appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupActionBarWithNavController(this, navController, this.appBarConfiguration);
     }
 
     @Override
@@ -63,21 +64,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
+        return NavigationUI.navigateUp(navController, this.appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
-    /* old
-    public void showHelp(View view) {
-        // WARNING delete temp testing
-        CRUDTask.deleteAllTasks();
-        ContextThemeWrapper newContext = new ContextThemeWrapper(this, R.style.Theme_Agendaly_Dialog);
-        AlertDialog.Builder builderAD = new AlertDialog.Builder(newContext);
-        builderAD.setTitle(R.string.help);
-        builderAD.setMessage(R.string.help_text);
-        builderAD.setPositiveButton("OK", null);
-        builderAD.create().show();
-    }
-    */
 
 }

@@ -3,11 +3,17 @@
     <string name="task_add_label">Add Task</string>
     <string name="task_info_label">Info Task</string>
     <string name="settings_label">Settings</string>
+    <string name="task_edit_label">Edit Task</string>
     <string name="example">example</string>
     <string name="help">Help</string>
     <string name="help_text">
         Welcome to Agendaly!\n
         This app will help you to organize your daily tasks in a really simple way.
+    </string>
+    <string name="caution">Caution</string>
+    <string name="caution_text">
+        If you press OK you will modify this task with the new data entered.\n
+        If you dont wish to make any changes press CANCEL.
     </string>
     <string name="tasks">My tasks</string>
     <string name="add_task">Add task</string>
@@ -17,6 +23,8 @@
     <string name="new_task">New Task</string>
     <string name="title">Write the task title</string>
     <string name="description">Write a description</string>
+    <string name="newTitle">Write a new task title</string>
+    <string name="newDescription">Write a new description</string>
     <string name="date">Date:</string>
     <string name="hour">Hour:</string>
     <string name="exit">Exit</string>
@@ -42,4 +50,6 @@
     <string name="language_title">Select your language</string>
     <string name="dark_mode_title">Dark mode</string>
 
+    <string name="edit_task">edit</string>
+    <string name="successful_edit">Your task has been modified</string>
 </resources>

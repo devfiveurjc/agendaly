@@ -1,5 +1,6 @@
 package com.devfiveurjc.agendaly.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import io.realm.RealmObject;
@@ -55,9 +56,27 @@ public class Task extends RealmObject {
         return this.description;
     }
 
-    public Date getDate() {
-        return this.date;
-    }
+    public Date getDate() { return this.date;}
+
+    public int getDay() {
+        SimpleDateFormat ftDay = new SimpleDateFormat("dd");
+        return Integer.parseInt(ftDay.format(this.date));}
+
+    public int getMonth() {
+        SimpleDateFormat ftMonth = new SimpleDateFormat("MM");
+        return Integer.parseInt(ftMonth.format(this.date))-1;}
+
+    public int getYear() {
+        SimpleDateFormat ftYear = new SimpleDateFormat("yyyy");
+        return Integer.parseInt(ftYear.format(this.date));}
+
+    public int getMinutes() {
+        SimpleDateFormat ftMinutes = new SimpleDateFormat("mm");
+        return Integer.parseInt(ftMinutes.format(this.date));}
+
+    public int getHour() {
+        SimpleDateFormat ftHour = new SimpleDateFormat("hh");
+        return Integer.parseInt(ftHour.format(this.date));}
 
     public boolean isCheck() {
         return this.check;

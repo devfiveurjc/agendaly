@@ -5,50 +5,15 @@
     android:id="@+id/taskAddConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.TaskAddFragment">
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/taskAddSaveButton"
-        android:layout_width="96dp"
-        android:layout_height="48dp"
-        android:backgroundTint="@color/devfive_blue"
-        android:text="@string/save"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:cornerRadius="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948" />
+    tools:context=".ui.TaskEditFragment">
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/taskAddEditDescription"
+        android:id="@+id/taskEditEditTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/description"
-        android:inputType="textPersonName|textImeMultiLine"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintCircleRadius="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.205" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/taskAddEditTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:ems="10"
-        android:hint="@string/title"
+        android:hint="@string/newTitle"
         android:inputType="textPersonName|textImeMultiLine"
         android:textAlignment="textStart"
         android:textColor="@color/black"
@@ -61,8 +26,26 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.107" />
 
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/taskEditEditDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/newDescription"
+        android:inputType="textPersonName|textImeMultiLine"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintCircleRadius="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.205" />
+
     <TextView
-        android:id="@+id/taskAddDate"
+        android:id="@+id/taskEditDate"
         android:layout_width="150dp"
         android:layout_height="55dp"
         android:backgroundTint="#D11F1F"
@@ -79,7 +62,7 @@
         app:layout_constraintVertical_bias="0.569" />
 
     <TextView
-        android:id="@+id/taskAddTime"
+        android:id="@+id/taskEditTime"
         android:layout_width="150dp"
         android:layout_height="55dp"
         android:backgroundTint="#D11F1F"
@@ -96,27 +79,42 @@
         app:layout_constraintVertical_bias="0.721" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/taskAddEditDateButton"
+        android:id="@+id/taskEditEditDateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="216dp"
         android:clickable="true"
-        android:src="@android:drawable/ic_menu_edit"
         app:backgroundTint="@color/devfive_blue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskAddEditDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/taskEditEditDescription"
+        android:src="@android:drawable/ic_menu_edit" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/taskAddEditTimeButton"
+        android:id="@+id/taskEditEditTimeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="44dp"
         android:clickable="true"
-        android:src="@android:drawable/ic_menu_edit"
         app:backgroundTint="@color/devfive_blue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskAddEditDateButton" />
+        app:layout_constraintTop_toBottomOf="@+id/taskEditEditDateButton"
+        android:src="@android:drawable/ic_menu_edit" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/taskEditSaveButton"
+        android:layout_width="96dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/devfive_blue"
+        android:text="@string/save"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

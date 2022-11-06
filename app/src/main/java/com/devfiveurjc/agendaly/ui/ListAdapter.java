@@ -21,11 +21,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     private final List<Task> tasks;
     private final LayoutInflater mInflater;
-    final ListAdapter.OnItemClickListener listener;
+    private final ListAdapter.OnItemClickListener listener;
 
     public interface OnItemClickListener {
         void onItemClick(Task task);
@@ -45,7 +46,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     @NonNull
     @Override
     public ListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        @SuppressLint("InflateParams") View view = mInflater.inflate(R.layout.list_element, null);
+        @SuppressLint("InflateParams") View view = this.mInflater.inflate(R.layout.list_element, null);
         return new ListAdapter.ViewHolder(view);
     }
 

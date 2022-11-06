@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,17 +28,16 @@ public class TaskListFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState
-    ) {
+                             Bundle savedInstanceState) {
         // tasks card list with recycler view
         this.binding = FragmentTaskListBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
+        View view = this.binding.getRoot();
         List<Task> tasks = CRUDTask.getAllTasks();
         tasks = tasks.stream().sorted(Comparator.comparing(Task::getDate)).collect(Collectors.toList());
         ListAdapter listAdapter = new ListAdapter(tasks, requireContext(), task -> switchTaskInfoFragment(task.getId()));
         RecyclerView recyclerView = view.findViewById(R.id.listRecyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setAdapter(listAdapter);
         return view;
     }
@@ -54,9 +52,7 @@ public class TaskListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // button to task add fragment
         this.binding.addFloatingButton.setOnClickListener(v -> {
-            // binding.addFloatingButton.setVisibility(View.GONE);
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TaskListFragment_to_TaskAddFragment);
         });

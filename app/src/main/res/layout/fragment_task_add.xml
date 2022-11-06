@@ -5,7 +5,7 @@
     android:id="@+id/taskAddConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.TaskAddFragment">
+    tools:context=".fragments.TaskAddFragment">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/taskAddSaveButton"

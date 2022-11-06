@@ -1,4 +1,4 @@
-package com.devfiveurjc.agendaly.ui;
+package com.devfiveurjc.agendaly.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.devfiveurjc.agendaly.R;
 import com.devfiveurjc.agendaly.crud.CRUDTask;
-import com.devfiveurjc.agendaly.model.Task;
+import com.devfiveurjc.agendaly.models.Task;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.devfiveurjc.agendaly.ui;
+package com.devfiveurjc.agendaly.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

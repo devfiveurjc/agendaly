@@ -111,7 +111,7 @@ public class TaskEditFragment extends Fragment {
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TaskEditFragment_to_TaskListFragment);
         } else {
-            Toast.makeText(this.getContext(), R.string.noTitle_text, Toast.LENGTH_LONG).show();
+            Toast.makeText(this.getContext(), R.string.no_title_text, Toast.LENGTH_LONG).show();
         }
     }
 

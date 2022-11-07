@@ -1,4 +1,4 @@
-package com.devfiveurjc.agendaly.ui;
+package com.devfiveurjc.agendaly.fragments;
 
 import android.os.Bundle;
 
@@ -13,9 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.devfiveurjc.agendaly.R;
+import com.devfiveurjc.agendaly.adapters.ListAdapter;
 import com.devfiveurjc.agendaly.crud.CRUDTask;
 import com.devfiveurjc.agendaly.databinding.FragmentTaskListBinding;
-import com.devfiveurjc.agendaly.model.Task;
+import com.devfiveurjc.agendaly.models.Task;
 
 import java.util.Comparator;
 import java.util.List;

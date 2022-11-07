@@ -1,4 +1,4 @@
-package com.devfiveurjc.agendaly.ui;
+package com.devfiveurjc.agendaly.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import com.devfiveurjc.agendaly.R;
 import com.devfiveurjc.agendaly.crud.CRUDTask;
 import com.devfiveurjc.agendaly.databinding.ActivityMainBinding;
-import com.devfiveurjc.agendaly.model.Task;
+import com.devfiveurjc.agendaly.models.Task;
 
 import java.util.Date;
 

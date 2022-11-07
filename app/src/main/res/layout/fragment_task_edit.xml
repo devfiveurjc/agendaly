@@ -5,7 +5,7 @@
     android:id="@+id/taskAddConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.TaskEditFragment">
+    tools:context=".fragments.TaskEditFragment">
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/taskEditEditTitle"
@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:ems="10"
-        android:hint="@string/newTitle"
+        android:hint="@string/new_title_write"
         android:inputType="textPersonName|textImeMultiLine"
+        android:text="@string/title"
         android:textAlignment="textStart"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -33,8 +34,9 @@
         android:background="@color/white"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="@string/newDescription"
+        android:hint="@string/description_write"
         android:inputType="textPersonName|textImeMultiLine"
+        android:text="@string/description"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintCircleRadius="40dp"
@@ -67,7 +69,7 @@
         android:layout_height="55dp"
         android:backgroundTint="#D11F1F"
         android:gravity="center"
-        android:text="@string/hour"
+        android:text="@string/time"
         android:textColor="@color/devfive_button"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -88,7 +90,8 @@
         app:backgroundTint="@color/devfive_blue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskEditEditDescription"
-        android:src="@android:drawable/ic_menu_edit" />
+        android:src="@android:drawable/ic_menu_edit"
+        android:contentDescription="@string/date" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/taskEditEditTimeButton"
@@ -100,7 +103,8 @@
         app:backgroundTint="@color/devfive_blue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskEditEditDateButton"
-        android:src="@android:drawable/ic_menu_edit" />
+        android:src="@android:drawable/ic_menu_edit"
+        android:contentDescription="@string/time" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/taskEditSaveButton"

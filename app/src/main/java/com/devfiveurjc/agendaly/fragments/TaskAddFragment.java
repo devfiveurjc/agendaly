@@ -1,4 +1,4 @@
-package com.devfiveurjc.agendaly.ui;
+package com.devfiveurjc.agendaly.fragments;
 
 import android.os.Bundle;
 
@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.devfiveurjc.agendaly.R;
 import com.devfiveurjc.agendaly.crud.CRUDTask;
 import com.devfiveurjc.agendaly.databinding.FragmentTaskAddBinding;
-import com.devfiveurjc.agendaly.model.Task;
+import com.devfiveurjc.agendaly.models.Task;
 import com.devfiveurjc.agendaly.dialogs.DateTimeDialog;
 
 import java.util.Calendar;
@@ -69,7 +69,7 @@ public class TaskAddFragment extends Fragment {
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TaskAddFragment_to_TaskListFragment);
         } else {
-            Toast.makeText(this.getContext(), R.string.noTitle_text, Toast.LENGTH_LONG).show();
+            Toast.makeText(this.getContext(), R.string.no_title_text, Toast.LENGTH_LONG).show();
         }
     }
 

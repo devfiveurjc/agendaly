@@ -1,6 +1,6 @@
 package com.devfiveurjc.agendaly.crud;
 
-import com.devfiveurjc.agendaly.model.Task;
+import com.devfiveurjc.agendaly.models.Task;
 
 import java.util.List;
 

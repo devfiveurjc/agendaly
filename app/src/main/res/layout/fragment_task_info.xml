@@ -5,14 +5,14 @@
     android:id="@+id/taskInfoConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.TaskInfoFragment">
+    tools:context=".fragments.TaskInfoFragment">
 
     <TextView
         android:id="@+id/taskInfoTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/example"
+        android:text="@string/title"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="108dp"
-        android:text="@string/example"
+        android:text="@string/description"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="188dp"
         android:gravity="center"
-        android:text="@string/example"
+        android:text="@string/date"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
         android:gravity="center"
-        android:text="@string/example"
+        android:text="@string/status"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

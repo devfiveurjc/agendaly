@@ -1,4 +1,4 @@
-package com.devfiveurjc.agendaly.model;
+package com.devfiveurjc.agendaly.models;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

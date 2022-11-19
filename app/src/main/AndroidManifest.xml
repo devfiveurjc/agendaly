@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".BaseApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,45 +14,21 @@
         android:theme="@style/Theme.Agendaly"
         tools:targetApi="31">
         <activity
-            android:name=".CalendarActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Agendaly.NoActionBar">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ViewTasksActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Agendaly.NoActionBar">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".NewTaskActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Agendaly.NoActionBar">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".MenuActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Agendaly.NoActionBar">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Agendaly.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:exported="false"
+            android:label="@string/settings_label">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

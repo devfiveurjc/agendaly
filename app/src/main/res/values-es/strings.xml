@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Generic -->
+    <string name="settings_label">Configuración</string>
+    <string name="save">Guardar</string>
+    <string name="title">Título</string>
+    <string name="description">Descripción</string>
+    <string name="date">Fecha</string>
+    <string name="time">Tiempo</string>
+    <string name="status">Estado</string>
+    <string name="caution">Peligro</string>
+    <string name="caution_text">
+        Si presionas OK modificarás esta tarea con la nueva información./n
+        Si no quieres guardar los cambios presiona cance
+    </string>
+    <!-- Config -->
+    <string name="language_title">Selecciona tu idioma</string>
+    <string name="dark_mode_title">Modo oscuro</string>
+    <!-- Task list -->
+    <string name="week_day">Día de la semana</string>
+    <!-- Task add -->
+    <string name="task_add_label">Añadir Tarea</string>
+    <string name="title_write">Escribe un título</string>
+    <string name="description_write">Escribe una descripción</string>
+    <string name="no_title_text">Porfavor, indique el título de su tarea.</string>
+    <!-- Task info -->
+    <string name="task_info_label">Información de la Tarea</string>
+    <string name="new_title_write">Escribe un nuevo título</string>
+    <string name="new_description_write">Escribe una nueva descripción</string>
+    <string name="delete">Eliminar</string>
+    <string name="edit_task">Editar</string>
+    <!-- Task edit -->
+    <string name="task_edit_label">Editar Tarea</string>
+    <string name="successful_edit">Tu tarea ha sido modificada</string>
+</resources>

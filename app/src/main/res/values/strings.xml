@@ -1,6 +1,6 @@
 <resources>
     <!-- Generic -->
-    <string name="app_name">Agendaly</string>
+    <string name="app_name" translatable="false">Agendaly</string>
     <string name="settings_label">Settings</string>
     <string name="save">Save</string>
     <string name="title">Title</string>
@@ -10,8 +10,8 @@
     <string name="status">Status</string>
     <string name="caution">Caution</string>
     <string name="caution_text">
-        If you press OK you will modify this task with the new data entered.
-        if you don\'t wish to make any changes press cancel.
+        If you press OK you will modify this task with the new data entered.\n
+        If you don\'t wish to make any changes press cancel.
     </string>
     <!-- Config -->
     <string name="language_title">Select your language</string>
@@ -22,12 +22,10 @@
     <string name="task_add_label">Add Task</string>
     <string name="title_write">Write a title</string>
     <string name="description_write">Write a description</string>
-    <string name="no_title_text">
-        Please, indicate the title of your task.
-    </string>
+    <string name="no_title_text">Please, indicate the title of your task.</string>
     <!-- Task info -->
     <string name="task_info_label">Info Task</string>
-    <string name="new_title_write">Write a new task title</string>
+    <string name="new_title_write">Write a new title</string>
     <string name="new_description_write">Write a new description</string>
     <string name="delete">Delete</string>
     <string name="edit_task">Edit</string>

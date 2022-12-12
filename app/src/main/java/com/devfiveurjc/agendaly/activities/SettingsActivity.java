@@ -1,14 +1,18 @@
 package com.devfiveurjc.agendaly.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceManager;
 
 import com.devfiveurjc.agendaly.R;
+import com.devfiveurjc.agendaly.crud.CRUDSetting;
+
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -37,6 +41,9 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        CRUDSetting.setLanguage(pref.getString("language", "english"));
+        CRUDSetting.setDarkMode(pref.getBoolean("dark_mode", false));
         int id = item.getItemId();
         if (id == android.R.id.home) {
             startActivity(new Intent(this, MainActivity.class));

@@ -6,6 +6,7 @@ import java.util.Date;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
+
 public class Task extends RealmObject {
 
     @PrimaryKey

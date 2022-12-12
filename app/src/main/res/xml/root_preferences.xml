@@ -11,6 +11,7 @@
             app:useSimpleSummaryProvider="true" />
 
         <SwitchPreferenceCompat
+            app:defaultValue="false"
             app:key="dark_mode"
             app:title="@string/dark_mode_title" />
 

@@ -10,8 +10,8 @@
     <string name="status">Estado</string>
     <string name="caution">Peligro</string>
     <string name="caution_text">
-        Si presionas OK modificarás esta tarea con la nueva información./n
-        Si no quieres guardar los cambios presiona cance
+        Si presionas OK modificarás esta tarea con la nueva información.\n
+        Si no quieres guardar los cambios presiona cancel.
     </string>
     <!-- Config -->
     <string name="language_title">Selecciona tu idioma</string>

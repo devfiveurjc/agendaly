@@ -1,6 +1,7 @@
 package com.devfiveurjc.agendaly.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,13 +9,16 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.preference.PreferenceManager;
 
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.devfiveurjc.agendaly.R;
+import com.devfiveurjc.agendaly.crud.CRUDSetting;
 import com.devfiveurjc.agendaly.crud.CRUDTask;
 import com.devfiveurjc.agendaly.databinding.ActivityMainBinding;
+import com.devfiveurjc.agendaly.models.Setting;
 import com.devfiveurjc.agendaly.models.Task;
 
 import java.util.Date;
@@ -26,6 +30,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // CRUDSetting.clearSetting();
+        // CRUDTask.deleteAllTasks();
+        // default setting
+        if (CRUDSetting.isEmpty()) {
+            PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false);
+            CRUDSetting.createSetting("english", false);
+        // saved setting
+        } else {
+            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+            Setting setting = CRUDSetting.getSetting();
+            pref.edit().putString("language", setting.getLanguage()).apply();
+            pref.edit().putBoolean("dark_mode", setting.isDarkMode()).apply();
+        }
         // initial default tasks
         if (CRUDTask.isEmpty()) {
             CRUDTask.addTask(new Task("uwu", "uwu", new Date()));

@@ -82,10 +82,10 @@ public class TaskEditFragment extends Fragment {
             DateTimeDialog.editTime(this.getContext(), this.timeDisplay, this.time);
         });
     }
-    
+
     public void showMessage(View view) {
         AlertDialog.Builder alerta= new AlertDialog.Builder(getContext());
-        alerta.setMessage(R.string.caution_text)
+        alerta.setMessage(R.string.caution_text_edit)
                 .setCancelable(false)
                 .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     @Override

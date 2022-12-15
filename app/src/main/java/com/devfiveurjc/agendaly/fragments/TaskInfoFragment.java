@@ -61,7 +61,7 @@ public class TaskInfoFragment extends Fragment {
     }
     public void showMessage(View view, int taskId, TaskInfoFragment taskInfoFragment) {
         AlertDialog.Builder alerta= new AlertDialog.Builder(getContext());
-        alerta.setMessage(R.string.caution_text)
+        alerta.setMessage(R.string.caution_text_delete)
                 .setCancelable(false)
                 .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     @Override

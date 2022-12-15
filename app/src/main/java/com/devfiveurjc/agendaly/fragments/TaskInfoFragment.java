@@ -1,5 +1,7 @@
 package com.devfiveurjc.agendaly.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -48,10 +50,7 @@ public class TaskInfoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.binding.taskInfoDeleteButton.setOnClickListener(v -> {
-            // TODO: confirmation popup
-            CRUDTask.deleteTask(this.taskId);
-            NavHostFragment.findNavController(this)
-                    .navigate(R.id.action_TaskInfoFragment_to_TaskListFragment);
+            this.showMessage(view,this.taskId,this);
         });
         this.binding.taskInfoEditButton.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
@@ -59,6 +58,28 @@ public class TaskInfoFragment extends Fragment {
             NavHostFragment.findNavController(this)
                     .navigate(R.id.action_TaskInfoFragment_to_TaskEditFragment,bundle);
         });
+    }
+    public void showMessage(View view, int taskId, TaskInfoFragment taskInfoFragment) {
+        AlertDialog.Builder alerta= new AlertDialog.Builder(getContext());
+        alerta.setMessage(R.string.caution_text)
+                .setCancelable(false)
+                .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        CRUDTask.deleteTask(taskId);
+                        NavHostFragment.findNavController(taskInfoFragment)
+                                .navigate(R.id.action_TaskInfoFragment_to_TaskListFragment);
+                    }
+                })
+                .setNegativeButton(R.string.goback, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+        AlertDialog titulo = alerta.create();
+        titulo.setTitle(R.string.caution);
+        titulo.show();
     }
 
     @Override

@@ -1,6 +1,10 @@
 package com.devfiveurjc.agendaly.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,9 +73,7 @@ public class TaskEditFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.binding.taskEditSaveButton.setOnClickListener(v -> {
-            // TODO: confirmation popup
-            //this.showMessage(view); if press OK -> modify
-            this.modifyTask(view);
+            this.showMessage(view);
         });
         this.binding.taskEditEditDateButton.setOnClickListener(v -> {
             DateTimeDialog.editDate(this.getContext(), this.dateDisplay, this.date);
@@ -80,18 +82,28 @@ public class TaskEditFragment extends Fragment {
             DateTimeDialog.editTime(this.getContext(), this.timeDisplay, this.time);
         });
     }
-
-    /* confirmation popup
+    
     public void showMessage(View view) {
-        ContextThemeWrapper newContext = new ContextThemeWrapper(this, R.style.Theme.Agendaly.Dialog);
-        AlertDialog.Builder builderAD = new AlertDialog.Builder(newContext);
-        builderAD.setTitle(R.string.caution);
-        builderAD.setMessage(R.string.caution_text);
-        builderAD.setPositiveButton("OK", null);
-        builderAD.setNegativeButton("CANCEL", null);
-        builderAD.create().show();
+        AlertDialog.Builder alerta= new AlertDialog.Builder(getContext());
+        alerta.setMessage(R.string.caution_text)
+                .setCancelable(false)
+                .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        modifyTask(view);
+                    }
+                })
+                .setNegativeButton(R.string.goback, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+        AlertDialog titulo = alerta.create();
+        titulo.setTitle(R.string.caution);
+        titulo.show();
     }
-    */
+
 
     public void modifyTask(View view) {
         EditText titleInputText = view.findViewById(R.id.taskEditEditTitle);

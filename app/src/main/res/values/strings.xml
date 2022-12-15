@@ -13,6 +13,8 @@
         If you press OK you will modify this task with the new data entered.
         if you don\'t wish to make any changes press cancel.
     </string>
+    <string name="confirm">Confirm</string>
+    <string name="goback">Go back</string>
     <!-- Config -->
     <string name="language_title">Select your language</string>
     <string name="dark_mode_title">Dark mode</string>

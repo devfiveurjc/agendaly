@@ -12,10 +12,10 @@ public class CRUDSetting {
     private static final Realm realm = Realm.getDefaultInstance();
 
     private static void clearSetting() {
-        Setting setting = realm.where(Setting.class).findFirst();
-        if (setting != null) {
+        Setting realmSetting = getSetting();
+        if (realmSetting != null) {
             realm.executeTransaction(realm -> {
-                setting.deleteFromRealm();
+                realmSetting.deleteFromRealm();
             });
         }
     }
@@ -51,7 +51,7 @@ public class CRUDSetting {
     }
 
     public static boolean isEmpty() {
-        return realm.isEmpty();
+        return getSetting() == null;
     }
 
     public static Setting getSetting() {

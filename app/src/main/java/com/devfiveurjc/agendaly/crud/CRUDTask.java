@@ -65,7 +65,7 @@ public class CRUDTask {
     }
 
     public static boolean isEmpty() {
-        return realm.isEmpty();
+        return realm.where(Task.class).findFirst() == null;
     }
 
     public static List<Task> getAllTasks() {

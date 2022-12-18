@@ -1,7 +1,5 @@
 package com.devfiveurjc.agendaly.models;
 
-import java.util.Objects;
-
 import io.realm.RealmObject;
 
 

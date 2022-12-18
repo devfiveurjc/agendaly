@@ -34,15 +34,12 @@ public class MainActivity extends AppCompatActivity {
         // CRUDTask.deleteAllTasks();
         // default setting
         if (CRUDSetting.isEmpty()) {
-            PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false);
             CRUDSetting.createSetting("english", false);
-        // saved setting
-        } else {
-            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-            Setting setting = CRUDSetting.getSetting();
-            pref.edit().putString("language", setting.getLanguage()).apply();
-            pref.edit().putBoolean("dark_mode", setting.isDarkMode()).apply();
         }
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        Setting setting = CRUDSetting.getSetting();
+        pref.edit().putString("language", setting.getLanguage()).apply();
+        pref.edit().putBoolean("dark_mode", setting.isDarkMode()).apply();
         // initial default tasks
         if (CRUDTask.isEmpty()) {
             CRUDTask.addTask(new Task("uwu", "uwu", new Date()));

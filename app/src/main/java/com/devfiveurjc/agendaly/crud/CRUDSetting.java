@@ -2,8 +2,6 @@ package com.devfiveurjc.agendaly.crud;
 
 import com.devfiveurjc.agendaly.models.Setting;
 
-import java.util.Objects;
-
 import io.realm.Realm;
 
 

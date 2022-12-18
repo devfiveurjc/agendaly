@@ -50,7 +50,7 @@ public class TaskInfoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.binding.taskInfoDeleteButton.setOnClickListener(v -> {
-            this.showMessage(view,this.taskId,this);
+            this.showMessage(view, this.taskId, this);
         });
         this.binding.taskInfoEditButton.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
@@ -59,27 +59,20 @@ public class TaskInfoFragment extends Fragment {
                     .navigate(R.id.action_TaskInfoFragment_to_TaskEditFragment,bundle);
         });
     }
+
     public void showMessage(View view, int taskId, TaskInfoFragment taskInfoFragment) {
-        AlertDialog.Builder alerta= new AlertDialog.Builder(getContext());
-        alerta.setMessage(R.string.caution_text_delete)
-                .setCancelable(false)
-                .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        CRUDTask.deleteTask(taskId);
-                        NavHostFragment.findNavController(taskInfoFragment)
-                                .navigate(R.id.action_TaskInfoFragment_to_TaskListFragment);
-                    }
-                })
-                .setNegativeButton(R.string.goback, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-        AlertDialog titulo = alerta.create();
-        titulo.setTitle(R.string.caution);
-        titulo.show();
+        AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+        alert.setMessage(R.string.caution_text_delete)
+            .setCancelable(false)
+            .setPositiveButton(R.string.confirm, (dialogInterface, i) -> {
+                CRUDTask.deleteTask(taskId);
+                NavHostFragment.findNavController(taskInfoFragment)
+                        .navigate(R.id.action_TaskInfoFragment_to_TaskListFragment);
+            })
+            .setNegativeButton(R.string.goback, (dialogInterface, i) -> dialogInterface.cancel());
+        AlertDialog title = alert.create();
+        title.setTitle(R.string.caution);
+        title.show();
     }
 
     @Override

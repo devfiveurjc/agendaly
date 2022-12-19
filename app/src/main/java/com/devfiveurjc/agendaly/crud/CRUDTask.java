@@ -29,16 +29,16 @@ public class CRUDTask {
     }
 
     public static void updateTaskCheck(Task realmTask, boolean check) {
-        realm.beginTransaction();
-        realmTask.setCheck(check);
-        realm.insertOrUpdate(realmTask);
-        realm.commitTransaction();
+        realm.executeTransaction(realm -> {
+            realmTask.setCheck(check);
+            realm.insertOrUpdate(realmTask);
+        });
     }
 
     public static void updateTask(Task realmTask, Task task) {
-        realm.beginTransaction();
-        setRealmTask(realmTask, task);
-        realm.commitTransaction();
+        realm.executeTransaction(realm -> {
+            setRealmTask(realmTask, task);
+        });
     }
 
     private static void setRealmTask(Task realmTask, Task task) {
@@ -49,23 +49,23 @@ public class CRUDTask {
     }
 
     public static void deleteAllTasks() {
-        realm.beginTransaction();
-        List<Task> realmTasks = getAllTasks();
-        for (Task realmTask : realmTasks) {
-            realmTask.deleteFromRealm();
-        }
-        realm.commitTransaction();
+        realm.executeTransaction(realm -> {
+            List<Task> realmTasks = getAllTasks();
+            for (Task realmTask : realmTasks) {
+                realmTask.deleteFromRealm();
+            }
+        });
     }
 
     public static void deleteTask(int id) {
-        realm.beginTransaction();
-        Task realmTask = getTask(id);
-        realmTask.deleteFromRealm();
-        realm.commitTransaction();
+        realm.executeTransaction(realm -> {
+            Task realmTask = getTask(id);
+            realmTask.deleteFromRealm();
+        });
     }
 
     public static boolean isEmpty() {
-        return realm.isEmpty();
+        return realm.where(Task.class).findFirst() == null;
     }
 
     public static List<Task> getAllTasks() {

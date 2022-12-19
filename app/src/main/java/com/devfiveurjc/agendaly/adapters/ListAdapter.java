@@ -13,6 +13,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.devfiveurjc.agendaly.R;
+import com.devfiveurjc.agendaly.crud.CRUDSetting;
 import com.devfiveurjc.agendaly.crud.CRUDTask;
 import com.devfiveurjc.agendaly.models.Task;
 
@@ -78,8 +79,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             String descriptionText = cutText(task.getDescription());
             this.description.setText(descriptionText);
             Date date = task.getDate();
-            String dayText = new SimpleDateFormat("EEEE", Locale.US).format(date);
-            this.day.setText(dayText);
+            String language = CRUDSetting.getSetting().getLanguage();
+            Locale locale = new Locale(language);
+            String dayText = new SimpleDateFormat("EEEE", locale).format(date);
+            this.day.setText(capitalize(dayText));
             String dateText = new SimpleDateFormat("dd/MM/yy", Locale.US).format(date);
             this.date.setText(dateText);
             this.itemView.setOnClickListener(view -> listener.onItemClick(task));
@@ -93,10 +96,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     private String cutText(String text) {
-        if (text.length() > 25) {
-            return text.substring(0, 25).trim() + "...";
-        }
+        if (text.length() > 25) return text.substring(0, 25).trim() + "...";
         return text;
+    }
+
+    private String capitalize(String text) {
+        if (text == null || text.isEmpty()) return text;
+        return text.substring(0, 1).toUpperCase() + text.substring(1);
     }
 
 }

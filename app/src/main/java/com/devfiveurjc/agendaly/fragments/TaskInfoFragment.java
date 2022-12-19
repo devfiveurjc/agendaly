@@ -1,7 +1,6 @@
 package com.devfiveurjc.agendaly.fragments;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -50,28 +49,28 @@ public class TaskInfoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.binding.taskInfoDeleteButton.setOnClickListener(v -> {
-            this.showMessage(view, this.taskId, this);
+            this.deleteCautionMessage();
         });
         this.binding.taskInfoEditButton.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
-            bundle.putInt("taskId", taskId);
+            bundle.putInt("taskId", this.taskId);
             NavHostFragment.findNavController(this)
-                    .navigate(R.id.action_TaskInfoFragment_to_TaskEditFragment,bundle);
+                    .navigate(R.id.action_TaskInfoFragment_to_TaskEditFragment, bundle);
         });
     }
 
-    public void showMessage(View view, int taskId, TaskInfoFragment taskInfoFragment) {
-        AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
-        alert.setMessage(R.string.caution_text_delete)
+    private void deleteCautionMessage() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this.getContext());
+        alert.setMessage(getString(R.string.caution_text_delete) + getString(R.string.caution_advise))
             .setCancelable(false)
+            .setTitle(R.string.caution)
             .setPositiveButton(R.string.confirm, (dialogInterface, i) -> {
-                CRUDTask.deleteTask(taskId);
-                NavHostFragment.findNavController(taskInfoFragment)
-                        .navigate(R.id.action_TaskInfoFragment_to_TaskListFragment);
+                CRUDTask.deleteTask(this.taskId);
+                NavHostFragment.findNavController(this)
+                    .navigate(R.id.action_TaskInfoFragment_to_TaskListFragment);
             })
             .setNegativeButton(R.string.goback, (dialogInterface, i) -> dialogInterface.cancel());
         AlertDialog title = alert.create();
-        title.setTitle(R.string.caution);
         title.show();
     }
 

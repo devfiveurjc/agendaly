@@ -1,10 +1,7 @@
 package com.devfiveurjc.agendaly.fragments;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.TypedValue;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,11 +66,12 @@ public class TaskEditFragment extends Fragment {
         this.time[1] = task.getMinutes();
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.binding.taskEditSaveButton.setOnClickListener(v -> {
-            this.showMessage(view);
+            this.editCautionMessage(view);
         });
         this.binding.taskEditEditDateButton.setOnClickListener(v -> {
             DateTimeDialog.editDate(this.getContext(), this.dateDisplay, this.date);
@@ -83,29 +81,18 @@ public class TaskEditFragment extends Fragment {
         });
     }
 
-    public void showMessage(View view) {
-        AlertDialog.Builder alerta= new AlertDialog.Builder(getContext());
-        alerta.setMessage(R.string.caution_text_edit)
-                .setCancelable(false)
-                .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        modifyTask(view);
-                    }
-                })
-                .setNegativeButton(R.string.goback, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-        AlertDialog titulo = alerta.create();
-        titulo.setTitle(R.string.caution);
-        titulo.show();
+    private void editCautionMessage(View view) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this.getContext());
+        alert.setMessage(getString(R.string.caution_text_edit) + getString(R.string.caution_advise))
+            .setCancelable(false)
+            .setTitle(R.string.caution)
+            .setPositiveButton(R.string.confirm, (dialogInterface, i) -> modifyTask(view))
+            .setNegativeButton(R.string.goback, (dialogInterface, i) -> dialogInterface.cancel());
+        AlertDialog title = alert.create();
+        title.show();
     }
 
-
-    public void modifyTask(View view) {
+    private void modifyTask(View view) {
         EditText titleInputText = view.findViewById(R.id.taskEditEditTitle);
         EditText descriptionInputText = view.findViewById(R.id.taskEditEditDescription);
         boolean isTitleInputEmpty = titleInputText.getText().toString().equals("");

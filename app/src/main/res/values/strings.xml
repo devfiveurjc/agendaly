@@ -11,11 +11,12 @@
     <string name="caution">Caution</string>
     <string name="caution_text_edit">
         If you press Confirm you will modify this task with the new data entered.
-        if you don\'t wish to make any changes press cancel.
     </string>
     <string name="caution_text_delete">
         If you press Confirm you will permanently delete this task.
-        if you don\'t wish to erase this task press cancel.
+    </string>
+    <string name="caution_advise">
+        If you don\'t wish to make any changes press Go Back.
     </string>
     <string name="confirm">Confirm</string>
     <string name="goback">Go back</string>

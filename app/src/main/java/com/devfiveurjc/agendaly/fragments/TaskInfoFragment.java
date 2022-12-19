@@ -70,8 +70,7 @@ public class TaskInfoFragment extends Fragment {
                     .navigate(R.id.action_TaskInfoFragment_to_TaskListFragment);
             })
             .setNegativeButton(R.string.goback, (dialogInterface, i) -> dialogInterface.cancel());
-        AlertDialog title = alert.create();
-        title.show();
+        alert.show();
     }
 
     @Override

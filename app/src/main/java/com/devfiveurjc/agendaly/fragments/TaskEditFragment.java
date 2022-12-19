@@ -88,8 +88,7 @@ public class TaskEditFragment extends Fragment {
             .setTitle(R.string.caution)
             .setPositiveButton(R.string.confirm, (dialogInterface, i) -> modifyTask(view))
             .setNegativeButton(R.string.goback, (dialogInterface, i) -> dialogInterface.cancel());
-        AlertDialog title = alert.create();
-        title.show();
+        alert.show();
     }
 
     private void modifyTask(View view) {

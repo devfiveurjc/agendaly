@@ -8,18 +8,8 @@
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="status">Status</string>
-    <string name="caution">Caution</string>
-    <string name="caution_text_edit">
-        If you press Confirm you will modify this task with the new data entered.
-    </string>
-    <string name="caution_text_delete">
-        If you press Confirm you will permanently delete this task.
-    </string>
-    <string name="caution_advise">
-        If you don\'t wish to make any changes press Go Back.
-    </string>
-    <string name="confirm">Confirm</string>
-    <string name="goback">Go back</string>
+    <string name="completed">Completed</string>
+    <string name="uncompleted">Uncompleted</string>
     <!-- Config -->
     <string name="language_title">Select your language</string>
     <string name="dark_mode_title">Dark mode</string>
@@ -39,4 +29,17 @@
     <!-- Task edit -->
     <string name="task_edit_label">Edit Task</string>
     <string name="successful_edit">Your task has been modified</string>
+    <!-- Caution -->
+    <string name="caution">Caution</string>
+    <string name="caution_text_edit">
+        If you press Confirm you will modify this task with the new data entered.
+    </string>
+    <string name="caution_text_delete">
+        If you press Confirm you will permanently delete this task.
+    </string>
+    <string name="caution_advise">
+        If you don\'t wish to make any changes press Go Back.
+    </string>
+    <string name="confirm">Confirm</string>
+    <string name="goback">Go back</string>
 </resources>

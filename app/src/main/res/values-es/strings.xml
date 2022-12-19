@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Generic -->
     <string name="settings_label">Configuración</string>
@@ -8,11 +7,8 @@
     <string name="date">Fecha</string>
     <string name="time">Tiempo</string>
     <string name="status">Estado</string>
-    <string name="caution">Peligro</string>
-    <string name="caution_text">
-        Si presionas OK modificarás esta tarea con la nueva información.\n
-        Si no quieres guardar los cambios presiona cancel.
-    </string>
+    <string name="completed">Completado</string>
+    <string name="uncompleted">No completado</string>
     <!-- Config -->
     <string name="language_title">Selecciona tu idioma</string>
     <string name="dark_mode_title">Modo oscuro</string>
@@ -32,4 +28,17 @@
     <!-- Task edit -->
     <string name="task_edit_label">Editar Tarea</string>
     <string name="successful_edit">Tu tarea ha sido modificada</string>
+    <!-- Caution -->
+    <string name="caution">Peligro</string>
+    <string name="caution_text_edit">
+        Si presionas Confirmar modificarás esta tarea con la nueva información introducida.
+    </string>
+    <string name="caution_text_delete">
+        Si presionas Confirmar eliminarás permanentamente esta tarea.
+    </string>
+    <string name="caution_advise">
+        Si no deseas hacer cambios presiona Ir atrás.
+    </string>
+    <string name="confirm">Confirmar</string>
+    <string name="goback">Ir atrás</string>
 </resources>

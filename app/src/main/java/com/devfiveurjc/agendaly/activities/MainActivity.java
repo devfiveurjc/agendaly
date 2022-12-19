@@ -1,7 +1,10 @@
 package com.devfiveurjc.agendaly.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +25,7 @@ import com.devfiveurjc.agendaly.models.Setting;
 import com.devfiveurjc.agendaly.models.Task;
 
 import java.util.Date;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -34,12 +38,15 @@ public class MainActivity extends AppCompatActivity {
         // CRUDTask.deleteAllTasks();
         // default setting
         if (CRUDSetting.isEmpty()) {
-            CRUDSetting.createSetting("english", false);
+            CRUDSetting.createSetting("en", false);
         }
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         Setting setting = CRUDSetting.getSetting();
-        pref.edit().putString("language", setting.getLanguage()).apply();
-        pref.edit().putBoolean("dark_mode", setting.isDarkMode()).apply();
+        String language = setting.getLanguage();
+        this.setLocale(language);
+        pref.edit().putString("language", language).apply();
+        boolean darkMode = setting.isDarkMode();
+        pref.edit().putBoolean("dark_mode", darkMode).apply();
         // initial default tasks
         if (CRUDTask.isEmpty()) {
             CRUDTask.addTask(new Task("uwu", "uwu", new Date()));
@@ -52,6 +59,16 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         this.appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, this.appBarConfiguration);
+    }
+
+    @SuppressWarnings("deprecation")
+    private void setLocale(String language) {
+        Context context = this.getBaseContext();
+        Resources resources = context.getResources();
+        Configuration config = resources.getConfiguration();
+        Locale locale = new Locale(language);
+        config.setLocale(locale);
+        resources.updateConfiguration(config, resources.getDisplayMetrics());
     }
 
     @Override
@@ -69,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            startActivity(new Intent(this, SettingsActivity.class));
+            startActivity(new Intent(this, SettingActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

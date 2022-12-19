@@ -14,7 +14,7 @@ import com.devfiveurjc.agendaly.R;
 import com.devfiveurjc.agendaly.crud.CRUDSetting;
 
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        CRUDSetting.setLanguage(pref.getString("language", "english"));
+        CRUDSetting.setLanguage(pref.getString("language", "en"));
         CRUDSetting.setDarkMode(pref.getBoolean("dark_mode", false));
         int id = item.getItemId();
         if (id == android.R.id.home) {

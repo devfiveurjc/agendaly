@@ -18,8 +18,8 @@
     </style>
     <style name="Theme.Agendaly.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.Agendaly.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-    <style name="Theme.Agendaly.Dialog" parent="Theme.AppCompat.Light.Dialog" />
-    <style name="Theme.Agendaly.AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert" />
+    <style name="Theme.Agendaly.Dialog" parent="Theme.Agendaly" />
+    <style name="Theme.Agendaly.AlertDialog" parent="Theme.Agendaly" />
     <style name="Theme.Agendaly.DatePickerDialog" parent="@android:style/Theme.Holo.Light.Dialog.MinWidth" />
     <style name="Theme.Agendaly.CheckBox" />
 </resources>

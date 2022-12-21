@@ -44,7 +44,6 @@
         android:id="@+id/taskAddDate"
         android:layout_width="150dp"
         android:layout_height="55dp"
-        android:backgroundTint="#D11F1F"
         android:gravity="center"
         android:text="@string/date"
         android:textSize="24sp"
@@ -60,7 +59,6 @@
         android:id="@+id/taskAddTime"
         android:layout_width="150dp"
         android:layout_height="55dp"
-        android:backgroundTint="#D11F1F"
         android:gravity="center"
         android:text="@string/time"
         android:textSize="24sp"
@@ -74,27 +72,31 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/taskAddEditDateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="216dp"
+        android:layout_width="55dp"
+        android:layout_height="56dp"
         android:clickable="true"
+        android:contentDescription="@string/date"
         android:src="@android:drawable/ic_menu_edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskAddEditDescription"
-        android:contentDescription="@string/date" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.569" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/taskAddEditTimeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="55dp"
+        android:layout_height="56dp"
         android:clickable="true"
+        android:contentDescription="@string/time"
         android:src="@android:drawable/ic_menu_edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskAddEditDateButton"
-        android:contentDescription="@string/time" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.721" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/taskAddSaveButton"

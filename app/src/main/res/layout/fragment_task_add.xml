@@ -98,10 +98,10 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/taskAddSaveButton"
-        android:layout_width="96dp"
-        android:layout_height="48dp"
+        android:layout_width="107dp"
+        android:layout_height="56dp"
         android:text="@string/save"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:cornerRadius="40dp"
         app:layout_constraintBottom_toBottomOf="parent"

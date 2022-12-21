@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +61,8 @@ public class TaskInfoFragment extends Fragment {
     }
 
     private void deleteCautionMessage() {
-        AlertDialog.Builder alert = new AlertDialog.Builder(this.getContext());
+        ContextThemeWrapper newContext = new ContextThemeWrapper(this.getContext(), R.style.Theme_Agendaly_AlertDialog);
+        AlertDialog.Builder alert = new AlertDialog.Builder(newContext);
         alert.setMessage(getString(R.string.caution_text_delete) + getString(R.string.caution_advise))
             .setCancelable(false)
             .setTitle(R.string.caution)

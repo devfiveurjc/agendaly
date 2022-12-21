@@ -20,8 +20,8 @@ public class DateTimeDialog {
         date[0] = c.get(Calendar.DAY_OF_MONTH);
         date[1] = c.get(Calendar.MONTH);
         date[2] = c.get(Calendar.YEAR);
-        DatePickerDialog dialog = new DatePickerDialog(context,
-            android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+        ContextThemeWrapper newContext = new ContextThemeWrapper(context, R.style.Theme_Agendaly_DatePickerDialog);
+        DatePickerDialog dialog = new DatePickerDialog(newContext,
             (view1, year, month, dayOfMonth) -> {
                 date[0] = dayOfMonth;
                 date[1] = month;

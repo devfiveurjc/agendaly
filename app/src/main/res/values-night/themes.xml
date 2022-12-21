@@ -1,21 +1,28 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<resources>
+    <!-- Base application theme -->
     <style name="Theme.Agendaly" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- Primary brand -->
+        <item name="colorPrimary">@color/gray</item>
+        <item name="colorPrimaryVariant">@color/yellow</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand -->
+        <item name="colorSecondary">@color/gray</item>
+        <item name="colorSecondaryVariant">@color/yellow</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/gray</item>
     </style>
-
-    <style name="Theme.Agendaly.Dialog" parent="Theme.Agendaly">
-        <item name="android:textColor">@color/black</item>
+    <style name="Theme.Agendaly.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
-
+    <style name="Theme.Agendaly.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Agendaly.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
+    <style name="Theme.Agendaly.Dialog" parent="Theme.AppCompat.DayNight.Dialog" />
+    <style name="Theme.Agendaly.AlertDialog" parent="Theme.AppCompat.DayNight.Dialog.Alert" />
+    <style name="Theme.Agendaly.DatePickerDialog" parent="@android:style/Theme.Holo.Light.Dialog.MinWidth">
+        <item name="colorAccent">@color/yellow</item>
+        <item name="android:headerBackground">@color/gray</item>
+        <item name="android:textColorHighlight">@color/white</item>
+    </style>
 </resources>

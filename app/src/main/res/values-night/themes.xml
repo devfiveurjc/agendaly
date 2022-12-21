@@ -20,9 +20,8 @@
     <style name="Theme.Agendaly.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
     <style name="Theme.Agendaly.Dialog" parent="Theme.AppCompat.DayNight.Dialog" />
     <style name="Theme.Agendaly.AlertDialog" parent="Theme.AppCompat.DayNight.Dialog.Alert" />
-    <style name="Theme.Agendaly.DatePickerDialog" parent="@android:style/Theme.Holo.Light.Dialog.MinWidth">
-        <item name="colorAccent">@color/yellow</item>
-        <item name="android:headerBackground">@color/gray</item>
-        <item name="android:textColorHighlight">@color/white</item>
+    <style name="Theme.Agendaly.DatePickerDialog" parent="@android:style/Theme.Holo.Dialog.MinWidth" />
+    <style name="Theme.Agendaly.CheckBox">
+        <item name="colorControlActivated">@color/white</item>
     </style>
 </resources>

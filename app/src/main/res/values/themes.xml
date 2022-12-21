@@ -21,4 +21,5 @@
     <style name="Theme.Agendaly.Dialog" parent="Theme.AppCompat.Light.Dialog" />
     <style name="Theme.Agendaly.AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert" />
     <style name="Theme.Agendaly.DatePickerDialog" parent="@android:style/Theme.Holo.Light.Dialog.MinWidth" />
+    <style name="Theme.Agendaly.CheckBox" />
 </resources>

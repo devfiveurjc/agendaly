@@ -30,7 +30,8 @@
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
                 android:paddingLeft="14dp"
-                android:paddingRight="14dp"/>
+                android:paddingRight="14dp"
+                android:theme="@style/Theme.Agendaly.CheckBox"/>
             <LinearLayout
                 android:id="@+id/InfoLinearLayout"
                 android:layout_width="wrap_content"

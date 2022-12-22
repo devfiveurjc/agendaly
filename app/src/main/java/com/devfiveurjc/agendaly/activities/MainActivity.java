@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         this.setLocale(language);
         pref.edit().putString("language", language).apply();
         boolean darkMode = setting.isDarkMode();
+        this.setColorMode(darkMode);
         pref.edit().putBoolean("dark_mode", darkMode).apply();
         // initial default tasks
         if (CRUDTask.isEmpty()) {
@@ -69,6 +71,14 @@ public class MainActivity extends AppCompatActivity {
         Locale locale = new Locale(language);
         config.setLocale(locale);
         resources.updateConfiguration(config, resources.getDisplayMetrics());
+    }
+
+    private void setColorMode(boolean darkMode) {
+        if (darkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
     }
 
     @Override

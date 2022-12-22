@@ -2,6 +2,7 @@ package com.devfiveurjc.agendaly.fragments;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,7 +83,8 @@ public class TaskEditFragment extends Fragment {
     }
 
     private void editCautionMessage(View view) {
-        AlertDialog.Builder alert = new AlertDialog.Builder(this.getContext());
+        ContextThemeWrapper newContext = new ContextThemeWrapper(this.getContext(), R.style.Theme_Agendaly_AlertDialog);
+        AlertDialog.Builder alert = new AlertDialog.Builder(newContext);
         alert.setMessage(getString(R.string.caution_text_edit) + getString(R.string.caution_advise))
             .setCancelable(false)
             .setTitle(R.string.caution)

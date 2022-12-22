@@ -2,12 +2,12 @@
 
     <!-- Language Preference -->
     <string-array name="language_entries">
-        <item>English</item>
-        <item>Spanish</item>
+        <item>@string/english</item>
+        <item>@string/spanish</item>
     </string-array>
     <string-array name="language_values">
-        <item>english</item>
-        <item>spanish</item>
+        <item>en</item>
+        <item>es</item>
     </string-array>
 
 </resources>

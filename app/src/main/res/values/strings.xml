@@ -1,6 +1,6 @@
 <resources>
     <!-- Generic -->
-    <string name="app_name">Agendaly</string>
+    <string name="app_name" translatable="false">Agendaly</string>
     <string name="settings_label">Settings</string>
     <string name="save">Save</string>
     <string name="title">Title</string>
@@ -8,30 +8,41 @@
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="status">Status</string>
-    <string name="caution">Caution</string>
-    <string name="caution_text">
-        If you press OK you will modify this task with the new data entered.
-        if you don\'t wish to make any changes press cancel.
-    </string>
+    <string name="completed">Completed</string>
+    <string name="uncompleted">Uncompleted</string>
     <!-- Config -->
     <string name="language_title">Select your language</string>
     <string name="dark_mode_title">Dark mode</string>
+    <!-- Languages -->
+    <string name="english">English</string>
+    <string name="spanish">Spanish</string>
     <!-- Task list -->
     <string name="week_day">Week Day</string>
     <!-- Task add -->
     <string name="task_add_label">Add Task</string>
     <string name="title_write">Write a title</string>
     <string name="description_write">Write a description</string>
-    <string name="no_title_text">
-        Please, indicate the title of your task.
-    </string>
+    <string name="no_title_text">Please, indicate the title of your task.</string>
     <!-- Task info -->
     <string name="task_info_label">Info Task</string>
-    <string name="new_title_write">Write a new task title</string>
+    <string name="new_title_write">Write a new title</string>
     <string name="new_description_write">Write a new description</string>
     <string name="delete">Delete</string>
     <string name="edit_task">Edit</string>
     <!-- Task edit -->
     <string name="task_edit_label">Edit Task</string>
     <string name="successful_edit">Your task has been modified</string>
+    <!-- Caution -->
+    <string name="caution">Caution</string>
+    <string name="caution_text_edit">
+        If you press Confirm you will modify this task with the new data entered.
+    </string>
+    <string name="caution_text_delete">
+        If you press Confirm you will permanently delete this task.
+    </string>
+    <string name="caution_advise">
+        If you don\'t wish to make any changes press Go Back.
+    </string>
+    <string name="confirm">Confirm</string>
+    <string name="goback">Go back</string>
 </resources>

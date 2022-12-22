@@ -5,6 +5,7 @@ import android.app.Application;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
+
 public class BaseApplication extends Application {
 
     @Override
@@ -12,7 +13,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         Realm.init(this);
         RealmConfiguration config = new RealmConfiguration.Builder()
-            .name("tasks")
+            .name("agendaly")
             .schemaVersion(0)
             .deleteRealmIfMigrationNeeded()
             .allowWritesOnUiThread(true)

@@ -13,6 +13,9 @@
     <!-- Config -->
     <string name="language_title">Select your language</string>
     <string name="dark_mode_title">Dark mode</string>
+    <!-- Languages -->
+    <string name="english">English</string>
+    <string name="spanish">Spanish</string>
     <!-- Task list -->
     <string name="week_day">Week Day</string>
     <!-- Task add -->
